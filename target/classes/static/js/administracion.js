@@ -25,7 +25,7 @@ function listaUsuarios(){
     		textoHTML += "			<th>Clave<\/th>";
     		textoHTML += "			<th>Rol<\/th>";
     		textoHTML += "			<th>Eliminar<\/th>";
-    		textoHTML += "			<th>Modificar<\/th>";
+    		textoHTML += "			<th>Editar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
     		textoHTML += "	<tbody>";
@@ -74,7 +74,7 @@ function modificaUsuario(idUsuario, name, surname, email, login, password, rol){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Modificar usuario</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Editar usuario</h2></div><div class="modal-body">'
 			
 		textoHTML+='<form action="insertUser" id="formUpdateUser" class="form-horizontal" style="margin:20px">'
 		textoHTML+='<input type="hidden" id="idUsuario" name="idUsuario" value="'+idUsuario+'">'
@@ -219,7 +219,7 @@ function processMessage(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -255,8 +255,8 @@ function processMessage(message){
 
 function registraUsuarios(){
 	
-	var textoHTML='<div class="panel panel-primary" style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10; max-width:500px">'
-	textoHTML+= '<div class="panel-heading" style="text-align:center"><h3>Registro de usuarios</h3></div>'
+	var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10; max-width:500px">'
+	textoHTML+= '<div class="panel-heading" style="text-align:center; background-color:#222; color:#FFF"><h3>Registro de usuarios</h3></div>'
 	textoHTML+='<form action="insertUser" id="formInsertUser" class="form-horizontal" style="margin:20px">'
 	
 	textoHTML+=		'<div class="form-group"><label for="name" class="col-sm-2 control-label">Nombre</label>'
@@ -384,7 +384,7 @@ function processMessageCreate(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -459,7 +459,7 @@ function processMessageError(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -517,17 +517,6 @@ function listaNotificaciones(){
     		textoHTML += "			<th>Enviar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
-    		textoHTML += "	<tfoot>";
-    		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Apellidos<\/th>";
-    		textoHTML += "			<th>Email<\/th>";
-    		textoHTML += "			<th>Login<\/th>";
-    		textoHTML += "			<th>Clave<\/th>";
-    		textoHTML += "			<th>Rol<\/th>";
-    		textoHTML += "			<th>Enviar<\/th>";
-    		textoHTML += "		<\/tr>";
-    		textoHTML += "	<\/tfoot>";
     		 		
     		textoHTML += "	<tbody>";
     		
@@ -570,7 +559,7 @@ function listaNotificaciones(){
 function notificaUsuario(mail){
 	
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#09F; color:#FFF"><h2>Notificacion de usuario</h2></div>'		
+		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF""><h2>Notificacion de usuario</h2></div>'		
 		textoHTML+='<div class="modal-body">' 
 			
 		textoHTML += "<form class=\"form-horizontal\" id=\"formNotificacion\">";
@@ -668,7 +657,7 @@ function processMessageNotificacion(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Notificacion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Notificacion de usuarios</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -707,7 +696,7 @@ function processMessageError(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Notificacion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF""><h2>Notificacion de usuarios</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   

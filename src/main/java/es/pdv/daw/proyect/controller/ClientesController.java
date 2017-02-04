@@ -6,8 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import es.pdv.daw.proyect.beans.ClientValidate;
+import es.pdv.daw.proyect.entity.Cliente;
 import es.pdv.daw.proyect.services.ClientesService;
 
+/**
+ * Clase controlador de peticiones de menu clientes.
+ * @author mint
+ *
+ */
 @Controller
 @ResponseBody
 public class ClientesController {
@@ -18,11 +24,30 @@ public class ClientesController {
 	@Autowired
 	private ClientesService clientesService;
 	
+	/**
+	 * Metodo que devuelve una lista con los clientes registrados.
+	 * @param clientValidate
+	 * @return
+	 */
 	@RequestMapping(value="dameListaClientes",method = RequestMethod.GET)
 	public ClientValidate dameListaClientes( 
 			ClientValidate clientValidate){
 		
 	return clientesService.getClientList(clientValidate);	 
+	}
+	
+	/**
+	 * Metodo que registra un cliente.
+	 * @param clientValidate
+	 * @param cliente
+	 * @return
+	 */
+	@RequestMapping(value="registraCliente",method = RequestMethod.POST)
+	public ClientValidate registraCliente( 
+			ClientValidate clientValidate,
+			Cliente cliente){
+		
+	return clientesService.saveClient(clientValidate, cliente);	 
 	}
 
 }

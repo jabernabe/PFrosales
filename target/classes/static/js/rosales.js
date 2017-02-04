@@ -26,21 +26,9 @@ function listaRosales(){
     		textoHTML += "			<th>Perfumada<\/th>";
     		textoHTML += "			<th>Imagen<\/th>";
     		textoHTML += "			<th>Eliminar<\/th>";
-    		textoHTML += "			<th>Modificar<\/th>";
+    		textoHTML += "			<th>Editar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
-    		textoHTML += "	<tfoot>";
-    		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Variedad<\/th>";
-    		textoHTML += "			<th>color<\/th>";
-    		textoHTML += "			<th>Altura<\/th>";
-    		textoHTML += "			<th>Perfumada<\/th>";
-    		textoHTML += "			<th>Imagen<\/th>";
-    		textoHTML += "			<th>Eliminar<\/th>";
-    		textoHTML += "			<th>Modificar<\/th>";
-    		textoHTML += "		<\/tr>";
-    		textoHTML += "	<\/tfoot>";
     		 		
     		textoHTML += "	<tbody>";
     		
@@ -137,7 +125,7 @@ function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada,
     		
     		var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
     			textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-    			textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Modificar rosal</h2></div><div class="modal-body">'
+    			textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Editar rosal</h2></div><div class="modal-body">'
     				
     			textoHTML+='<form id="formUpdateRosal" class="form-horizontal" style="margin:20px" enctype="multipart/form-data">'
     			textoHTML+='<input type="hidden" id="idRosal" name="idRosal" value="'+idRosal+'">'
@@ -272,7 +260,7 @@ function mensajeErrorModificaRosal(){
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='	<div class="modal-dialog"> '
 		textoHTML+='		<div class="modal-content">'
-		textoHTML+='			<div class="modal-header" style="text-align:center; background-color:#09F; color:#FFF"><h2>Modificar rosal</h2></div>'
+		textoHTML+='			<div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Modificar rosal</h2></div>'
 		textoHTML+='			<div class="modal-body">'	
 		textoHTML+='				<div class="alert alert-danger" role="alert" id="alertMessage" '
 		textoHTML+='				style="text-align:center; font-size:20px">No hay variedades registradas.</div>'
@@ -321,7 +309,7 @@ function MessageModificaRosal(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Modificacion de Rosales</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Modificacion de Rosales</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -373,8 +361,8 @@ function registraRosal(){
 
 // Funcion que muestra el formulario de registro de rosales
 function muestraRegistraRosal(data){
-	var textoHTML='<div class="panel panel-primary" style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10; max-width:500px">'
-		textoHTML+= '<div class="panel-heading" style="text-align:center"><h3>Registro de rosales</h3></div>'
+	var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10; max-width:500px">'
+		textoHTML+= '<div class="panel-heading" style="text-align:center; background-color:#222; color:#FFF"><h3>Registro de rosales</h3></div>'
 		textoHTML+= '<form  method="post" id="formInsertRosal" class="form-horizontal" style="margin:20px" enctype="multipart/form-data">'
 		
 		textoHTML+= '<div class="form-group"><label for="nombreRosal" class="col-sm-2 control-label">Nombre</label>'
@@ -497,7 +485,7 @@ function MessageCreaRosal(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Gestion de Rosales</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de Rosales</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -532,9 +520,9 @@ function MessageCreaRosal(message){
 // Metodo que muestra la ventana modal informando del rosal a eliminar.
 function eliminaRosal(nombreRosal, idRosal){
 	
-	var mensaje="<h2 style='color:#006; text-align:center'>El Rosal con nombre "+nombreRosal+" será eliminado.</h2>";
+	var mensaje="<h3 style='color: #e70c06 ; text-align:center'>El Rosal con nombre "+nombreRosal+" será eliminado.</h3>";
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#09F; color:#FFF"><h2>Eliminar rosal</h2></div>'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar rosal</h2></div>'
 		
 		textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
 		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Cancelar</a>' 
@@ -573,7 +561,7 @@ function processMessageError(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Gestion de rosales</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de rosales</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"'   
@@ -612,7 +600,7 @@ function processMessage(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#09F; color:#FFF"><h2>Gestion de rosales</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de rosales</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   

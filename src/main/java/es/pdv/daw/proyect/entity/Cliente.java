@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
 	 * Numero de identificador de cliente.
 	 */
 	@Column(name ="identificador", length=20, nullable=false, unique=true )
-	private String Identificador;
+	private String identificador;
 	
 	/**
 	 * Direccion del cliente.
@@ -61,7 +61,7 @@ public class Cliente implements Serializable {
 	 * Codigo postal del cliente.
 	 */
 	@Column(name ="codigo_postal", length=5)
-	private int cp;
+	private String cp;
 	
 	/**
 	 * Municipio del cliente.
@@ -132,12 +132,13 @@ public class Cliente implements Serializable {
 		this.tipoIden = tipoIden;
 	}
 
+
 	public String getIdentificador() {
-		return Identificador;
+		return identificador;
 	}
 
 	public void setIdentificador(String identificador) {
-		Identificador = identificador;
+		this.identificador = identificador;
 	}
 
 	public String getDireccion() {
@@ -148,11 +149,11 @@ public class Cliente implements Serializable {
 		this.direccion = direccion;
 	}
 
-	public int getCp() {
+	public String getCp() {
 		return cp;
 	}
 
-	public void setCp(int cp) {
+	public void setCp(String cp) {
 		this.cp = cp;
 	}
 
@@ -196,9 +197,5 @@ public class Cliente implements Serializable {
 		this.provincia = provincia;
 	}
 	
-	
-	
-	
-
 	
 }

@@ -1,12 +1,10 @@
 package es.pdv.daw.proyect.services;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import es.pdv.daw.proyect.beans.ClientValidate;
 import es.pdv.daw.proyect.dao.ClientesRepository;
 import es.pdv.daw.proyect.entity.Cliente;
@@ -58,6 +56,78 @@ public class ClientesServiceBean implements ClientesService {
 		}
 		
 		return clientValidate;
+	}
+	
+	/**
+	 * Metodo que registra un cliente.
+	 */
+	@Override
+	public ClientValidate saveClient(ClientValidate clientValidate, Cliente cliente) {
+		
+		if (checkName(cliente.getNombreCliente())){
+			
+			clientValidate.setExistClientes(false);
+			clientValidate.setMessage("Nombre de cliente registrado");
+		}
+		else{
+			
+			if (checkIdentificador(cliente.getIdentificador())){
+				
+				clientValidate.setExistClientes(false);
+				clientValidate.setMessage("Identificador duplicado");
+			}
+			else{
+				clientesRepository.saveAndFlush(cliente);
+				clientValidate.setExistClientes(true);
+				clientValidate.setMessage("Cliente registrado correctamente");	
+			}
+		}	
+		
+		return clientValidate;
+	}
+	
+	/**
+	 * Metodo que comprueba si el CIF o NIF estan registrados
+	 * @param identificador
+	 * @return
+	 */
+	private boolean checkIdentificador(String identificador) {
+		boolean resultado = false;
+		
+		int num = clientesRepository.countByIdentificador(identificador);
+		
+		System.out.println(num);
+		
+		if (num>0){
+			resultado = true;
+		}
+		else{
+			resultado = false;
+		}
+			
+		return resultado;
+	}
+
+	/**
+	 * Metodo que comprueba si el nombre del cliente existe en base de datos.
+	 * @param nombreCliente
+	 * @return
+	 */
+	private boolean checkName(String nombreCliente) {
+		
+		boolean resultado = false;
+		
+		int num = clientesRepository.countByNombreCliente(nombreCliente);
+		
+		if (num>0){
+			resultado = true;
+		}
+		else{
+			resultado = false;
+		}
+		
+		
+		return resultado;
 	}
 	
 	

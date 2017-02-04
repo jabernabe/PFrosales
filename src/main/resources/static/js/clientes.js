@@ -157,7 +157,6 @@ var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-r
 	textoHTML+= '<div class="panel-heading " style="text-align:center; background-color:#222; color:#FFF; height:50px;"><h4>Registro de clientes</h4></div>'
 		
 	textoHTML+='<form id="formRegistraCliente" class="form-horizontal" style="margin:10px">'
-	textoHTML+='<input type="hidden" id="idCliente" name="idCliente" >'
 				    	
 	textoHTML+='<div class="form-group"><label for="tipoIden" class="col-sm-2 control-label">Tipo</label>'
 	textoHTML+='<div class="col-sm-10"><select class="form-control" id="tipoIden" name="tipoIden">' 		
@@ -182,7 +181,7 @@ var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-r
 	textoHTML+='<div class="form-group"><label for="pais" class="col-sm-2 control-label">Pais</label>'
 	textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="pais" name="pais" ></div></div>'
 	textoHTML+=''
-	textoHTML+='<div class="form-group"><label for="cp" class="col-sm-2 control-label">Codigo_postal</label>'
+	textoHTML+='<div class="form-group"><label for="cp" class="col-sm-2 control-label">Codigo Postal</label>'
 	textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="cp" name="cp" ></div></div>'
 	textoHTML+=''
 	textoHTML+='<div class="form-group"><label for="telefonos" class="col-sm-2 control-label">Contacto</label>'
@@ -318,7 +317,53 @@ function validaRegistraCliente(){
 //Metodo que procesa el registro del nuevo cliente tras la validacion de los campos del formulario.
 function procesaRegistroCliente(){
 	
-	alert("se procede al registro del cliente");
+	var formData = new FormData(document.getElementById("formRegistraCliente"));
+
+	$.ajax({
+        url: "registraCliente",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success:function(data){
+        	
+        	if (data.existClientes){
+        		document.getElementById("mensajeFormCliente").style.visibility="hidden"
+        		document.getElementById("formRegistraCliente").reset();
+        		registraClienteMessage(data.message);
+        	}
+        	else{
+        		document.getElementById("mensajeFormCliente").style.visibility="visible";
+        		$("#mensajeFormCliente").text(data.message);
+        	}
+        }
+    })
+}
+
+//Funcion que muestra el mensaje de cliente registrado.
+function registraClienteMessage(data){
+	
+	
+	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'
+		textoHTML+=' <div class="modal-dialog" role="document">'
+		textoHTML+='<div class="modal-content">'
+		textoHTML+=''
+		textoHTML+='<div class="modal-header" '	
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h3>Mensaje</h3></div>'
+		textoHTML+=''
+		textoHTML+='<div class="modal-body">'
+		textoHTML+='<div class="alert alert-success" role="alert"style="text-align:center; font-size:20px">'+data+'</div>'
+		textoHTML+='</div>'
+		textoHTML+='<div class="modal-footer">'
+		textoHTML+=	'<button id="enviar" type="button" onclick="" class="btn btn-success" data-dismiss="modal">Aceptar</button></div>'
+		textoHTML+='</div></div></div>'
+	
+	
+		document.getElementById("modalDatos").innerHTML=textoHTML;
+		$("#mostrarmodal").modal("show");
+	
+	
+	
 }
 
 

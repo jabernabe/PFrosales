@@ -1547,3 +1547,35 @@
 [INFO ] 2017-02-04 16:37:59.051 [http-nio-8080-exec-4] LoginServiceBean - El usuario bubu ha iniciado sesion.
 [INFO ] 2017-02-04 16:47:07.189 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
 [INFO ] 2017-02-04 17:03:08.875 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 19:26:50.441 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 19:39:31.312 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 19:42:15.777 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 19:55:47.281 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 20:14:19.542 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 20:34:37.232 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 20:46:28.320 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 20:49:17.866 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 20:51:10.354 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:06:41.342 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:24:55.241 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:31:43.661 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:39:14.783 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:41:25.649 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:43:23.381 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:44:08.612 [http-nio-8080-exec-7] LoginServiceBean - Error al enviar notificacion a usuario con email: bernabe.asir@gmail.com
+[INFO ] 2017-02-04 21:48:42.031 [http-nio-8080-exec-9] LoginServiceBean - Notificacion enviada a usuario con email : bernabe.asir@gmail.com
+[INFO ] 2017-02-04 21:50:36.133 [http-nio-8080-exec-1] LoginServiceBean - Notificacion enviada a usuario con email : bernabe.asir@gmail.com
+[INFO ] 2017-02-04 21:52:11.571 [http-nio-8080-exec-6] ProductServiceBean - la variedad Floribunda ha sido modificada correctamente.
+[INFO ] 2017-02-04 21:58:48.607 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 21:59:07.500 [http-nio-8080-exec-4] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:01:23.502 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:02:00.858 [http-nio-8080-exec-7] ProductServiceBean - variedad con nombre Clasicos eliminada correctamente.
+[INFO ] 2017-02-04 22:06:20.843 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:11:59.301 [http-nio-8080-exec-2] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:12:17.965 [http-nio-8080-exec-5] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:21:47.969 [http-nio-8080-exec-3] ProductServiceBean - la variedad Floribunda ha sido modificada correctamente.
+[INFO ] 2017-02-04 22:27:23.800 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:28:57.994 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:33:59.004 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:37:30.212 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:39:18.570 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
