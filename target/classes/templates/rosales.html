@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+		
+<title>Rosalia - Gestion de rosales</title>
+</head>
+
+<body>
+<div class="container-fluid contorno content admin" th:fragment="rosales">
+	
+	<div class="btn-group btn-group-justified" style="margin-top:15px; margin-bottom:15px">
+		<a href="#" class="btn btn-primary" onclick="listaRosales()">Rosales</a>
+	    <a href="#" class="btn btn-info" onclick="registraRosal()">Registrar</a>
+	</div>
+  
+	<div id="rosalesContent" class="table-responsive" style="margin-bottom:15px"></div>
+	<div id="modalDatos"></div>
+	
+<script src="bootstrap/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/rosales.js"></script>
+<script>listaRosales()</script> 
+</div>
+
+</body>
+</html>

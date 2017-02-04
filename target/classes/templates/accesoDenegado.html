@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  >
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+</head>
+<body>
+<!-- panel de error  -->
+
+<div  id="error" class="container-fluid contorno" th:fragment="accesoDenegado">
+	<div  class="panel panel-danger" style="padding:30px; margin-top:200px; width:600px; margin-left:auto; margin-right:auto; margin-top:50px;">
+	    <h1 style="text-align:center; color:#F00">Acceso denegado</h1>
+	    <div class="panel-body">            
+	       <h3 style="text-align:center">Por favor ingrese usuario y clave.</h3>
+	       <form action="inicio" method="post">
+	         <button type="button" class="btn btn-danger  btn-block" onClick="submit()" style="width:400px; margin-left:auto; margin-right:auto; margin-top:20px">Salir</button>
+	       </form>
+	    </div>
+	</div>
+</div>
+</body>
+</html>

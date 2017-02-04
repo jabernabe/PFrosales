@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Rosalia - Gestion de variedades</title>
+</head>
+
+<body>
+<div class="container-fluid contorno content admin" th:fragment="variedades">
+	
+	<div class="btn-group btn-group-justified" style="margin-top:15px; margin-bottom:15px">
+		<a href="#" class="btn btn-primary" onclick="listaVariedades()">Variedades</a>
+	    <a href="#" class="btn btn-info" onclick="registraVariedad()">Registrar</a>
+	</div>
+  
+	<div id="variedadesContent" class="table-responsive" style="margin-bottom:15px"></div>
+	<div id="modalDatos"></div>
+	
+<script src="bootstrap/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/variedades.js"></script>
+<script>listaVariedades()</script>  
+</div>
+
+</body>
+</html>

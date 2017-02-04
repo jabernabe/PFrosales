@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Rosalia - Gestion Datos empresa</title>
+</head>
+
+<body>
+<div class="container-fluid contorno content admin" th:fragment="empresa">
+ 
+	<div id="empresaContent" class="table-responsive" style="margin-bottom:15px"></div>
+	<div id="modalDatos"></div>
+	
+<script src="bootstrap/js/jquery-2.2.3.min.js"></script>	
+<script type="text/javascript" src="js/empresa.js"></script>
+<script>datosEmpresa()</script> 
+</div>
+
+</body>
+</html>

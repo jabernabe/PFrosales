@@ -1,0 +1,122 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!-- enlaces a archivos css bootstrap y archivos javascript -->
+<link href="bootstrap/css/bootstrap.min.css" rel="Stylesheet"></link>
+<link href="bootstrap/css/dataTables.bootstrap.min.css" rel="Stylesheet"></link>
+<link href="bootstrap/css/dataTables.jqueryui.min.css" rel="Stylesheet"></link>
+<link rel="stylesheet" type="text/css" href="css/stilos.css"/>
+
+<title>Rosales Rosalia</title>
+
+</head>
+<body onLoad="validaUsuario()">
+<!-- variables de sesion de validacion de usuario -->
+<input type="hidden" id="usuario" value="1" th:value="${session.usuario}" />
+<input type="hidden" id="rol" value="1" th:value="${session.rol}" />
+
+<!-- contenedor principal de centra la pagina -->
+
+<div id="homepage" class="container">
+
+<!-- contenedor de cierre de sesion de usuario  -->
+
+    <div id="user" class="contorno">
+    <form id="accessdenied" action="loadAccesoDenegado"></form>
+    <form id="logout" action="logout"></form>
+    <img src="images/userblanco.png" width="16" height="16" alt="usuario" />   
+    <span th:text="${session.usuario}" style="padding-left:3px"></span><a  id="cerrarsesion" href="closeSession" style="color:#FFF; padding-left:10px;">> Finalizar sesion</a>
+    </div>
+    
+ <!-- Encabezado de pagina -->
+ 
+    <section id="jumbotron" class="jumbotron contorno">   	
+    	<div class="container-fluid">
+    		<img src="images/sanjose5.png" class="img-responsive"  alt="titulo" style="vertical-align:top"/> 
+        </div>   
+    </section>
+    
+ <!-- Barra de menu bootstrap -->   
+ 
+	<header>
+    	<nav class="navbar navbar-inverse navegador contorno " id="menu">
+        	<div class="container-fluid">
+                      
+            	<div class="navbar-header">
+                	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion">
+                    	<span class="sr-only">Menu</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                </div>
+                <div class="collapse navbar-collapse" id="navegacion">
+                	<ul class="nav navbar-nav">
+                    	<li class="active"><a href="loadInicio"> <img src="images/home4.png" width="24" height="24" alt="Inicio" />  </a></li>
+                    	<li class="dropdown">
+                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            Pedidos<span class="caret"></span>    
+                            </a>
+                            <ul class="dropdown-menu">
+                            	<li><a href="loadNuevoAlbaran" >Nuevo pedido</a></li>
+                                <li><a href="loadAlbaranes" >Listados pedidos</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="loadClientes">Clientes</a></li>
+                        	
+                        <li class="dropdown">
+                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            Almacen<!--<span class="caret"></span>-->     
+                            </a>
+                            <ul class="dropdown-menu">
+                            	<li><a href="loadConsultas" >Consultas</a></li>
+                                <li><a href="loadEntradas" >Entradas</a></li>
+                                <li><a href="loadSalidas" >Salidas</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            Productos<span class="caret"></span>    
+                            </a>
+                            <ul class="dropdown-menu">
+                            	<li><a href="loadRosales" >Rosales</a></li>
+                                <li><a href="loadVaridades" >Variedades</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="admin">
+                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            Administracion<span class="caret"></span>    
+                            </a>
+                            <ul class="dropdown-menu">
+                            	<li id="adminUsuarios"><a href="loadAdministracion">Usuarios</a></li>
+                            	<li id="adminEmpresa"><a href="loadDatosEmpresa">Empresa</a></li>
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div> 	
+            </div>        
+        </nav>    
+    </header>
+    
+ <!-- contenedor donde se cargan las paginas mendiante thymeleaf fragments -->
+ 
+
+    <div id="contenido" class="contorno"   th:replace="${view} :: ${fragment}" style="background-color:#FFF"></div>  
+    <div id="content"></div> 
+</div>
+
+<!-- enlaces a jquery y bootstrap -->
+<script src="bootstrap/js/jquery-2.2.3.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script src="bootstrap/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/procesos.js"></script>
+
+</body>
+</html>

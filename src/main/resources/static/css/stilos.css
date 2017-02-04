@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+
+.navbar {
+	margin-top:0;
+	margin-bottom:0;
+		
+}
+.jumbotron{
+	border-radius:0px;
+	margin-bottom:0px;
+	background-image:url(../images/fondotitulo.jpg);
+	background-repeat: no-repeat;
+	height:50px;
+	width: 100% ;
+	padding-bottom:0px;
+	padding-top:0px;
+}
+
+#user{
+
+	text-align:right;
+	color:#FFF;
+	background-color:#000;
+	height:30px;
+	padding-right:10px;
+	padding-top:3px;
+}
+body{
+background-image:url(../images/fondorosas.jpg);
+}
+#login{
+	float:right
+	
+	}
+	
+.contorno{
+	border-width:1px;
+	border-style:solid;
+	border-color:#906;
+}
+.content{
+	background-color:#EEE;	
+}
+#contenido{
+	background-color:#FFF;
+	border-width:1px;
+	border-style:solid;
+	border-color:#906;
+	border-radius:10px;
+	
+}
+
+.slideimg{
+	border-radius:10px;
+}
+.blue {
+	color:#FFF;
+	background:#06F;
+}
+
+.admin {
+	background-color:#FFEBFF;
+}
+.tablescroll {
+	height:550px;
+	overflow-y: scroll;
+}
+#modalVariedad {
+	width: 750px !important;
+	
+}
+#formRegistro{
+	width: 750px !important;
+}
+.modalClientes{
+  width: 700px !important;
+}
+
+.panelRegistroClientes{
+  font-size: 12px !important;
+  text-align:center;
+  background-color:#222; 
+  color:#FFF; 
+  height:40px;
+}
+
