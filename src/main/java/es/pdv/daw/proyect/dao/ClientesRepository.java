@@ -16,6 +16,10 @@ public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
 
 	List<Cliente> findAllByOrderByNombreClienteAsc();
 
+	Cliente findByIdentificador(String identificador);
+
+	Cliente findByNombreCliente(String nombreCliente);
+
 	
 
 }

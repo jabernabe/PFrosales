@@ -1579,3 +1579,7 @@
 [INFO ] 2017-02-04 22:33:59.004 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
 [INFO ] 2017-02-04 22:37:30.212 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
 [INFO ] 2017-02-04 22:39:18.570 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-04 22:44:51.007 [http-nio-8080-exec-6] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-06 13:11:53.789 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-06 13:59:13.910 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-06 14:05:50.886 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.

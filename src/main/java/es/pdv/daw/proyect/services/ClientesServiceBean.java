@@ -130,5 +130,101 @@ public class ClientesServiceBean implements ClientesService {
 		return resultado;
 	}
 	
+	/**
+	 * Metodo que actualiza los datos de un cliente.
+	 */
+	@Override
+	public ClientValidate updateClient(ClientValidate clientValidate, Cliente cliente) {
+		
+		if (checkUpdateIdentificador(cliente)){
+			
+			if (checkUpdateName(cliente)){
+				
+				clientesRepository.saveAndFlush(cliente);
+				clientValidate.setExistClientes(true);
+				clientValidate.setMessage("Cliente Actualizado correctamente");	
+			}
+			else{
+				
+				clientValidate.setExistClientes(false);
+				clientValidate.setMessage("Nombre de clinete no disponible.");		
+			}
+		}
+		else{
+			
+			clientValidate.setExistClientes(false);
+			clientValidate.setMessage("Numero CIF o NIF no disponible.");			
+		}
+			
+		return clientValidate;
+	}
+	
+	/**
+	 * Metodo que comprueba si esta disponible el nombre de cliente.
+	 * @param cliente
+	 * @return
+	 */
+	private boolean checkUpdateName(Cliente cliente) {
+		
+		boolean resultado = false;
+		
+		int num = clientesRepository.countByNombreCliente(cliente.getNombreCliente());
+		
+		if (num>0){
+			
+			Cliente client = clientesRepository.findByNombreCliente(cliente.getNombreCliente());
+			
+			if (client.getIdCliente()==cliente.getIdCliente()){
+				
+				resultado = true;
+			}
+			else{
+				
+				resultado = false;
+			}
+		}
+		else{
+			
+			resultado = true;
+		}
+		
+		
+		
+		return resultado;
+	}
+
+	/**
+	 * Metodo que comprueba si el identificador pertenece a otro cliente.
+	 * @param cliente
+	 * @return
+	 */
+	private boolean checkUpdateIdentificador(Cliente cliente) {
+		
+		boolean resultado = false;
+		
+		int num = clientesRepository.countByIdentificador(cliente.getIdentificador());
+		
+		if (num>0){
+			
+			Cliente client = clientesRepository.findByIdentificador(cliente.getIdentificador());
+			
+			if (client.getIdCliente()==cliente.getIdCliente()){
+				
+				resultado = true;
+			}
+			else{
+				
+				resultado = false;
+			}
+		}
+		else{
+			
+			resultado = true;
+		}
+		
+		
+		return resultado;
+	}
+	
 	
 }

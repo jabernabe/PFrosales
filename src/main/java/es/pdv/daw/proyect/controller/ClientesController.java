@@ -49,5 +49,19 @@ public class ClientesController {
 		
 	return clientesService.saveClient(clientValidate, cliente);	 
 	}
+	
+	/**
+	 * Metodo que actualiza un cliente.
+	 * @param clientValidate
+	 * @param cliente
+	 * @return
+	 */
+	@RequestMapping(value="actualizaCliente",method = RequestMethod.POST)
+	public ClientValidate actualizaCliente( 
+			ClientValidate clientValidate,
+			Cliente cliente){
+		
+	return clientesService.updateClient(clientValidate, cliente);	 
+	}
 
 }

@@ -9,4 +9,6 @@ public interface ClientesService {
 
 	ClientValidate saveClient(ClientValidate clientValidate, Cliente cliente);
 
+	ClientValidate updateClient(ClientValidate clientValidate, Cliente cliente);
+
 }

@@ -84,8 +84,6 @@ function listaClientes(){
 //Funcion que muestra una ventana modal para editar un cliente.
 function editaCliente(idCliente, nombre, direccion, municipio, provincia, pais, cp, tel, email, observ, tipoIden, ident){
 	
-	alert(idCliente+"  "+nombre+" "+ident)
-	
 	
     var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
     	textoHTML+='<div class="modal-dialog modalClientes"><div class="modal-content"><div class="modal-header" '	
@@ -137,17 +135,180 @@ function editaCliente(idCliente, nombre, direccion, municipio, provincia, pais, 
     				   				
     	textoHTML+='</form>'
     	textoHTML+=''
-    	textoHTML+='<div class="alert alert-danger" role="alert" id="modifyMessage" style="text-align:center; font-size:20px; visibility: hidden"></div>'
+    	textoHTML+='<div class="alert alert-danger" role="alert" id="mensajeFormEditaCliente" style="text-align:center; font-size:20px; visibility: hidden"></div>'
     	textoHTML+='</div>'
     	textoHTML+='<div class="modal-footer">'
     	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Cancelar</a>'     
-    	textoHTML+=	'<button type="button" onclick="validaModificaRosal()" class="btn btn-success">Aceptar</button>'
+    	textoHTML+=	'<button type="button" onclick="validaEditaCliente()" class="btn btn-success">Aceptar</button>'
     	textoHTML+='</div></div></div></div>'    
     		    
     	document.getElementById("modalDatos").innerHTML=textoHTML;
     	$("#mostrarmodal").modal("show");
     		
 }
+
+//Funcion que valida los campos del formulario de edicion de clientes.
+function validaEditaCliente(){
+	
+	var nombre = $("#nombreCliente").val();
+	var direccion = $("#direccion").val();
+	var municipio = $("#municipio").val();
+	var provincia = $("#provincia").val();
+	var pais = $("#pais").val();
+	var cp = $("#cp").val();
+	var telefonos = $("#telefonos").val();
+	var email = $("#email").val();
+	var identificador= $("#identificador").val();
+	
+	if (identificador!==""){
+		
+		if (nombre!==""){
+			
+			if (direccion!==""){
+				
+				if (municipio!==""){
+					
+					if (provincia!==""){
+						
+						if (pais!==""){
+							
+							if (cp!==""){
+								
+								if (telefonos!==""){
+									
+									if (email==""){
+										
+										document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+										$("#mensajeFormEditaCliente").text("Email de cliente obligatorio");
+										$("#email").focus();
+										$("#email").select();
+										
+									}
+									else{
+										var expReg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+										
+										if (expReg.test(email)){
+											
+											procesaActualizaCliente()
+										}
+										else{
+											document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+											$("#mensajeFormEditaCliente").text("Formato de email incorrecto.");
+											$("#email").focus();
+											$("#email").select();	
+										}	
+									}
+								}
+								else{
+									document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+									$("#mensajeFormEditaCliente").text("Telefonos de contacto obligatorio");
+									$("#telefonos").focus();
+									$("#telefonos").select();
+								}
+							}
+							else{
+								document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+								$("#mensajeFormEditaCliente").text("Codigo postal obligatorio");
+								$("#cp").focus();
+								$("#cp").select();
+							}
+						}
+						else{
+							document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+							$("#mensajeFormEditaCliente").text("Pais de cliente obligatorio");
+							$("#pais").focus();
+							$("#pais").select();
+						}
+					}
+					else{
+						document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+						$("#mensajeFormEditaCliente").text("Provincia de cliente obligatoria");
+						$("#provincia").focus();
+						$("#provincia").select();
+					}	
+				}
+				else{
+					document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+					$("#mensajeFormEditaCliente").text("Municipio de cliente obligatorio");
+					$("#municipio").focus();
+					$("#municipio").select();
+				}
+			}
+			else{
+				document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+				$("#mensajeFormEditaCliente").text("Direccion de cliente obligatoria");
+				$("#direccion").focus();
+				$("#direccion").select();
+			}		
+		}
+		else{
+			document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+			$("#mensajeFormEditaCliente").text("Nombre de cliente obligatorio");
+			$("#nombre").focus();
+			$("#nombre").select();
+		}	
+	}
+	else{
+		document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+		$("#mensajeFormEditaCliente").text("Número de CIF / NIF obligatorio.");
+		$("#identificador").focus();
+		$("#identificador").select();
+	}
+	
+}
+
+//Funcion que realiza la actualizacion del cliente.
+function procesaActualizaCliente(){
+	
+	var formData = new FormData(document.getElementById("formEditaCliente"));
+
+	$.ajax({
+        url: "actualizaCliente",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success:function(data){
+        	
+        	if (data.existClientes){
+        		document.getElementById("mensajeFormEditaCliente").style.visibility="hidden"
+        		document.getElementById("formEditaCliente").reset();
+        		editaClienteMessage(data.message);
+        	}
+        	else{
+        		document.getElementById("mensajeFormEditaCliente").style.visibility="visible";
+        		$("#mensajeFormEditaCliente").text(data.message);
+        	}
+        }
+    })
+	
+}
+
+//Funcion que muestra la ventana modal de cliente actualizado correctamente.
+function editaClienteMessage(message){
+	
+	$("#closeModal").click();
+	
+	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'
+		textoHTML+=' <div class="modal-dialog" role="document">'
+		textoHTML+='<div class="modal-content">'
+		textoHTML+=''
+		textoHTML+='<div class="modal-header" '	
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h3>Mensaje</h3></div>'
+		textoHTML+=''
+		textoHTML+='<div class="modal-body">'
+		textoHTML+='<div class="alert alert-success" role="alert"style="text-align:center; font-size:20px">'+message+'</div>'
+		textoHTML+='</div>'
+		textoHTML+='<div class="modal-footer">'
+		textoHTML+=	'<button id="enviar" type="button" onclick="" class="btn btn-success" data-dismiss="modal">Aceptar</button></div>'
+		textoHTML+='</div></div></div>'
+	
+	
+		document.getElementById("modalDatos").innerHTML=textoHTML;
+		$("#mostrarmodal").modal("show");
+	
+}
+
 
 //Funcion que muestra el formulario de registro de clientes
 function registraCliente(){
@@ -338,6 +499,7 @@ function procesaRegistroCliente(){
         	}
         }
     })
+	
 }
 
 //Funcion que muestra el mensaje de cliente registrado.
