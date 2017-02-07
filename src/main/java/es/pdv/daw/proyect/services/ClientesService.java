@@ -11,4 +11,6 @@ public interface ClientesService {
 
 	ClientValidate updateClient(ClientValidate clientValidate, Cliente cliente);
 
+	ClientValidate deleteClient(ClientValidate clientValidate, Cliente cliente);
+
 }

@@ -226,5 +226,26 @@ public class ClientesServiceBean implements ClientesService {
 		return resultado;
 	}
 	
+	/**
+	 * Metodo que elimina un cliente de la base de datos.
+	 */
+	@Override
+	public ClientValidate deleteClient(ClientValidate clientValidate, Cliente cliente) {
+		
+		int num = clientesRepository.countByIdCliente(cliente.getIdCliente());
+		
+		if (num>0){
+			clientesRepository.delete(cliente);
+			clientValidate.setExistClientes(true);
+			clientValidate.setMessage("Cliente eliminado correctamente");
+		}
+		else{
+			clientValidate.setExistClientes(false);
+			clientValidate.setMessage("Error al eliminar el cliente. El cliente no existe.");
+		}
+		
+		return clientValidate;
+	}
+	
 	
 }

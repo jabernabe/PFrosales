@@ -63,5 +63,19 @@ public class ClientesController {
 		
 	return clientesService.updateClient(clientValidate, cliente);	 
 	}
+	
+	/**
+	 * Metodo que elimina un cliente.
+	 * @param clientValidate
+	 * @param cliente
+	 * @return
+	 */
+	@RequestMapping(value="eliminaCliente",method = RequestMethod.POST)
+	public ClientValidate eliminaCliente( 
+			ClientValidate clientValidate,
+			Cliente cliente){
+		
+	return clientesService.deleteClient(clientValidate, cliente);	 
+	}
 
 }

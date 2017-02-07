@@ -45,7 +45,7 @@ function listaClientes(){
     		textoHTML += "			<td nowrap>"+data.listaClientes[elm].telefonos+"<\/td>";
     		textoHTML += "			<td nowrap>"+data.listaClientes[elm].email+"<\/td>";
     		     			
-    		textoHTML += "			<td><button type='button' onclick='eliminaCliente(\""+data.listaClientes[elm].nombreCliente+"\", "+data.listaClientes[elm].idCliente+")' ";
+    		textoHTML += "			<td><button type='button' onclick='eliminaCliente(\""+data.listaClientes[elm].idCliente+"\")' ";
     		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
     			
@@ -95,10 +95,10 @@ function editaCliente(idCliente, nombre, direccion, municipio, provincia, pais, 
     	textoHTML+='<div class="form-group"><label for="tipoIden" class="col-sm-2 control-label">Tipo</label>'
         textoHTML+='<div class="col-sm-10"><select class="form-control" id="tipoIden" name="tipoIden">' 		
         if (tipoIden == "DNI"){
-        	textoHTML+=	'<option value="DNI" selected>DNI</option><option value="NIF">NIF</option>'	
+        	textoHTML+=	'<option value="NIF" selected>DNI</option><option value="NIF">NIF</option>'	
         }
         else{
-        	textoHTML+=	'<option value="CIF" selected>CIF</option><option value="DNI">DNI</option>'	
+        	textoHTML+=	'<option value="CIF" selected>CIF</option><option value="CIF">CIF</option>'	
         }
         textoHTML+='</select></div></div>'	
     			
@@ -321,7 +321,7 @@ var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-r
 				    	
 	textoHTML+='<div class="form-group"><label for="tipoIden" class="col-sm-2 control-label">Tipo</label>'
 	textoHTML+='<div class="col-sm-10"><select class="form-control" id="tipoIden" name="tipoIden">' 		
-	textoHTML+=	'<option value="CIF" selected>CIF</option><option value="DNI">DNI</option>'	
+	textoHTML+=	'<option value="CIF" selected>CIF</option><option value="NIF">NIF</option>'	
 	textoHTML+='</select></div></div>'	
 				    			
 	textoHTML+='<div class="form-group"><label for="identificador" class="col-sm-2 control-label">Numero</label>'
@@ -522,9 +522,98 @@ function registraClienteMessage(data){
 	
 	
 		document.getElementById("modalDatos").innerHTML=textoHTML;
+		$("#mostrarmodal").modal("show");	
+	
+}
+
+
+//Funcion que elimina un cliente
+function eliminaCliente(idCliente){
+	
+	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'
+		textoHTML+=' <div class="modal-dialog" role="document">'
+		textoHTML+='<div class="modal-content">'
+		textoHTML+=''
+		textoHTML+='<div class="modal-header" '	
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h3>Mensaje</h3></div>'
+		textoHTML+=''
+		textoHTML+='<div class="modal-body">'
+		textoHTML+='<div class="alert alert-danger" role="alert"style="text-align:center; font-size:20px">'   
+		textoHTML+='¿Esta seguro que desea eliminar el cliente con ID='+idCliente+'</div>'
+		textoHTML+='<div class="modal-footer">'
+		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Cancelar</a>' 
+		textoHTML+=	'<button type="button" onclick="procesaEliminaCliente('+idCliente+')" class="btn btn-success">Aceptar</button>'
+		textoHTML+='</div></div></div>'
+	
+	
+		document.getElementById("modalDatos").innerHTML=textoHTML;
+		$("#mostrarmodal").modal("show");	
+	
+}
+
+
+//Funcion que procesa la eliminacion de un cliente.
+function procesaEliminaCliente(idCliente){
+	
+	
+	$.ajax({
+        url: "eliminaCliente?idCliente="+idCliente,
+        type: "POST"
+    }).then(function(data) {
+    		
+    	if (data.existClientes){
+    		$("#closeModal").click();
+    		mensajeClienteEliminado(data.message);
+    	}
+    	else{
+    		$("#closeModal").click();
+    		mensajeErrorEliminarCliente(data.message);  		
+    	}
+    });	
+}
+
+//Funcion que muestra ventana con mensaje de cliente eliminado correctamente.
+function mensajeClienteEliminado(message){
+	
+	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'
+		textoHTML+=' <div class="modal-dialog" role="document">'
+		textoHTML+='<div class="modal-content">'
+		textoHTML+=''
+		textoHTML+='<div class="modal-header" '	
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h3>Mensaje</h3></div>'
+		textoHTML+=''
+		textoHTML+='<div class="modal-body">'
+		textoHTML+='<div class="alert alert-success" role="alert"style="text-align:center; font-size:20px">'+message+'</div>'  
+		textoHTML+='<div class="modal-footer">'
+		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Aceptar</a>' 
+		textoHTML+='</div></div></div>'
+	
+	
+		document.getElementById("modalDatos").innerHTML=textoHTML;
+		$("#mostrarmodal").modal("show");	
+		listaClientes();
+}
+
+//Funcion que muestra ventana con mensaje de error al eliminar cliente.
+function mensajeErrorEliminarCliente(message){
+	
+	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'
+		textoHTML+=' <div class="modal-dialog" role="document">'
+		textoHTML+='<div class="modal-content">'
+		textoHTML+=''
+		textoHTML+='<div class="modal-header" '	
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h3>Mensaje</h3></div>'
+		textoHTML+=''
+		textoHTML+='<div class="modal-body">'
+		textoHTML+='<div class="alert alert-danger" role="alert"style="text-align:center; font-size:20px">' +message+'</div>' 
+		textoHTML+='<div class="modal-footer">'
+		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Aceptar</a>' 
+		textoHTML+='</div></div></div>'
+	
+	
+		document.getElementById("modalDatos").innerHTML=textoHTML;
 		$("#mostrarmodal").modal("show");
-	
-	
+		
 	
 }
 

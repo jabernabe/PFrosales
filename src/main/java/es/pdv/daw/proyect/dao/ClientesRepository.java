@@ -20,6 +20,8 @@ public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
 
 	Cliente findByNombreCliente(String nombreCliente);
 
+	int countByIdCliente(int idCliente);
+
 	
 
 }
