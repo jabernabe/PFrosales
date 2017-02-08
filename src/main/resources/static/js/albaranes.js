@@ -144,7 +144,7 @@ function muestraAlbaran(data){
         textoHTML+='<input type="hidden" class="form-control" value="'+data.albaran.idAlbaran+'" id="idAlbaran" name="idAlbaran"></div>' 
     	
         
-        textoHTML+='<button type="button" onclick="insertaLinea()" class="btn btn-success" style="margin-left:20px; margin-right:20px"><span class="glyphicon glyphicon-shopping-cart"></span>&ensp;Añadir</button>'
+        textoHTML+='<button type="button" onclick="validaInsertaLinea()" class="btn btn-success" style="margin-left:20px; margin-right:20px"><span class="glyphicon glyphicon-shopping-cart"></span>&ensp;Añadir</button>'
         	
     	textoHTML +='</form>'
     	
@@ -166,6 +166,34 @@ function muestraAlbaran(data){
 	        }
 	    } );
 	
+}
+
+//funcion que valida el valor introducido cuadro de texto cantidad.
+function validaInsertaLinea(){
+	
+	var cantidad =$('#cantidad').val();
+	var expReg = /^\d*$/; 
+	
+	if (cantidad==""){
+		
+		mensajeErrorCantidad("Error: Introduzca un valor.")
+		$("#cantidad").focus();
+		$("#cantidad").select();
+	}
+	else{
+		
+		if ( !expReg.test(cantidad)) {    
+			
+			
+			mensajeErrorCantidad("Error: El valor introducido debe ser un numero entero positivo.")
+			$("#cantidad").focus();
+			$("#cantidad").select();
+		}
+		else {
+				
+				insertaLinea();
+		}	
+	}		
 }
 
 
@@ -192,6 +220,24 @@ function insertaLinea() {
         		
         }
     })
+}
+
+//Metodo que muestra la ventana modal de error al introducir un valor incorrecto en cantidad articulo.
+function mensajeErrorCantidad(message){
+	
+	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'
+		textoHTML+=' <div class="modal-dialog" role="document">'
+		textoHTML+='<div class="modal-content">'
+		textoHTML+='<div class="modal-body">'		
+		textoHTML+='<div  id="alertExistencias" class="alert alert-danger" role="alert"style="text-align:center;'			
+		textoHTML+=	'margin-top:20px; font-size:20px">'+message+'</div>'
+		textoHTML+='<div class="modal-footer">'
+		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-success">Aceptar</a>' 
+		textoHTML+='</div></div></div>'
+	
+	
+		document.getElementById("modalDatos").innerHTML=textoHTML;
+		$("#mostrarmodal").modal("show");
 }
 
 
@@ -625,7 +671,7 @@ function editaAlbaran(data){
         textoHTML+='<input type="hidden" class="form-control" value="'+data.albaran.idAlbaran+'" id="idAlbaran" name="idAlbaran"></div>' 
     	
         
-        textoHTML+='<button type="button" onclick="insertaLinea()" class="btn btn-success" style="margin-left:20px; margin-right:20px"><span class="glyphicon glyphicon-shopping-cart"></span>&ensp;Añadir</button>'
+        textoHTML+='<button type="button" onclick="validaInsertaLinea()" class="btn btn-success" style="margin-left:20px; margin-right:20px"><span class="glyphicon glyphicon-shopping-cart"></span>&ensp;Añadir</button>'
         	
     	textoHTML +='</form>'
     	

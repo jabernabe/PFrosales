@@ -172,5 +172,19 @@ public class LoadController {
 	return "home";	
 	}
 	
+	/**
+	 * Metodo que carga el fragmento del menu existencias.
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="loadExistencias")
+	public String loadExistencias(Model model){
+	
+		model.addAttribute("view", "existencias");
+		model.addAttribute("fragment", "existencias");
+		
+	return "home";	
+	}
+	
 	
 }

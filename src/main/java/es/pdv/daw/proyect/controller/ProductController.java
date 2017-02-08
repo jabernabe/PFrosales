@@ -144,5 +144,44 @@ public class ProductController {
 	return productService.deleteVariedad(variedad);	 
 	}
 	
+	/**
+	 * Metodo que incrementa las existencias de un rosal.
+	 * @param rosal
+	 * @return
+	 */
+	@RequestMapping(value="aumentaExistencia",method = RequestMethod.POST)
+	public RosesValidate aumentaExistencia(RosesValidate rosesValidate,
+			Rosal rosal){
+		
+	return productService.incrementaExistencia(rosal, rosesValidate);	 
+	}
+	
+	/**
+	 * Metodo que incrementa las existencias de un rosal.
+	 * @param rosal
+	 * @return
+	 */
+	@RequestMapping(value="reduceExistencia",method = RequestMethod.POST)
+	public RosesValidate reduceExistencia(RosesValidate rosesValidate,
+			Rosal rosal){
+		
+	return productService.decrementaExistencia(rosal, rosesValidate);	 
+	}
+	
+	
+	/**
+	 * Metodo que actualiza las existencias de un rosal.
+	 * @param rosal
+	 * @return
+	 */
+	@RequestMapping(value="actualizaExistencia",method = RequestMethod.POST)
+	public RosesValidate actualizaExistencia(RosesValidate rosesValidate,
+			Rosal rosal){
+		
+	return productService.actualizaExistencia(rosal, rosesValidate);	 
+	}
+	
+	
+	
 	
 }

@@ -32,4 +32,10 @@ public interface ProductService {
 
 	VarietyValidate deleteVariedad(Variedad variedad);
 
+	RosesValidate incrementaExistencia(Rosal rosal, RosesValidate rosesValidate);
+
+	RosesValidate decrementaExistencia(Rosal rosal, RosesValidate rosesValidate);
+
+	RosesValidate actualizaExistencia(Rosal rosal, RosesValidate rosesValidate);
+
 }

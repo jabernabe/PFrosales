@@ -273,6 +273,7 @@ function procesaActualizaCliente(){
         	if (data.existClientes){
         		document.getElementById("mensajeFormEditaCliente").style.visibility="hidden"
         		document.getElementById("formEditaCliente").reset();
+        		listaClientes();
         		editaClienteMessage(data.message);
         	}
         	else{
