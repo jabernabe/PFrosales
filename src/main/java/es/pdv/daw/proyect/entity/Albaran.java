@@ -15,72 +15,67 @@ import javax.persistence.Table;
 
 /**
  * Clase que representa un albaran.
+ * 
  * @author alumno
  *
  */
 @Entity
-@Table(name="Albaranes")
-public class Albaran implements Serializable{
+@Table(name = "Albaranes")
+public class Albaran implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * identificador de albaran.
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idAlbaran;
-	
+
 	/**
 	 * Fecha de emision del albaran.
 	 */
-	@Column(name ="fecha", nullable=false)
+	@Column(name = "fecha", nullable = false)
 	private Date fecha;
-	
+
 	/**
 	 * Cliente al que referencia el albaran.
 	 */
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name ="cliente")
+	@JoinColumn(name = "cliente")
 	private Cliente cliente;
 
-	
+	/**
+	 * Constructor sin parametros.
+	 */
 	public Albaran() {
 		super();
 	}
 
-
 	// Metodos setter y getter.
-	
+
 	public int getIdAlbaran() {
 		return idAlbaran;
 	}
-
 
 	public void setIdAlbaran(int idAlbaran) {
 		this.idAlbaran = idAlbaran;
 	}
 
-
 	public Date getFecha() {
 		return fecha;
 	}
-
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-
 	public Cliente getCliente() {
 		return cliente;
 	}
 
-
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-		
 
 }

@@ -13,24 +13,24 @@ import es.pdv.daw.proyect.services.LoginService;
 
 /**
  * Controlador que procesa el acceso y cierre de sesion de usuarios.
+ * 
  * @author jabd.
  *
  */
 @Controller
 public class LoginController extends HttpServlet {
-	
 
 	private static final long serialVersionUID = 1L;
-		
+
 	/**
 	 * Propiedad que encapsula el objeto de acceso a DAO.
 	 */
 	@Autowired
 	private LoginService loginService;
-	
-	
+
 	/**
 	 * Metodo de autenticacion de usuarios.
+	 * 
 	 * @param login
 	 * @param password
 	 * @param userValidate
@@ -38,22 +38,18 @@ public class LoginController extends HttpServlet {
 	 * @return
 	 */
 	@RequestMapping("login")
-	public String loginUser(
-			@RequestParam(value="login") String login,
-			@RequestParam(value="password") String password,
-			UserValidate userValidate,
-			HttpSession session,
-			Model model){
-	
+	public String loginUser(@RequestParam(value = "login") String login,
+			@RequestParam(value = "password") String password, UserValidate userValidate, HttpSession session,
+			Model model) {
+
 		userValidate = loginService.validaUsuario(login, password, userValidate);
-		
-		if (userValidate.getUserExist().equals(false)){
-			
+
+		if (userValidate.getUserExist().equals(false)) {
+
 			model.addAttribute("mensaje", userValidate.getMessage());
 			return "inicio";
-		}
-		else{
-			
+		} else {
+
 			session.setAttribute("usuario", userValidate.getUsuario().getLogin());
 			session.setAttribute("rol", userValidate.getUsuario().getRol().getIdRol());
 			model.addAttribute("view", "slide");
@@ -61,46 +57,47 @@ public class LoginController extends HttpServlet {
 			return "home";
 		}
 	}
-	
-	
+
 	/**
 	 * Metodo que redirecciona a la pagina de logueo de usuarios.
+	 * 
 	 * @param usuario
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="inicio")
-	public String inicio(Usuarios usuario, Model model){
-	
-	return "redirect:/";	
+	@RequestMapping(value = "inicio")
+	public String inicio(Usuarios usuario, Model model) {
+
+		return "redirect:/";
 	}
-	
-	
+
 	/**
 	 * Metodo que invalida la sesion
+	 * 
 	 * @param usuario
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="closeSession")
-	public String closeSession(Usuarios usuario, Model model, HttpSession session){
-		
+	@RequestMapping(value = "closeSession")
+	public String closeSession(Usuarios usuario, Model model, HttpSession session) {
+
 		session.invalidate();
 		model.addAttribute("view", "slide");
 		model.addAttribute("fragment", "carousel");
-	return "home";	
+		return "home";
 	}
-	
+
 	/**
 	 * Metodo de cierre de sesion
+	 * 
 	 * @param usuario
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value="logout")
-	public String logout(){
-			
-		return "redirect:/";	
+	@RequestMapping(value = "logout")
+	public String logout() {
+
+		return "redirect:/";
 	}
-	
+
 }

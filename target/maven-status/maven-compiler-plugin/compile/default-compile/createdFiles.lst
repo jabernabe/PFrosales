@@ -15,6 +15,7 @@ es/pdv/daw/proyect/beans/MailMessage.class
 es/pdv/daw/proyect/beans/BeanImagen.class
 es/pdv/daw/proyect/services/EmpresaService.class
 es/pdv/daw/proyect/utilities/GenerateMembretePdf.class
+es/pdv/daw/proyect/services/ClientesServiceBean.class
 es/pdv/daw/proyect/controller/AdminController.class
 es/pdv/daw/proyect/dao/VariedadRepository.class
 es/pdv/daw/proyect/services/LoginService.class
@@ -30,6 +31,7 @@ es/pdv/daw/proyect/services/ProductServiceBean.class
 es/pdv/daw/proyect/entity/Imagen.class
 es/pdv/daw/proyect/services/LoginServiceBean.class
 es/pdv/daw/proyect/services/ProductService.class
+es/pdv/daw/proyect/services/ClientesService.class
 es/pdv/daw/proyect/controller/ProductController.class
 es/pdv/daw/proyect/beans/EmpresaValidate.class
 es/pdv/daw/proyect/dao/UsuariosRepository.class
@@ -40,5 +42,6 @@ es/pdv/daw/proyect/beans/ClientValidate.class
 es/pdv/daw/proyect/dao/ImagenRepository.class
 es/pdv/daw/proyect/controller/LoadController.class
 es/pdv/daw/proyect/beans/AlbaranPdf.class
+es/pdv/daw/proyect/controller/ClientesController.class
 es/pdv/daw/proyect/services/EmpresaServiceBean.class
 es/pdv/daw/proyect/beans/AlbaranValidate.class

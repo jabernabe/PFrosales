@@ -1643,3 +1643,229 @@
 [INFO ] 2017-02-08 20:56:52.706 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
 [INFO ] 2017-02-08 21:03:39.907 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
 [INFO ] 2017-02-08 21:07:35.539 [http-nio-8080-exec-3] ProductServiceBean - Intento fallido al registrar rosal con nombre Acropolis.El rosal ya existe.
+[INFO ] 2017-02-08 21:34:41.408 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-08 21:35:52.659 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-08 21:39:03.069 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-08 21:44:30.818 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:00:51.202 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:01:32.802 [http-nio-8080-exec-5] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:03:52.002 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:04:12.993 [http-nio-8080-exec-2] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:04:56.698 [http-nio-8080-exec-3] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:06:41.720 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:08:40.645 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:10:12.846 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:10:28.127 [http-nio-8080-exec-6] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:14:22.673 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:17:23.925 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:17:42.483 [http-nio-8080-exec-3] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:17:55.974 [http-nio-8080-exec-2] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:37:58.476 [http-nio-8080-exec-4] ProductServiceBean - la variedad Clasicos2 ha sido modificada correctamente.
+[INFO ] 2017-02-13 12:48:09.843 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:48:15.586 [http-nio-8080-exec-6] ProductServiceBean - Error: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[INFO ] 2017-02-13 12:51:09.639 [http-nio-8080-exec-10] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 12:51:17.060 [http-nio-8080-exec-5] ProductServiceBean - Error: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[INFO ] 2017-02-13 13:09:22.114 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:09:27.342 [http-nio-8080-exec-1] ProductServiceBean - Error: could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[INFO ] 2017-02-13 13:14:19.942 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:16:23.232 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:20:53.778 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:21:45.775 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:22:24.103 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:23:33.648 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:24:18.497 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:27:29.061 [http-nio-8080-exec-9] ProductServiceBean - rosal con nombre Acropolis eliminado correctamente.
+[INFO ] 2017-02-13 13:28:02.804 [http-nio-8080-exec-8] ProductServiceBean - rosal con nombre Alain Souchon eliminado correctamente.
+[INFO ] 2017-02-13 13:29:17.333 [http-nio-8080-exec-5] ProductServiceBean - rosal con nombre Alba Garcia eliminado correctamente.
+[INFO ] 2017-02-13 13:31:14.372 [http-nio-8080-exec-10] ProductServiceBean - variedad con nombre Floribunda eliminada correctamente.
+[INFO ] 2017-02-13 13:36:52.259 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:37:13.353 [http-nio-8080-exec-3] ProductServiceBean - variedad con nombre Clasicos2 eliminada correctamente.
+[INFO ] 2017-02-13 13:39:41.982 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:39:52.906 [http-nio-8080-exec-7] ProductServiceBean - variedad con nombre Romantica eliminada correctamente.
+[INFO ] 2017-02-13 13:40:09.361 [http-nio-8080-exec-3] ProductServiceBean - la variedad Flor Grande2 ha sido modificada correctamente.
+[INFO ] 2017-02-13 13:40:36.578 [http-nio-8080-exec-5] ProductServiceBean - la variedad Flor Grande2 ha sido modificada correctamente.
+[INFO ] 2017-02-13 13:40:49.057 [http-nio-8080-exec-6] ProductServiceBean - la variedad Flor Grande2 ha sido modificada correctamente.
+[INFO ] 2017-02-13 13:41:06.673 [http-nio-8080-exec-8] ProductServiceBean - la variedad Flor Grande ha sido modificada correctamente.
+[INFO ] 2017-02-13 13:49:41.502 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 13:51:23.780 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 15:50:28.740 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 15:50:41.859 [http-nio-8080-exec-2] ProductServiceBean - la variedad Flor Grande2 ha sido modificada correctamente.
+[INFO ] 2017-02-13 15:54:00.319 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 15:57:50.429 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 16:01:44.927 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 16:01:56.953 [http-nio-8080-exec-4] ProductServiceBean - la variedad prueba ha sido registrada correctamente.
+[INFO ] 2017-02-13 16:09:10.724 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 16:10:50.929 [http-nio-8080-exec-6] ProductServiceBean - Error al registrar prueba error. El sistema lanzo: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[INFO ] 2017-02-13 16:54:21.035 [http-nio-8080-exec-2] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 16:57:12.980 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 17:01:11.186 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 17:59:19.881 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 18:46:03.049 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 18:52:39.577 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 18:54:05.818 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 18:54:16.966 [http-nio-8080-exec-8] LoginServiceBean - El usuario con login migue ha sido eliminado del sistema correctamente.
+[INFO ] 2017-02-13 18:54:37.529 [http-nio-8080-exec-5] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 18:55:03.860 [http-nio-8080-exec-1] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 18:56:53.302 [http-nio-8080-exec-2] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 18:59:04.753 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 18:59:16.265 [http-nio-8080-exec-10] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 18:59:26.601 [http-nio-8080-exec-5] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 18:59:35.635 [http-nio-8080-exec-2] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 19:03:06.753 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:06:34.062 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:06:52.534 [http-nio-8080-exec-6] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 19:08:33.188 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:09:08.640 [http-nio-8080-exec-7] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan
+[INFO ] 2017-02-13 19:10:17.928 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:10:51.307 [http-nio-8080-exec-6] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan1
+[INFO ] 2017-02-13 19:11:00.357 [http-nio-8080-exec-8] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan1
+[INFO ] 2017-02-13 19:11:13.533 [http-nio-8080-exec-4] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: juan1
+[INFO ] 2017-02-13 19:11:27.281 [http-nio-8080-exec-10] LoginServiceBean - El usuario con login juan1 ha sido eliminado del sistema correctamente.
+[INFO ] 2017-02-13 19:23:40.651 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:24:59.300 [http-nio-8080-exec-1] LoginServiceBean - Usuario raul registrado correctamente.
+[INFO ] 2017-02-13 19:25:29.923 [http-nio-8080-exec-4] LoginServiceBean - El usuario con login raul ha sido eliminado del sistema correctamente.
+[INFO ] 2017-02-13 19:27:51.236 [http-nio-8080-exec-10] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:28:37.479 [http-nio-8080-exec-2] LoginServiceBean - Notificacion enviada a usuario con email : bernabe.asir@gmail.com
+[INFO ] 2017-02-13 19:34:05.259 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 19:50:15.005 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 19:50:30.378 [http-nio-8080-exec-3] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[INFO ] 2017-02-13 19:56:54.137 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 19:57:08.600 [http-nio-8080-exec-2] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[INFO ] 2017-02-13 20:01:07.865 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:01:21.981 [http-nio-8080-exec-7] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[INFO ] 2017-02-13 20:02:36.871 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:02:52.615 [http-nio-8080-exec-6] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 20:03:00.097 [http-nio-8080-exec-2] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:03:09.432 [http-nio-8080-exec-10] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:03:35.929 [http-nio-8080-exec-9] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:04:26.680 [http-nio-8080-exec-8] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:04:27.803 [http-nio-8080-exec-3] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:04:33.040 [http-nio-8080-exec-1] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:04:37.766 [http-nio-8080-exec-7] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 20:06:00.474 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:06:22.023 [http-nio-8080-exec-2] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 20:06:25.226 [http-nio-8080-exec-1] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 20:08:28.503 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:08:44.071 [http-nio-8080-exec-2] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 20:08:48.109 [http-nio-8080-exec-10] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:08:52.678 [http-nio-8080-exec-4] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:09:14.637 [http-nio-8080-exec-7] LoginServiceBean - Error al registrar usuario. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:09:39.882 [http-nio-8080-exec-5] LoginServiceBean - Error al registrar usuario. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:09:50.455 [http-nio-8080-exec-6] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 20:11:40.493 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:11:54.217 [http-nio-8080-exec-1] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 20:11:56.946 [http-nio-8080-exec-2] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:12:13.296 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:13:31.902 [http-nio-8080-exec-6] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:13:33.081 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 20:13:35.083 [http-nio-8080-exec-4] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 20:14:23.808 [http-nio-8080-exec-3] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 20:18:22.640 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:18:38.063 [http-nio-8080-exec-3] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 20:18:42.473 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 20:36:25.747 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 20:37:39.017 [http-nio-8080-exec-3] ProductServiceBean - El rosal con nombre Arlequin ha sido modificado con exito
+[INFO ] 2017-02-13 20:37:57.805 [http-nio-8080-exec-6] ProductServiceBean - El rosal con nombre Arlequin ha sido modificado con exito
+[INFO ] 2017-02-13 20:38:41.713 [http-nio-8080-exec-8] ProductServiceBean - Intento fallido al registrar rosal con nombre prueba.El rosal ya existe.
+[INFO ] 2017-02-13 20:38:48.243 [http-nio-8080-exec-7] ProductServiceBean - El rosal con nombre prueba2 ha sido registrado con exito
+[INFO ] 2017-02-13 20:39:10.852 [http-nio-8080-exec-9] ProductServiceBean - Intento fallido al registrar rosal con nombre prueba3.El nombre de imagen ya existe.
+[INFO ] 2017-02-13 20:39:17.585 [http-nio-8080-exec-3] ProductServiceBean - El rosal con nombre prueba3 ha sido registrado con exito
+[ERROR] 2017-02-13 20:40:28.626 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 20:40:31.470 [http-nio-8080-exec-3] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:40:38.135 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:40:59.103 [http-nio-8080-exec-2] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 20:42:28.335 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:42:52.660 [http-nio-8080-exec-10] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:42:54.457 [http-nio-8080-exec-8] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:43:00.392 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:44:14.160 [http-nio-8080-exec-3] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 20:45:02.756 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:45:20.929 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 20:47:52.429 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:48:05.910 [http-nio-8080-exec-3] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:48:10.728 [http-nio-8080-exec-4] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 20:53:45.001 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:53:57.806 [http-nio-8080-exec-6] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:53:59.953 [http-nio-8080-exec-8] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:54:04.646 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 20:55:15.533 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:55:41.703 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:55:45.288 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 20:57:06.853 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 20:57:40.703 [http-nio-8080-exec-1] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:57:48.134 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:58:01.907 [http-nio-8080-exec-10] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 20:58:06.551 [http-nio-8080-exec-7] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 20:59:03.935 [http-nio-8080-exec-3] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 20:59:46.741 [http-nio-8080-exec-5] ProductServiceBean - la variedad   ha sido modificada correctamente.
+[INFO ] 2017-02-13 21:03:42.174 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 21:04:09.729 [http-nio-8080-exec-1] ProductServiceBean - la variedad flor ha sido modificada correctamente.
+[INFO ] 2017-02-13 21:04:30.688 [http-nio-8080-exec-3] ProductServiceBean - la variedad nueva ha sido registrada correctamente.
+[INFO ] 2017-02-13 21:05:06.099 [http-nio-8080-exec-2] ProductServiceBean - Error al registrar agag. El sistema lanzo: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 21:05:10.302 [http-nio-8080-exec-6] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:05:15.126 [http-nio-8080-exec-4] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:05:18.273 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:05:21.410 [http-nio-8080-exec-3] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 21:10:49.848 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 21:11:03.792 [http-nio-8080-exec-3] EmpresaServiceBean - Error al consultar los datos de la empresa en base de datos.La aplicación lanzó: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:11:06.989 [http-nio-8080-exec-1] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:11:09.847 [http-nio-8080-exec-10] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:11:13.808 [http-nio-8080-exec-8] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:11:16.942 [http-nio-8080-exec-3] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:11:18.551 [http-nio-8080-exec-9] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:11:20.883 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:11:27.419 [http-nio-8080-exec-2] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:12:05.396 [http-nio-8080-exec-7] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:12:18.984 [http-nio-8080-exec-4] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:12:28.368 [http-nio-8080-exec-5] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:12:30.398 [http-nio-8080-exec-10] EmpresaServiceBean - Error al consultar los datos de la empresa en base de datos.La aplicación lanzó: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[INFO ] 2017-02-13 21:13:05.778 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[ERROR] 2017-02-13 21:13:23.730 [http-nio-8080-exec-1] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not extract ResultSet; nested exception is org.hibernate.exception.JDBCConnectionException: could not extract ResultSet
+[ERROR] 2017-02-13 21:13:27.318 [http-nio-8080-exec-6] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:13:29.295 [http-nio-8080-exec-4] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:13:31.683 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:13:33.011 [http-nio-8080-exec-8] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:13:34.142 [http-nio-8080-exec-2] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:13:38.289 [http-nio-8080-exec-7] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:13:42.033 [http-nio-8080-exec-4] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:13:45.513 [http-nio-8080-exec-5] ProductServiceBean - Error al obtener lista de variedades. El sistema lanzo: Could not open JPA EntityManager for transaction; nested exception is javax.persistence.PersistenceException: org.hibernate.TransactionException: JDBC begin transaction failed: 
+[ERROR] 2017-02-13 21:13:48.463 [http-nio-8080-exec-8] ProductServiceBean - Error al obtener lista de rosales. La aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[ERROR] 2017-02-13 21:14:16.362 [http-nio-8080-exec-2] LoginServiceBean - Error al conectar con base de datos. la aplicación lanzó: could not prepare statement; nested exception is org.hibernate.exception.JDBCConnectionException: could not prepare statement
+[INFO ] 2017-02-13 21:14:50.860 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 21:39:43.152 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 21:47:33.627 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 21:50:35.197 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 21:56:18.158 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 22:01:16.527 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 22:05:59.591 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 22:07:40.724 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-13 22:13:26.363 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-14 12:31:43.505 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-14 13:23:42.693 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-14 13:23:56.141 [http-nio-8080-exec-9] ProductServiceBean - variedad con nombre Clasicos eliminada correctamente.
+[INFO ] 2017-02-14 13:24:04.466 [http-nio-8080-exec-10] ProductServiceBean - la variedad Flor Grande ha sido modificada correctamente.
+[INFO ] 2017-02-14 13:24:12.025 [http-nio-8080-exec-5] ProductServiceBean - la variedad Flor Grande2 ha sido modificada correctamente.
+[INFO ] 2017-02-14 13:24:37.739 [http-nio-8080-exec-7] ProductServiceBean - la variedad nueva ha sido registrada correctamente.
+[INFO ] 2017-02-14 15:38:39.616 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-14 15:39:51.369 [http-nio-8080-exec-7] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: edu2
+[INFO ] 2017-02-14 15:42:56.201 [http-nio-8080-exec-10] LoginServiceBean - Han sido actualizados correctamente los datos del usuario con login: edu
+[INFO ] 2017-02-14 15:43:07.855 [http-nio-8080-exec-3] LoginServiceBean - El usuario con login edu ha sido eliminado del sistema correctamente.
+[INFO ] 2017-02-14 15:43:58.054 [http-nio-8080-exec-8] LoginServiceBean - Usuario ff registrado correctamente.
+[INFO ] 2017-02-14 15:44:21.446 [http-nio-8080-exec-6] LoginServiceBean - Notificacion enviada a usuario con email : bernabe.asir@gmail.com
+[INFO ] 2017-02-14 15:47:17.550 [http-nio-8080-exec-10] ProductServiceBean - La imagen Acropolis ha sido eliminada del servidor
+[INFO ] 2017-02-14 15:47:17.588 [http-nio-8080-exec-10] ProductServiceBean - El rosal con nombre acropolis ha sido modificado con exito
+[INFO ] 2017-02-14 15:47:26.882 [http-nio-8080-exec-3] ProductServiceBean - rosal con nombre acropolis eliminado correctamente.
+[INFO ] 2017-02-14 15:48:00.917 [http-nio-8080-exec-9] ProductServiceBean - El rosal con nombre pitimini ha sido registrado con exito
+[INFO ] 2017-02-14 15:48:44.855 [http-nio-8080-exec-10] ProductServiceBean - la variedad Floribunda ha sido modificada correctamente.
+[INFO ] 2017-02-14 15:48:55.479 [http-nio-8080-exec-3] ProductServiceBean - variedad con nombre Flor Grande2 eliminada correctamente.
+[INFO ] 2017-02-14 15:49:21.195 [http-nio-8080-exec-3] ProductServiceBean - rosal con nombre Andre Le Notre eliminado correctamente.
+[INFO ] 2017-02-14 15:50:07.693 [http-nio-8080-exec-6] ProductServiceBean - rosal con nombre Alain Souchon eliminado correctamente.
+[INFO ] 2017-02-14 15:51:11.231 [http-nio-8080-exec-2] ProductServiceBean - rosal con nombre Alphonse Daudet eliminado correctamente.
+[INFO ] 2017-02-14 16:05:22.779 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-14 16:05:43.568 [http-nio-8080-exec-7] ProductServiceBean - rosal con nombre Acropolis eliminado correctamente.
+[INFO ] 2017-02-14 16:06:59.505 [http-nio-8080-exec-2] ProductServiceBean - rosal con nombre Lolita Lempicka eliminado correctamente.
+[INFO ] 2017-02-14 16:09:01.363 [http-nio-8080-exec-7] ProductServiceBean - rosal con nombre Andre Le Notre eliminado correctamente.
+[INFO ] 2017-02-14 16:15:29.904 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-14 16:17:09.786 [http-nio-8080-exec-2] ProductServiceBean - rosal con nombre Edith Piaf eliminado correctamente.
+[INFO ] 2017-02-14 16:20:59.170 [http-nio-8080-exec-6] ProductServiceBean - rosal con nombre Laetitia Casta eliminado correctamente.
+[INFO ] 2017-02-14 16:33:19.223 [http-nio-8080-exec-4] ProductServiceBean - rosal con nombre Alain Souchon eliminado correctamente.

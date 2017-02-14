@@ -17,7 +17,11 @@ import es.pdv.daw.proyect.entity.Rosal;
 import es.pdv.daw.proyect.entity.Variedad;
 import es.pdv.daw.proyect.services.ProductService;
 
-
+/**
+ * Clase controladora de las peticiones ajax del menu productos.
+ * @author jabd
+ *
+ */
 @Controller
 @ResponseBody
 public class ProductController {
@@ -118,6 +122,20 @@ public class ProductController {
 	}
 	
 	/**
+	 * Metodo que registra una variedad.
+	 * @param variedad
+	 * @param varietyValidate
+	 * @return
+	 */
+	@RequestMapping(value="registraVariedad",method = RequestMethod.POST)
+	public VarietyValidate registraVariedad(
+			Variedad variedad,
+			VarietyValidate varietyValidate){
+		 
+	return productService.registraVariedad(variedad, varietyValidate);	 
+	}
+	
+	/**
 	 * Metodo que modifica una variedad
 	 * @param variedad
 	 * @param varietyValidate
@@ -180,8 +198,5 @@ public class ProductController {
 		
 	return productService.actualizaExistencia(rosal, rosesValidate);	 
 	}
-	
-	
-	
-	
+		
 }

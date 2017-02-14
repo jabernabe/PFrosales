@@ -4,44 +4,45 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Clase de proceso de albaranes.
+ * Clase de proceso de albaranes en formato pdf.
+ * 
  * @author jabd
  *
  */
 @Component
 public class AlbaranPdf {
-	
+
 	/**
 	 * Propiedad que encapsula el resultado de la creacion del archivo.
 	 */
 	private boolean isCreated;
-	
+
 	/**
 	 * Propiedad que encapsula el mensage tras procesar el archivo.
 	 */
 	private String message;
-	
+
 	/**
 	 * Propiedad que encapsula el nombre del archivo generado.
 	 */
 	private String pdfName;
-	
+
 	/**
 	 * Propiedad que encapsula el archivo codificado en base 64.
 	 */
 	@JsonProperty
-    private String filePdf;
-	
+	private String filePdf;
+
 	/**
-	 * Contructor.
+	 * Contructor sin parametros.
 	 */
 	public AlbaranPdf() {
 		super();
-		
+
 	}
 
 	// Metodos setter y getter.
-	
+
 	public boolean isCreated() {
 		return isCreated;
 	}
@@ -73,5 +74,5 @@ public class AlbaranPdf {
 	public void setFilePdf(String filePdf) {
 		this.filePdf = filePdf;
 	}
-	
+
 }

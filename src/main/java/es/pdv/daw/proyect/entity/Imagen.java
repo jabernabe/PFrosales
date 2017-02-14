@@ -9,39 +9,38 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-
 /**
  * Entidad que representa la tabla rosales de la BD.
+ * 
  * @author jabd.
  *
  */
 @Entity
-@Table(name="imagenes")
+@Table(name = "imagenes")
 public class Imagen implements Serializable {
-	
-	
+
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * identificador de imagen.
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idImagen;
-	
+
 	/**
 	 * propiedad que encapsula el nombre de la imagen.
 	 */
-	@Column(name ="nombre_imagen", length=30, nullable=false, unique=true )
+	@Column(name = "nombre_imagen", length = 30, nullable = false, unique = true)
 	private String nombreImagen;
-	
+
 	/**
 	 * Propiedad que encapsula la imagen del rosal.
 	 */
 	@Lob
-	@Column(name ="imagen")
+	@Column(name = "imagen")
 	private byte[] imagen;
-	
+
 	/**
 	 * Constructor por defecto
 	 */
@@ -51,6 +50,7 @@ public class Imagen implements Serializable {
 
 	/**
 	 * Constructor con parametros.
+	 * 
 	 * @param idImagen
 	 * @param nombreImagen
 	 * @param imagen
@@ -61,9 +61,9 @@ public class Imagen implements Serializable {
 		this.nombreImagen = nombreImagen;
 		this.imagen = imagen;
 	}
-	
+
 	// Metodos getter y setter.
-	
+
 	public int getIdImagen() {
 		return idImagen;
 	}
@@ -91,9 +91,5 @@ public class Imagen implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-	
-	
 
 }

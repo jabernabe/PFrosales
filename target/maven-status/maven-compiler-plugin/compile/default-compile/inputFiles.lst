@@ -7,10 +7,12 @@
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/dao/EmpresaRepository.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/dao/UsuariosRepository.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/beans/RosesValidate.java
+/home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/services/ClientesService.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/entity/Rosal.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/entity/Usuarios.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/services/EmpresaServiceBean.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/dao/VariedadRepository.java
+/home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/controller/ClientesController.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/controller/LoginController.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/services/LoginServiceBean.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/mail/NotificationMail.java
@@ -32,6 +34,7 @@
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/services/ProductService.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/dao/ClientesRepository.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/beans/AlbaranPdf.java
+/home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/services/ClientesServiceBean.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/entity/Roles.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/services/EmpresaService.java
 /home/mint/proyectos sts/proyectoFinal/src/main/java/es/pdv/daw/proyect/dao/RosalRepository.java

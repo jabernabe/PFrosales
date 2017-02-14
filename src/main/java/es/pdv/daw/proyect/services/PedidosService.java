@@ -1,6 +1,5 @@
 package es.pdv.daw.proyect.services;
 
-
 import es.pdv.daw.proyect.beans.AlbaranPdf;
 import es.pdv.daw.proyect.beans.AlbaranValidate;
 import es.pdv.daw.proyect.beans.ClientValidate;
@@ -10,7 +9,14 @@ import es.pdv.daw.proyect.entity.DetalleAlbaran;
 import es.pdv.daw.proyect.entity.Rosal;
 import es.pdv.daw.proyect.utilities.GeneratePdf;
 
+/**
+ * Interface de gestion de procesos de pedidos.
+ * @author mint
+ *
+ */
 public interface PedidosService {
+	
+	//Metodos documentados en la clases que implementan la interface.
 
 	ClientValidate dameClientes(ClientValidate clientValidate);
 

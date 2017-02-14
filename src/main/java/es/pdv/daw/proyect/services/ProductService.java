@@ -1,6 +1,5 @@
 package es.pdv.daw.proyect.services;
 
-
 import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 import es.pdv.daw.proyect.beans.BeanImagen;
@@ -10,10 +9,16 @@ import es.pdv.daw.proyect.entity.Imagen;
 import es.pdv.daw.proyect.entity.Rosal;
 import es.pdv.daw.proyect.entity.Variedad;
 
+/**
+ * Interface de procesos de gestion de productos
+ * 
+ * @author jabd
+ *
+ */
 public interface ProductService {
-
 	
-
+	// Metodos documentados en las clases que implementan la interface.
+	
 	VarietyValidate dameVariedades(VarietyValidate varietyValidate);
 
 	RosesValidate insertaRosal(Rosal rosal, RosesValidate rosesValidate, MultipartFile partImagen, int idVariedad,
@@ -37,5 +42,7 @@ public interface ProductService {
 	RosesValidate decrementaExistencia(Rosal rosal, RosesValidate rosesValidate);
 
 	RosesValidate actualizaExistencia(Rosal rosal, RosesValidate rosesValidate);
+
+	VarietyValidate registraVariedad(Variedad variedad, VarietyValidate varietyValidate);
 
 }

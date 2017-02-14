@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 import java.util.List;
 import javax.xml.bind.DatatypeConverter;
 import org.slf4j.Logger;
@@ -72,19 +71,26 @@ public class ProductServiceBean implements ProductService {
 	@Override
 	public VarietyValidate dameVariedades(VarietyValidate varietyValidate) {
 
-		List<Variedad> lista = varRepository.findAll();
+		try {
+			List<Variedad> lista = varRepository.findAll();
 
-		if (lista.size() > 0) {
+			if (lista.size() > 0) {
 
-			varietyValidate.setMessage("Lista obtenida satisfactoriamente");
-			varietyValidate.setVariedadExist(true);
-			varietyValidate.setListaVariedades(lista);
-		} else {
-			varietyValidate.setMessage("No existen variedades actualmente.");
+				varietyValidate.setMessage("Lista obtenida satisfactoriamente");
+				varietyValidate.setVariedadExist(true);
+				varietyValidate.setListaVariedades(lista);
+
+			} else {
+				varietyValidate.setMessage("No existen variedades actualmente.");
+				varietyValidate.setVariedadExist(false);
+
+			}
+		} catch (Exception e) {
+
+			varietyValidate.setMessage("Error al realizar la transaccion.");
 			varietyValidate.setVariedadExist(false);
-
+			logger.error("Error al obtener lista de variedades. El sistema lanzo: " + e.getMessage());
 		}
-
 		return varietyValidate;
 	}
 
@@ -95,46 +101,55 @@ public class ProductServiceBean implements ProductService {
 	public RosesValidate insertaRosal(Rosal rosal, RosesValidate rosesValidate, MultipartFile partImagen,
 			int idVariedad, Imagen imagen) {
 
-		Variedad variedad = new Variedad();
-		variedad.setIdVariedad(idVariedad);
-		rosal.setVariedad(variedad);
-		byte[] imagenBlob = convertToByte(partImagen);
+		try {
 
-		int countImg = imagenRepository.countByNombreImagen(partImagen.getOriginalFilename());
+			Variedad variedad = new Variedad();
+			variedad.setIdVariedad(idVariedad);
+			rosal.setVariedad(variedad);
+			byte[] imagenBlob = convertToByte(partImagen);
 
-		if (countImg > 0) {
+			int countImg = imagenRepository.countByNombreImagen(partImagen.getOriginalFilename());
+
+			if (countImg > 0) {
+
+				rosesValidate.setExistRosal(false);
+				rosesValidate.setMessage("Nombre de imagen de rosal ya registrado");
+				logger.info("Intento fallido al registrar rosal con nombre " + rosal.getNombreRosal()
+						+ ".El nombre de imagen ya existe.");
+			} else {
+
+				// si no tiene tamaño no hay foto.
+				int partImagenSize = (int) partImagen.getSize();
+
+				if (partImagenSize > 0) {
+
+					imagen.setImagen(imagenBlob);
+					imagen.setNombreImagen(partImagen.getOriginalFilename());
+					rosal.setImagen(imagen);
+					rosal.setNombreImagen(partImagen.getOriginalFilename());
+				}
+
+				int num = rosalRepository.countByNombreRosal(rosal.getNombreRosal());
+
+				if (num > 0) {
+					rosesValidate.setExistRosal(false);
+					rosesValidate.setMessage("Nombre de rosal ya registrado");
+					logger.info("Intento fallido al registrar rosal con nombre " + rosal.getNombreRosal()
+							+ ".El rosal ya existe.");
+				} else {
+					rosalRepository.save(rosal);
+					rosesValidate.setExistRosal(true);
+					rosesValidate.setMessage("Rosal registrado con exito");
+					logger.info("El rosal con nombre " + rosal.getNombreRosal() + " ha sido registrado con exito");
+				}
+			}
+		} catch (Exception e) {
 
 			rosesValidate.setExistRosal(false);
-			rosesValidate.setMessage("Nombre de imagen de rosal ya registrado");
-			logger.info("Intento fallido al registrar rosal con nombre " + rosal.getNombreRosal()
-					+ ".El nombre de imagen ya existe.");
-		} else {
+			rosesValidate.setMessage("Error al realizar la transacción");
+			logger.info("Intento fallido al registrar rosal con nombre " + rosal.getNombreRosal() + ".El sistema lanzo:"
+					+ e.getMessage());
 
-			int partImagenSize = (int) partImagen.getSize(); // si no tiene
-																// tamaño, no
-																// hay foto
-
-			if (partImagenSize > 0) {
-
-				imagen.setImagen(imagenBlob);
-				imagen.setNombreImagen(partImagen.getOriginalFilename());
-				rosal.setImagen(imagen);
-				rosal.setNombreImagen(partImagen.getOriginalFilename());
-			}
-
-			int num = rosalRepository.countByNombreRosal(rosal.getNombreRosal());
-
-			if (num > 0) {
-				rosesValidate.setExistRosal(false);
-				rosesValidate.setMessage("Nombre de rosal ya registrado");
-				logger.info("Intento fallido al registrar rosal con nombre " + rosal.getNombreRosal()
-						+ ".El rosal ya existe.");
-			} else {
-				rosalRepository.save(rosal);
-				rosesValidate.setExistRosal(true);
-				rosesValidate.setMessage("Rosal registrado con exito");
-				logger.info("El rosal con nombre " + rosal.getNombreRosal() + " ha sido registrado con exito");
-			}
 		}
 		return rosesValidate;
 	}
@@ -146,63 +161,68 @@ public class ProductServiceBean implements ProductService {
 	public RosesValidate modificaRosal(Rosal rosal, RosesValidate rosesValidate, MultipartFile partImagen,
 			int idVariedad, Imagen imagen) {
 
-		Rosal rosa = procesaImagenRosal(partImagen, rosal, imagen);
-		Variedad variedad = new Variedad();
-		variedad.setIdVariedad(idVariedad);
-		rosa.setVariedad(variedad);
+		try {
 
-		int num = rosalRepository.countByNombreRosal(rosa.getNombreRosal());
+			Rosal rosa = procesaImagenRosal(partImagen, rosal, imagen);
+			Variedad variedad = new Variedad();
+			variedad.setIdVariedad(idVariedad);
+			rosa.setVariedad(variedad);
 
-		if (num > 0) { // hay un rosal con ese nombre
+			int num = rosalRepository.countByNombreRosal(rosa.getNombreRosal());
 
-			boolean esMiRosal = compruebaRosal(rosa);
+			if (num > 0) { // hay un rosal con ese nombre
 
-			if (esMiRosal) { // coincide el nombre de rosal con el rosal a
-								// actualizar?
+				boolean esMiRosal = compruebaRosal(rosa);
+				
+				// coincide el nombre de rosal con el rosal a actualizar?
+				if (esMiRosal) { 
+
+					boolean imagenCorrecta = compruebaImagen(rosa);
+
+					if (imagenCorrecta) {
+						deleteFromServer(rosa);
+						// si el nombre de imagen pertence al mismo registro se actualiza.
+						rosalRepository.save(rosa); 
+						rosesValidate.setExistRosal(true);
+						rosesValidate.setMessage("Rosal modificado con exito");
+						logger.info("El rosal con nombre " + rosa.getNombreRosal() + " ha sido modificado con exito");
+					} else {
+						// si no. El nombre de imagen ya se esta utilizando.
+						rosesValidate.setExistRosal(false); 
+						rosesValidate.setMessage("Nombre de imagen de rosal ya registrada");
+						logger.info("Intento fallido al modificar rosal con nombre " + rosa.getNombreRosal()
+								+ ".El nombre de la imagen ya existe.");
+					}
+				} else {
+					rosesValidate.setExistRosal(false);
+					rosesValidate.setMessage("Nombre de rosal ya registrado");
+					logger.info("Intento fallido al modificar rosal con nombre " + rosa.getNombreRosal()
+							+ ".El rosal ya existe.");
+				}
+			} else {
 
 				boolean imagenCorrecta = compruebaImagen(rosa);
 
 				if (imagenCorrecta) {
 					deleteFromServer(rosa);
-					rosalRepository.save(rosa); // si el nombre de imagen
-												// pertence al mismo registro se
-												// actualiza.
+					// si el nombre de imagenpertence al mismo registro actualiza.
+					rosalRepository.save(rosa); 
 					rosesValidate.setExistRosal(true);
 					rosesValidate.setMessage("Rosal modificado con exito");
 					logger.info("El rosal con nombre " + rosa.getNombreRosal() + " ha sido modificado con exito");
 				} else {
-					rosesValidate.setExistRosal(false); // si no. El nombre de
-														// imagen ya se esta
-														// utilizando.
+					// si no. El nombre de imagen ya se esta utilizando.
+					rosesValidate.setExistRosal(false); 
 					rosesValidate.setMessage("Nombre de imagen de rosal ya registrada");
 					logger.info("Intento fallido al modificar rosal con nombre " + rosa.getNombreRosal()
 							+ ".El nombre de la imagen ya existe.");
 				}
-			} else {
-				rosesValidate.setExistRosal(false);
-				rosesValidate.setMessage("Nombre de rosal ya registrado");
-				logger.info("Intento fallido al modificar rosal con nombre " + rosa.getNombreRosal()
-						+ ".El rosal ya existe.");
 			}
-		} else {
 
-			boolean imagenCorrecta = compruebaImagen(rosa);
-
-			if (imagenCorrecta) {
-				deleteFromServer(rosa);
-				rosalRepository.save(rosa); // si el nombre de imagen pertence
-											// al mismo registro se actualiza.
-				rosesValidate.setExistRosal(true);
-				rosesValidate.setMessage("Rosal modificado con exito");
-				logger.info("El rosal con nombre " + rosa.getNombreRosal() + " ha sido modificado con exito");
-			} else {
-				rosesValidate.setExistRosal(false); // si no. El nombre de
-													// imagen ya se esta
-													// utilizando.
-				rosesValidate.setMessage("Nombre de imagen de rosal ya registrada");
-				logger.info("Intento fallido al modificar rosal con nombre " + rosa.getNombreRosal()
-						+ ".El nombre de la imagen ya existe.");
-			}
+		} catch (Exception e) {
+			rosesValidate.setExistRosal(false);
+			rosesValidate.setMessage("Error al realizar la transacción");
+			logger.info("Intento fallido al modificar el rosal con nombre. La aplicacion lanzo: " + e.getMessage());
 		}
 
 		return rosesValidate;
@@ -215,15 +235,21 @@ public class ProductServiceBean implements ProductService {
 	 */
 	private void deleteFromServer(Rosal rosa) {
 
-		Rosal rosalActual = rosalRepository.findByIdRosal(rosa.getIdRosal());
+		try {
+			Rosal rosalActual = rosalRepository.findByIdRosal(rosa.getIdRosal());
 
-		if (rosa.getNombreImagen() != rosalActual.getNombreImagen()) {
+			if (rosa.getNombreImagen() != rosalActual.getNombreImagen()) {
 
-			File file = new File(path + rosalActual.getNombreImagen());
+				File file = new File(path + rosalActual.getNombreImagen());
 
-			if (file.delete()) {
-				logger.info("La imagen " + rosalActual.getNombreImagen() + " ha sido eliminada del servidor");
+				if (file.delete()) {
+					logger.info("La imagen " + rosalActual.getNombreImagen() + " ha sido eliminada del servidor");
+				}
 			}
+
+		} catch (Exception e) {
+
+			logger.info("Error de transacción. La aplicación lanzó: " + e.getMessage());
 		}
 
 	}
@@ -237,21 +263,28 @@ public class ProductServiceBean implements ProductService {
 	public boolean compruebaImagen(Rosal rosa) {
 
 		boolean resultado = false;
-		boolean existeImagen = existeImagen(rosa);
 
-		if (existeImagen) { // existe una imagen con el nombre suministrado en
-							// la base de datos?
+		try {
+			boolean existeImagen = existeImagen(rosa);
+			
+			// existe una imagen con el nombre suministrado en la base de datos?
+			if (existeImagen) { 
 
-			boolean esMiImagen = esMiImagen(rosa);
+				boolean esMiImagen = esMiImagen(rosa);
 
-			if (esMiImagen) {
+				if (esMiImagen) {
 
-				resultado = true;
+					resultado = true;
+				} else {
+					resultado = false;
+				}
 			} else {
-				resultado = false;
+				resultado = true;
 			}
-		} else {
-			resultado = true;
+
+		} catch (Exception e) {
+
+			logger.error("Error al comprobar imagen de rosal. La aplicación lanzó: " + e.getMessage());
 		}
 
 		return resultado;
@@ -268,29 +301,34 @@ public class ProductServiceBean implements ProductService {
 
 		boolean resultado = false;
 
-		boolean isNull = isNombreImagenNull(rosal);
+		try {
+			boolean isNull = isNombreImagenNull(rosal);
 
-		if (isNull) {
-
-			resultado = false;
-		} else {
-
-			Rosal rose = rosalRepository.findByIdRosal(rosal.getIdRosal());
-			Imagen img = imagenRepository.findByNombreImagen(rosal.getNombreImagen());
-
-			if (rose.getNombreImagen() == null) {
+			if (isNull) {
 
 				resultado = false;
 			} else {
 
-				if (rose.getNombreImagen().equalsIgnoreCase(img.getNombreImagen())) {
+				Rosal rose = rosalRepository.findByIdRosal(rosal.getIdRosal());
+				Imagen img = imagenRepository.findByNombreImagen(rosal.getNombreImagen());
 
-					resultado = true;
-				} else {
+				if (rose.getNombreImagen() == null) {
 
 					resultado = false;
+				} else {
+
+					if (rose.getNombreImagen().equalsIgnoreCase(img.getNombreImagen())) {
+
+						resultado = true;
+					} else {
+
+						resultado = false;
+					}
 				}
 			}
+		} catch (Exception e) {
+
+			logger.error("Error al comprobar coincidencia en nombre de rosal. La aplicacion lanzó: " + e.getMessage());
 		}
 
 		return resultado;
@@ -306,11 +344,16 @@ public class ProductServiceBean implements ProductService {
 
 		boolean resultado = false;
 
-		if (rosal.getNombreImagen() == null) {
+		try {
+			if (rosal.getNombreImagen() == null) {
 
-			resultado = true;
-		} else {
-			resultado = false;
+				resultado = true;
+			} else {
+				resultado = false;
+			}
+		} catch (Exception e) {
+
+			logger.error("Error al comprabar nombre nulo de nombre de imagen. La aplicación lanzó:" + e.getMessage());
 		}
 
 		return resultado;
@@ -326,12 +369,17 @@ public class ProductServiceBean implements ProductService {
 
 		boolean resultado = false;
 
-		int numImages = imagenRepository.countByNombreImagen(rosal.getNombreImagen());
+		try {
+			int numImages = imagenRepository.countByNombreImagen(rosal.getNombreImagen());
 
-		if (numImages > 0) {
-			resultado = true;
-		} else {
-			resultado = false;
+			if (numImages > 0) {
+				resultado = true;
+			} else {
+				resultado = false;
+			}
+		} catch (Exception e) {
+
+			logger.error("Error al comprobar si existe imagen de rosal. La aplicación lanzó: " + e.getMessage());
 		}
 
 		return resultado;
@@ -348,13 +396,18 @@ public class ProductServiceBean implements ProductService {
 
 		boolean resultado = false;
 
-		Rosal rose = rosalRepository.findByNombreRosal(rosal.getNombreRosal());
+		try {
+			Rosal rose = rosalRepository.findByNombreRosal(rosal.getNombreRosal());
 
-		if (rosal.getIdRosal() == rose.getIdRosal()) {
+			if (rosal.getIdRosal() == rose.getIdRosal()) {
 
-			resultado = true;
-		} else {
-			resultado = false;
+				resultado = true;
+			} else {
+				resultado = false;
+			}
+		} catch (Exception e) {
+
+			logger.error("Error al comprobar identificador de rosal. La aplicación lanzó: " + e.getMessage());
 		}
 
 		return resultado;
@@ -370,30 +423,34 @@ public class ProductServiceBean implements ProductService {
 	 */
 	private Rosal procesaImagenRosal(MultipartFile partImagen, Rosal rosal, Imagen imagen) {
 
-		byte[] imagenBlob = convertToByte(partImagen);
+		try {
+			byte[] imagenBlob = convertToByte(partImagen);
 
-		int partImagenSize = (int) partImagen.getSize(); // si no tiene tamaño,
-															// no hay foto
+			int partImagenSize = (int) partImagen.getSize(); // si no tiene tamaño,
+			if (partImagenSize > 0) {
 
-		if (partImagenSize > 0) {
+				int num = imagenRepository.countByNombreImagen(rosal.getNombreImagen());
+				
+				// Si ya existe la imagen se añade su id para actualizar la imagen
+				if (num > 0) { 
+					Imagen img = imagenRepository.findByNombreImagen(rosal.getNombreImagen());
+					imagen.setIdImagen(img.getIdImagen());
+				}
+				// si no existe imagen el id sera generado.
+				imagen.setImagen(imagenBlob);
+				imagen.setNombreImagen(partImagen.getOriginalFilename());
+				rosal.setImagen(imagen);
+				rosal.setNombreImagen(partImagen.getOriginalFilename());
+			} else {
 
-			int num = imagenRepository.countByNombreImagen(rosal.getNombreImagen());
-
-			if (num > 0) { // Si ya existe la imagen se añade su id para
-							// actualizar la imagen
-				Imagen img = imagenRepository.findByNombreImagen(rosal.getNombreImagen());
-				imagen.setIdImagen(img.getIdImagen());
+				if (rosal.getNombreImagen() != "" || rosal.getNombreImagen() != null) {
+					Rosal rosa = rosalRepository.findByNombreRosal(rosal.getNombreRosal());
+				}
 			}
-			// si no existe imagen el id sera generado.
-			imagen.setImagen(imagenBlob);
-			imagen.setNombreImagen(partImagen.getOriginalFilename());
-			rosal.setImagen(imagen);
-			rosal.setNombreImagen(partImagen.getOriginalFilename());
-		} else {
 
-			if (rosal.getNombreImagen() != "" || rosal.getNombreImagen() != null) {
-				Rosal rosa = rosalRepository.findByNombreRosal(rosal.getNombreRosal());
-			}
+		} catch (Exception e) {
+
+			logger.error("Error al procesar imagen de rosal. La aplicación lanzó: " + e.getMessage());
 		}
 
 		return rosal;
@@ -417,23 +474,28 @@ public class ProductServiceBean implements ProductService {
 	 */
 	private byte[] convertToByte(MultipartFile partImagen) {
 
-		int imagenSize = (int) partImagen.getSize(); // si no tiene tamaño, no
-														// hay foto.
-
 		byte[] foto = null;
 
-		if (imagenSize > 0) {
+		try {
+			// si no tiene tamaño, no hay foto.
+			int imagenSize = (int) partImagen.getSize(); 
 
-			foto = new byte[imagenSize];
+			if (imagenSize > 0) {
 
-			try (DataInputStream dis = new DataInputStream(partImagen.getInputStream())) {
+				foto = new byte[imagenSize];
 
-				dis.readFully(foto);
+				try (DataInputStream dis = new DataInputStream(partImagen.getInputStream())) {
 
-			} catch (IOException e) {
+					dis.readFully(foto);
 
-				logger.error(e.getMessage());
+				} catch (IOException e) {
+
+					logger.error(e.getMessage());
+				}
 			}
+		} catch (Exception e) {
+
+			logger.error("Error al convertir la imagen a tipo byte. La aplicación lanzó: " + e.getMessage());
 		}
 		return foto;
 	}
@@ -444,7 +506,16 @@ public class ProductServiceBean implements ProductService {
 	@Override
 	public List<Rosal> findAllRoses() {
 
-		List<Rosal> lista = rosalRepository.findAllByOrderByNombreRosalAsc();
+		List<Rosal> lista = null;
+
+		try {
+
+			lista = rosalRepository.findAllByOrderByNombreRosalAsc();
+
+		} catch (Exception e) {
+
+			logger.error("Error al obtener lista de rosales. La aplicación lanzó: " + e.getMessage());
+		}
 
 		return lista;
 	}
@@ -458,30 +529,27 @@ public class ProductServiceBean implements ProductService {
 		BeanImagen beanImagen = new BeanImagen();
 		File archivo = new File(path + nombreImagen);
 
-		if (archivo.exists()) {
+		try {
+			if (archivo.exists()) {
 
-			try {
 				byte[] bytes = Files.readAllBytes(new File(path + nombreImagen).toPath());
 				beanImagen.setImage(DatatypeConverter.printBase64Binary(bytes));
 				beanImagen.setNombreImagen(nombreImagen);
 				System.out.println("el archivo ya estaba en el servidor");
-			} catch (IOException e) {
 
-				logger.error(e.getMessage());
-			}
-		} else {
+			} else {
 
-			try {
 				creaArchivo(nombreImagen);
-
 				byte[] bytes = Files.readAllBytes(new File(path + nombreImagen).toPath());
 				beanImagen.setImage(DatatypeConverter.printBase64Binary(bytes));
 				beanImagen.setNombreImagen(nombreImagen);
 				System.out.println("el archivo no estaba en el servidor y ha sido creado");
-			} catch (IOException e) {
 
-				logger.error(e.getMessage());
 			}
+
+		} catch (IOException e) {
+
+			logger.error("Error al obtener la imagen. La aplicación lanzó: " + e.getMessage());
 		}
 
 		return beanImagen;
@@ -495,6 +563,7 @@ public class ProductServiceBean implements ProductService {
 	private void creaArchivo(String nombreImagen) {
 
 		try {
+
 			Imagen imagen = imagenRepository.findByNombreImagen(nombreImagen);
 			byte[] contenido = imagen.getImagen();
 			File file = new File(imagen.getNombreImagen());
@@ -504,6 +573,7 @@ public class ProductServiceBean implements ProductService {
 				try {
 
 					Files.copy(is, Paths.get(path, file.getName()));
+
 				} catch (IOException | RuntimeException e) {
 
 					logger.error("Error al subir el archivo " + file.getName() + " => " + e.getMessage());
@@ -515,6 +585,7 @@ public class ProductServiceBean implements ProductService {
 		} catch (FileNotFoundException e1) {
 
 			logger.error("Error al subir el archivo. No se encuentra el archivo.");
+
 		} catch (IOException e1) {
 
 			logger.error("Error: " + e1.getMessage());
@@ -530,21 +601,59 @@ public class ProductServiceBean implements ProductService {
 
 		RosesValidate rosesValidate = new RosesValidate();
 
-		int num = rosalRepository.countByNombreRosal(rosal.getNombreRosal());
+		try {
+			int num = rosalRepository.countByNombreRosal(rosal.getNombreRosal());
 
-		if (num > 0) {
-			deleteFromServer(rosal);
-			rosalRepository.delete(rosal.getIdRosal());
-			rosesValidate.setExistRosal(true);
-			rosesValidate.setMessage("Rosal eliminado con exito");
-			logger.info("rosal con nombre " + rosal.getNombreRosal() + " eliminado correctamente.");
-		} else {
+			if (num > 0) {
+				deleteFromServer(rosal);
+				rosalRepository.delete(rosal.getIdRosal());
+				rosesValidate.setExistRosal(true);
+				rosesValidate.setMessage("Rosal eliminado con exito");
+				logger.info("rosal con nombre " + rosal.getNombreRosal() + " eliminado correctamente.");
+			} else {
+				rosesValidate.setExistRosal(false);
+				rosesValidate.setMessage("Error: el rosal no existe");
+				logger.info("El rosal con nombre " + rosal.getNombreRosal() + " no se ha podido eliminar.");
+			}
+		} catch (Exception e) {
 			rosesValidate.setExistRosal(false);
-			rosesValidate.setMessage("Error: el rosal no existe");
-			logger.info("El rosal con nombre " + rosal.getNombreRosal() + " no se ha podido eliminar.");
+			rosesValidate.setMessage("Error al realizar la transacción");
+			logger.info("El rosal no se ha podido eliminar. La aplicación lanzó: " + e.getMessage());
+
+		}
+		return rosesValidate;
+	}
+
+	/**
+	 * Metodo que registra una variedad.
+	 */
+	@Override
+	public VarietyValidate registraVariedad(Variedad variedad, VarietyValidate varietyValidate) {
+
+		try {
+			int num = varRepository.countByNombreVariedad(variedad.getNombreVariedad());
+
+			if (num > 0) {
+
+				varietyValidate.setVariedadExist(false);
+				varietyValidate.setMessage("ERROR: Nombre de varidad existente.");
+				logger.info("la variedad " + variedad.getNombreVariedad() + " ha sido modificada correctamente.");
+
+			} else {
+
+				varRepository.save(variedad);
+				varietyValidate.setVariedadExist(true);
+				varietyValidate.setMessage("Variedad " + variedad.getNombreVariedad() + " registrada correctamente");
+				logger.info("la variedad " + variedad.getNombreVariedad() + " ha sido registrada correctamente.");
+			}
+		} catch (Exception e) {
+
+			varietyValidate.setVariedadExist(false);
+			varietyValidate.setMessage("Error al realizar la transaccion. No se ha podido conectar con base de datos.");
+			logger.info("Error al registrar " + variedad.getNombreVariedad() + ". El sistema lanzo: " + e.getMessage());
 		}
 
-		return rosesValidate;
+		return varietyValidate;
 	}
 
 	/**
@@ -553,55 +662,77 @@ public class ProductServiceBean implements ProductService {
 	@Override
 	public VarietyValidate modificaVariedad(Variedad variedad, VarietyValidate varietyValidate) {
 
-		int num = varRepository.countByNombreVariedad(variedad.getNombreVariedad());
+		try {
+			int num = varRepository.countByNombreVariedad(variedad.getNombreVariedad());
 
-		if (num > 0) {
+			if (num > 0) {
 
-			Variedad var = new Variedad();
-			var = varRepository.findByNombreVariedad(variedad.getNombreVariedad());
+				Variedad var = new Variedad();
+				var = varRepository.findByNombreVariedad(variedad.getNombreVariedad());
 
-			if (var.getIdVariedad() == variedad.getIdVariedad()) {
+				if (var.getIdVariedad() == variedad.getIdVariedad()) {
+
+					varRepository.save(variedad);
+					varietyValidate.setVariedadExist(true);
+					varietyValidate
+							.setMessage("Variedad " + variedad.getNombreVariedad() + " modificada correctamente");
+					logger.info("la variedad " + variedad.getNombreVariedad() + " ha sido modificada correctamente.");
+
+				} else {
+					varietyValidate.setVariedadExist(false);
+					varietyValidate.setMessage("ERROR: Nombre de varidad existente.");
+					logger.info("la variedad " + variedad.getNombreVariedad()
+							+ " no se ha modificado. La variedad ya existe.");
+				}
+
+			} else {
 
 				varRepository.save(variedad);
 				varietyValidate.setVariedadExist(true);
 				varietyValidate.setMessage("Variedad " + variedad.getNombreVariedad() + " modificada correctamente");
 				logger.info("la variedad " + variedad.getNombreVariedad() + " ha sido modificada correctamente.");
-
-			} else {
-				varietyValidate.setVariedadExist(false);
-				varietyValidate.setMessage("ERROR: Nombre de varidad existente.");
-				logger.info(
-						"la variedad " + variedad.getNombreVariedad() + " no se ha modificado. La variedad ya existe.");
 			}
 
-		} else {
+		} catch (Exception e) {
 
-			varRepository.save(variedad);
-			varietyValidate.setVariedadExist(true);
-			varietyValidate.setMessage("Variedad " + variedad.getNombreVariedad() + " modificada correctamente");
-			logger.info("la variedad " + variedad.getNombreVariedad() + " ha sido modificada correctamente.");
+			varietyValidate.setVariedadExist(false);
+			varietyValidate.setMessage("Error al realizar la transacción");
+			logger.info("la variedad no se ha podido modificar. La aplicación lanzó: " + e.getMessage());
 		}
 
 		return varietyValidate;
 	}
 
+	/**
+	 * Metodo que elimina una variedad de base de datos.
+	 */
 	@Override
 	public VarietyValidate deleteVariedad(Variedad variedad) {
 
 		VarietyValidate varietyValidate = new VarietyValidate();
 
-		int num = varRepository.countByNombreVariedad(variedad.getNombreVariedad());
+		try {
 
-		if (num > 0) {
+			int num = varRepository.countByNombreVariedad(variedad.getNombreVariedad());
 
-			varRepository.delete(variedad.getIdVariedad());
-			varietyValidate.setVariedadExist(true);
-			varietyValidate.setMessage("variedad " + variedad.getNombreVariedad() + " eliminada con exito");
-			logger.info("variedad con nombre " + variedad.getNombreVariedad() + " eliminada correctamente.");
-		} else {
+			if (num > 0) {
+
+				varRepository.delete(variedad.getIdVariedad());
+				varietyValidate.setVariedadExist(true);
+				varietyValidate.setMessage("variedad " + variedad.getNombreVariedad() + " eliminada con exito");
+				logger.info("variedad con nombre " + variedad.getNombreVariedad() + " eliminada correctamente.");
+
+			} else {
+				varietyValidate.setVariedadExist(false);
+				varietyValidate.setMessage("Error: La variedad no existe.");
+				logger.info("variedad con nombre " + variedad.getNombreVariedad() + " no se ha podido eliminar.");
+			}
+		} catch (Exception e) {
+
 			varietyValidate.setVariedadExist(false);
-			varietyValidate.setMessage("Error: La variedad no existe.");
-			logger.info("variedad con nombre " + variedad.getNombreVariedad() + " no se ha podido eliminar.");
+			varietyValidate.setMessage("Error al realizar la transacción");
+			logger.info("Error: " + e.getMessage());
+
 		}
 		return varietyValidate;
 	}
@@ -612,32 +743,29 @@ public class ProductServiceBean implements ProductService {
 	@Override
 	public RosesValidate incrementaExistencia(Rosal rosal, RosesValidate rosesValidate) {
 
-		int num = rosalRepository.countByIdRosal(rosal.getIdRosal());
+		try {
+			int num = rosalRepository.countByIdRosal(rosal.getIdRosal());
 
-		if (num > 0) {
-
-			try {
+			if (num > 0) {
 
 				Rosal rosalActual = rosalRepository.findOne(rosal.getIdRosal());
 				int existencias = rosalActual.getCantidad() + rosal.getCantidad();
 				rosalActual.setCantidad(existencias);
 				rosalRepository.save(rosalActual);
 				rosesValidate.setExistRosal(true);
-				rosesValidate.setMessage("Las existencias de "+rosalActual.getNombreRosal()+
-						" han sido incrementadas en "+rosal.getCantidad()+" unidades correctamente.");
-				
+				rosesValidate.setMessage("Las existencias de " + rosalActual.getNombreRosal()
+						+ " han sido incrementadas en " + rosal.getCantidad() + " unidades correctamente.");
 
-			} catch (Exception e) {
+			} else {
+
 				rosesValidate.setExistRosal(false);
-				rosesValidate.setMessage("Error: Imposiblie realizar la transaccion");
-				logger.error("Error al realizar la operacion: " + e.getMessage());
-
+				rosesValidate.setMessage("Error: El rosal no esta registrado.");
 			}
-
-		} else {
+		} catch (Exception e) {
 
 			rosesValidate.setExistRosal(false);
-			rosesValidate.setMessage("Error: El rosal no esta registrado.");
+			rosesValidate.setMessage("Error: Imposiblie realizar la transaccion");
+			logger.error("Error al realizar la operacion: " + e.getMessage());
 		}
 
 		return rosesValidate;
@@ -649,11 +777,10 @@ public class ProductServiceBean implements ProductService {
 	@Override
 	public RosesValidate decrementaExistencia(Rosal rosal, RosesValidate rosesValidate) {
 
-		int num = rosalRepository.countByIdRosal(rosal.getIdRosal());
+		try {
+			int num = rosalRepository.countByIdRosal(rosal.getIdRosal());
 
-		if (num > 0) {
-
-			try {
+			if (num > 0) {
 
 				Rosal rosalActual = rosalRepository.findOne(rosal.getIdRosal());
 
@@ -663,62 +790,60 @@ public class ProductServiceBean implements ProductService {
 					rosalActual.setCantidad(existencias);
 					rosalRepository.save(rosalActual);
 					rosesValidate.setExistRosal(true);
-					rosesValidate.setMessage("Las existencias de "+rosalActual.getNombreRosal()+
-							" han sido reducidas en "+rosal.getCantidad()+" unidades correctamente.");
+					rosesValidate.setMessage("Las existencias de " + rosalActual.getNombreRosal()
+							+ " han sido reducidas en " + rosal.getCantidad() + " unidades correctamente.");
 				} else {
 
 					rosesValidate.setExistRosal(false);
 					rosesValidate.setMessage("Error. La Existencia actual es inferior.");
 				}
 
-			} catch (Exception e) {
-				rosesValidate.setExistRosal(false);
-				rosesValidate.setMessage("Error: Imposiblie realizar la transaccion");
-				logger.error("Error al realizar la operacion: " + e.getMessage());
+			} else {
 
+				rosesValidate.setExistRosal(false);
+				rosesValidate.setMessage("Error: El rosal no esta registrado.");
 			}
 
-		} else {
+		} catch (Exception e) {
 
 			rosesValidate.setExistRosal(false);
-			rosesValidate.setMessage("Error: El rosal no esta registrado.");
+			rosesValidate.setMessage("Error: Imposiblie realizar la transaccion");
+			logger.error("Error al realizar la operacion: " + e.getMessage());
+
 		}
 
 		return rosesValidate;
 	}
-	
-	
+
 	/**
 	 * Metodo que actualiza las existencias de un rosal.
 	 */
 	@Override
 	public RosesValidate actualizaExistencia(Rosal rosal, RosesValidate rosesValidate) {
-		
-		int num = rosalRepository.countByIdRosal(rosal.getIdRosal());
 
-		if (num > 0) {
+		try {
+			int num = rosalRepository.countByIdRosal(rosal.getIdRosal());
 
-			try {
+			if (num > 0) {
 
 				Rosal rosalActual = rosalRepository.findOne(rosal.getIdRosal());
 				rosalActual.setCantidad(rosal.getCantidad());
 				rosalRepository.save(rosalActual);
 				rosesValidate.setExistRosal(true);
-				rosesValidate.setMessage("Las existencias de "+rosalActual.getNombreRosal()+
-						" han sido actualizas a "+rosal.getCantidad()+" unidades.");
-				
+				rosesValidate.setMessage("Las existencias de " + rosalActual.getNombreRosal()
+						+ " han sido actualizas a " + rosal.getCantidad() + " unidades.");
 
-			} catch (Exception e) {
+			} else {
+
 				rosesValidate.setExistRosal(false);
-				rosesValidate.setMessage("Error: Imposiblie realizar la transaccion");
-				logger.error("Error al realizar la operacion: " + e.getMessage());
-
+				rosesValidate.setMessage("Error: El rosal no esta registrado.");
 			}
 
-		} else {
+		} catch (Exception e) {
 
 			rosesValidate.setExistRosal(false);
-			rosesValidate.setMessage("Error: El rosal no esta registrado.");
+			rosesValidate.setMessage("Error: Imposiblie realizar la transaccion");
+			logger.error("Error al realizar la operacion: " + e.getMessage());
 		}
 
 		return rosesValidate;

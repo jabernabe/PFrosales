@@ -12,7 +12,11 @@ import es.pdv.daw.proyect.entity.Empresa;
 import es.pdv.daw.proyect.entity.Imagen;
 import es.pdv.daw.proyect.services.EmpresaService;
 
-
+/**
+ * Clase controladora de peticiones ajax del submenu empresa.
+ * @author mint
+ *
+ */
 @Controller
 @ResponseBody
 public class EmpresaController {

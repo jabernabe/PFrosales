@@ -80,7 +80,29 @@ function listaRosales(){
 		        }
 		    } );	
 		}
+    	else{
+    		alertaConexion()
+    	}
     });		
+}
+
+//Funcion que muestra ventana de error en caso de servidor mysql detenido y rosales no registrados.
+function alertaConexion(){
+	
+	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>ERROR</p> </h2>";
+	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Posible error de conexion a base de datos. "
+	mensaje+='Si el error persiste contacte inmediatamente con el administrador.</p>'	
+	
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
+	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");
+	
+	
 }
 
 // Funcion que realiza la peticion de una imagen.
@@ -200,25 +222,21 @@ function validaModificaRosal(){
 	var imagen = $("#img");
 	
 	
-	
-	if (nombre==""){
+	if (nombre.length == 0 || /^\s+$/.test(nombre)) {
 		document.getElementById("modifyMessage").style.visibility="visible";
 		$("#modifyMessage").text("Nombre de rosal debe ser cumplimentado.");
-		$("#nombreRosal").focus();
 		$("#nobreRosal").select();
 		$("#nombreRosal").focus();
 	}
 	else{
-		
-		if (altura==""){
+		if (altura.length == 0 || /^\s+$/.test(altura)) {
 			document.getElementById("modifyMessage").style.visibility="visible";
 			$("#modifyMessage").text("La altura del rosal debe ser cumplimentada.");
 			$("#altura").focus();
 			$("#altura").select();
 		}
 		else{
-			
-			if (color==""){
+			if (color.length == 0 || /^\s+$/.test(color)) {
 				document.getElementById("modifyMessage").style.visibility="visible";
 				$("#modifyMessage").text("El color del rosal debe ser cumplimentado.");
 				$("#color").focus();
@@ -401,17 +419,35 @@ function muestraRegistraRosal(data){
 // Funcion que valida los datos del formulario de registro de rosales.
 function validaRegistraRosal(){
 	
-	
 	var name = $("#nombreRosal").val();
 	var color = $("#color").val();
 	var altura = $("#altura").val();
 	
-	if (name!==""){
+	if (name.length == 0 || /^\s+$/.test(name)) {
+		document.getElementById("createRosalMessage").style.visibility="visible";
+		$("#createRosalMessage").text("Nombre de rosal obligatorio");
+		$("#name").focus();
+		$("#name").select();
 		
-		if (color!==""){
+	}
+	else{
+		if (color.length == 0 || /^\s+$/.test(color)) {
 			
-			if(altura!==""){
+			document.getElementById("createRosalMessage").style.visibility="visible";
+			$("#createRosalMessage").text("Color de rosal obligatorio");
+			$("#color").focus();
+			$("#color").select();
+			
+		}
+		else{
+			if (altura.length == 0 || /^\s+$/.test(altura)) {
 				
+				document.getElementById("createRosalMessage").style.visibility="visible";
+				$("#createRosalMessage").text("Altura de rosal obligatoria");
+				$("#altura").focus();
+				$("#altura").select();			
+			}
+			else{
 				var input = document.getElementById('img');
 			    var file = input.files[0];	
 			    
@@ -430,26 +466,8 @@ function validaRegistraRosal(){
 						 procesaRegistraRosal(); 
 					 }
 			    }
-			}
-			else{
-				document.getElementById("createRosalMessage").style.visibility="visible";
-				$("#createRosalMessage").text("Altura de rosal obligatoria");
-				$("#altura").focus();
-				$("#altura").select();
-			}
+			}		
 		}
-		else{
-			document.getElementById("createRosalMessage").style.visibility="visible";
-			$("#createRosalMessage").text("Color de rosal obligatorio");
-			$("#color").focus();
-			$("#color").select();		
-		}
-	}
-	else{
-		document.getElementById("createRosalMessage").style.visibility="visible";
-		$("#createRosalMessage").text("Nombre de rosal obligatorio");
-		$("#name").focus();
-		$("#name").select();
 	}
 	
 }
@@ -520,7 +538,9 @@ function MessageCreaRosal(message){
 // Metodo que muestra la ventana modal informando del rosal a eliminar.
 function eliminaRosal(nombreRosal, idRosal){
 	
-	var mensaje="<h3 style='color: #e70c06 ; text-align:center'>El Rosal con nombre "+nombreRosal+" será eliminado.</h3>";
+	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>AVISO</p> </h2>";
+		mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará los pedidos que incluyan el rosal.</p>"
+			
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar rosal</h2></div>'
 		

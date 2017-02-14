@@ -10,96 +10,99 @@ import javax.persistence.Table;
 
 /**
  * Clase que representa un cliente.
+ * 
  * @author alumno
  *
  */
 @Entity
-@Table(name="clientes")
+@Table(name = "clientes")
 public class Cliente implements Serializable {
-	
-	
+
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * identificador de cliente.
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idCliente;
-	
+
 	/**
 	 * Nombre del cliente.
 	 */
-	@Column(name ="nombre_cliente", length=50, nullable=false, unique=true )
+	@Column(name = "nombre_cliente", length = 50, nullable = false, unique = true)
 	private String nombreCliente;
-	
+
 	/**
 	 * Email de cliente.
 	 */
-	@Column(name ="email", length=50, nullable=false)
+	@Column(name = "email", length = 50, nullable = false)
 	private String email;
-	
+
 	/**
 	 * Tipo de identificador del cliente (DNI, NIF, CIF....).
 	 */
-	@Column(name ="tipo_identificador", length=20, nullable=false)
+	@Column(name = "tipo_identificador", length = 20, nullable = false)
 	private String tipoIden;
-	
+
 	/**
 	 * Numero de identificador de cliente.
 	 */
-	@Column(name ="identificador", length=20, nullable=false, unique=true )
+	@Column(name = "identificador", length = 20, nullable = false, unique = true)
 	private String identificador;
-	
+
 	/**
 	 * Direccion del cliente.
 	 */
-	@Column(name ="direccion", length=50)
+	@Column(name = "direccion", length = 50)
 	private String direccion;
-	
+
 	/**
 	 * Codigo postal del cliente.
 	 */
-	@Column(name ="codigo_postal", length=5)
+	@Column(name = "codigo_postal", length = 5)
 	private String cp;
-	
+
 	/**
 	 * Municipio del cliente.
 	 */
-	@Column(name ="municipio", length=50, nullable=false)
+	@Column(name = "municipio", length = 50, nullable = false)
 	private String municipio;
-	
+
 	/**
 	 * Provincia del cliente.
 	 */
-	@Column(name ="provincia", length=50, nullable=false)
+	@Column(name = "provincia", length = 50, nullable = false)
 	private String provincia;
-	
+
 	/**
 	 * Pais del cliente.
 	 */
-	@Column(name ="pais", length=50, nullable=false)
+	@Column(name = "pais", length = 50, nullable = false)
 	private String pais;
-	
+
 	/**
 	 * Telefonos de contacto del cliente.
 	 */
-	@Column(name ="telefonos", length=50, nullable=false)
+	@Column(name = "telefonos", length = 50, nullable = false)
 	private String telefonos;
-	
+
 	/**
 	 * Observaciones sobre el cliente.
 	 */
-	@Column(name ="observaciones", length=200)
+	@Column(name = "observaciones", length = 200)
 	private String observaciones;
 
+	/**
+	 * Constructor sin parametros.
+	 */
 	public Cliente() {
 		super();
-		
+
 	}
 
 	// Metodos setter y getter.
-	
+
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -131,7 +134,6 @@ public class Cliente implements Serializable {
 	public void setTipoIden(String tipoIden) {
 		this.tipoIden = tipoIden;
 	}
-
 
 	public String getIdentificador() {
 		return identificador;
@@ -196,6 +198,5 @@ public class Cliente implements Serializable {
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
-	
-	
+
 }

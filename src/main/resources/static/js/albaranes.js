@@ -1,4 +1,4 @@
-
+//Funcion que solicita lista de clientes para el formulario de eleccion de cliente.
 function nuevoAlbaran(){
 	
 	$.ajax({
@@ -15,6 +15,7 @@ function nuevoAlbaran(){
     });	
 }
 
+//Funcion que muestra el formulario de eleccion de cliente para generar un nuevo pedido.
 function muestraRegistraAlbaran(data){
 	
 	var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-right:auto; padding:10; max-width:700px">'
@@ -65,6 +66,7 @@ function creaNuevoAlbaran() {
     })
 }
 
+//Funcion que muestra el albaran.
 function muestraAlbaran(data){
 	
 	var textoHTML='<div class="panel panel-danger" style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10">'
@@ -78,8 +80,7 @@ function muestraAlbaran(data){
         textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="idAlbaran" name="idAlbaran" value="'+data.albaran.idAlbaran+'" maxlength="40" readonly></div></div>'        
 			
         textoHTML+='<div class="form-group"><label for="fecha" class="col-sm-2 control-label">Fecha</label>'
-        textoHTML+='<div class="col-sm-10"><input type="date" class="form-control" id="fecha" name="fecha" value="'+parseaFecha(data.albaran.fecha)+'" maxlength="40" readonly></div></div>'        
-		  	
+        textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="fecha" name="fecha" value="'+parseaFecha(data.albaran.fecha)+'" maxlength="40" readonly></div></div>'          	
 	    textoHTML+= '</form>'
 	    
 	    textoHTML += "<div id='detalleAlbaran' style='margin:20px'>";
@@ -168,7 +169,7 @@ function muestraAlbaran(data){
 	
 }
 
-//funcion que valida el valor introducido cuadro de texto cantidad.
+//funcion que valida el valor introducido en el cuadro de texto cantidad.
 function validaInsertaLinea(){
 	
 	var cantidad =$('#cantidad').val();
@@ -215,9 +216,7 @@ function insertaLinea() {
         	}
         	else{
         		mensajeStock(data);
-        	}
-        	
-        		
+        	}        		
         }
     })
 }
@@ -311,6 +310,7 @@ function mensajeStock(data){
 		document.getElementById("modalDatos").innerHTML=textoHTML;
 		$("#mostrarmodal").modal("show");
 }
+
 // Funcion que muestra advertencia antes de eliminar una linea del pedido.
 function confirmaEliminaDetalle(idRosal, cantidad, idDetalle){
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
@@ -496,6 +496,7 @@ function muestraListaPedidos(data){
 	    } );
 }
 
+//funcion que genera el albaran en formato pdf.
 function imprimePedido(idPedido){
 	
 	$.ajax({
@@ -519,6 +520,7 @@ function imprimePedido(idPedido){
 	
 }
 
+//Funcion que muestra la ventana modal de aviso de eliminacion de pedido.
 function confirmaEliminaPedido(numAlbaran){
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='	<div class="modal-dialog"> '
@@ -604,7 +606,7 @@ function editaAlbaran(data){
         textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="idAlbaran" name="idAlbaran" value="'+data.albaran.idAlbaran+'" maxlength="40" readonly></div></div>'        
 			
         textoHTML+='<div class="form-group"><label for="fecha" class="col-sm-2 control-label">Fecha</label>'
-        textoHTML+='<div class="col-sm-10"><input type="date" class="form-control" id="fecha" name="fecha" value="'+parseaFecha(data.albaran.fecha)+'" maxlength="40" readonly></div></div>'        
+        textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="fecha" name="fecha" value="'+parseaFecha(data.albaran.fecha)+'" maxlength="40" readonly></div></div>'        
 		  	
 	    textoHTML+= '</form>'
 	    

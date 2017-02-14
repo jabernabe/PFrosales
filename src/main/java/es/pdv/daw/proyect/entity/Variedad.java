@@ -11,53 +11,52 @@ import javax.persistence.Table;
 
 /**
  * Clase que representa la tabla variedades de la bd.
- * @author alumno
+ * 
+ * @author jabd
  *
  */
 @Entity
-@Table(name="variedades")
+@Table(name = "variedades")
 public class Variedad implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Identificador de variedad.
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idVariedad;
-	
+
 	/**
 	 * Nombre de la variedad.
 	 */
-	@Column(name ="nombre_variedad", length=50, nullable=false, unique=true )
+	@Column(name = "nombre_variedad", length = 50, nullable = false, unique = true)
 	private String nombreVariedad;
-	
+
 	/**
 	 * Distancia de plantacion de la variedad.
 	 */
-	@Column(name ="dist_plantacion", length=30, nullable=false )
+	@Column(name = "dist_plantacion", length = 30, nullable = false)
 	private String distPlantacion;
-	
+
 	/**
 	 * Descripcion de la variedad.
 	 */
-	@Column(name ="descripcion", length=500, nullable=false )
+	@Column(name = "descripcion", length = 500, nullable = false)
 	private String descripcion;
-	
-	
-	
+
 	/**
 	 * Contructor por defecto.
 	 */
 	public Variedad() {
 		super();
-		
+
 	}
-	
+
 	/**
 	 * Constructor con parametros.
+	 * 
 	 * @param idVariedad
 	 * @param nombreVariedad
 	 * @param distPlantacion
@@ -71,11 +70,11 @@ public class Variedad implements Serializable {
 		this.nombreVariedad = nombreVariedad;
 		this.distPlantacion = distPlantacion;
 		this.descripcion = descripcion;
-		
+
 	}
 
-	// 	Metodos getter y setter.
-	
+	// Metodos getter y setter.
+
 	public int getIdVariedad() {
 		return idVariedad;
 	}
@@ -108,9 +107,4 @@ public class Variedad implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	
-
-
-	
-	
 }

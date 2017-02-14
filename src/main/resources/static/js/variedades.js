@@ -8,7 +8,11 @@ function listaVariedades(){
 	$.ajax({
         url: "dameVariedades"
     }).then(function(data) {
-    
+    	
+    	if (data.variedadExist==false){
+			alertaConexion()
+    	}
+    	
     	if (data.listaVariedades.length>0){
 				
     		var textoHTML="";
@@ -62,7 +66,28 @@ function listaVariedades(){
 		        }
 		    } );	
 		}
+    			
+    	
     });		
+}
+
+//Funcion que muestra ventana de error en caso de servidor mysql detenido y rosales no registrados.
+function alertaConexion(){
+	
+	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>ERROR</p> </h2>";
+	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Posible error de conexion a base de datos. "
+	mensaje+='Si el error persiste contacte inmediatamente con el administrador.</p>'	
+	
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
+	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");
+	
+	
 }
 
 // Funcion que modifica una variedad.
@@ -105,8 +130,8 @@ function validaModificaVariedad(){
 	var nombre = $("#nombreVariedad").val();
 	var distancia = $("#distPlantacion").val();
 	var descripcion = $("#descripcion").val();
-
-	if (nombre==""){
+	
+	if (nombre.length == 0 || /^\s+$/.test(nombre)) {
 		document.getElementById("modifyMessage").style.visibility="visible";
 		$("#modifyMessage").text("Nombre de variedad debe ser cumplimentado.");
 		$("#nombreVariedad").focus();
@@ -114,8 +139,7 @@ function validaModificaVariedad(){
 		$("#nombreVariedad").focus();
 	}
 	else{
-		
-		if (distancia==""){
+		if (distancia.length == 0 || /^\s+$/.test(distancia)) {
 			document.getElementById("modifyMessage").style.visibility="visible";
 			$("#modifyMessage").text("La distancia de plantacion debe ser cumplimentada.");
 			$("#distPlantacion").focus();
@@ -144,7 +168,7 @@ function procesaModificaVariedad(){
         	
         	if (data.variedadExist){
         		document.getElementById("modifyMessage").style.visibility="hidden"
-        		MessageModificaVariedad(data.message);
+        		MessageVariedad(data.message);
         		listaVariedades();
         	}
         	else{
@@ -158,7 +182,7 @@ function procesaModificaVariedad(){
 }
 
 // Funcion que muestra el mensaje de variedad modificada correctamente.
-function MessageModificaVariedad(message){
+function MessageVariedad(message){
 	
 $("#closeModal").click();
 	
@@ -200,12 +224,33 @@ $("#closeModal").click();
 // Funcion que elimina una variedad.
 function eliminaVariedad(nombreVariedad, idVariedad){
 	
+	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>AVISO</p> </h2>";
+	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará los rosales de esta variedad asi como los pedidos.</p>"
+		
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar rosal</h2></div>'
+	
+	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Cancelar</a>' 
+	textoHTML+=	'<button type="button" onclick="procesaEliminaVariedad(\''+nombreVariedad+'\', '+idVariedad+')" class="btn btn-success">Aceptar</button>'
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");
+	
+}
+
+
+
+//Funcion que elimina una variedad.
+function procesaEliminaVariedad(nombreVariedad, idVariedad){
+	
 	$.ajax({
         url: "eliminaVariedad?idVariedad="+idVariedad+"&nombreVariedad="+nombreVariedad
     }).then(function(data) {
     		
     	if (data.variedadExist){
-    		
+    		listaVariedades();
     		processMessage(data.message);
     	}
     	else{
@@ -215,6 +260,7 @@ function eliminaVariedad(nombreVariedad, idVariedad){
     });	
 	
 }
+
 
 
 //Funcion que muestra una ventana informando del error al eliminar una variedad.
@@ -299,7 +345,7 @@ function processMessage(message){
 //Funcion que muestra el formulario de registro de variedades
 function registraVariedad(){
 	
-	var textoHTML='<div class="panel panel-danger"  id="formRegistro" style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10">'
+	var textoHTML='<div class="panel panel-danger"  style="margin-left:auto; margin-right:auto; margin-bottom:; padding:10">'
 		textoHTML+= '<div class="panel-heading" style="text-align:center; background-color:#222; color:#FFF"><h3>Registro de variedades</h3></div>'
 			
 		textoHTML+='<form id="formCreateVariedad" class="form-horizontal" style="margin:10px">'
@@ -316,12 +362,65 @@ function registraVariedad(){
 		textoHTML+=''
 			
 		textoHTML+='</form>'
-		textoHTML+='<div class="alert alert-danger" role="alert" id="createRosalMessage" style="text-align:center; font-size:20px; visibility: hidden"></div>'
-		textoHTML+='<div style="text-align:right"><button onclick="validaRegistraRosal()" '
+		textoHTML+='<div class="alert alert-danger" role="alert" id="createMessage" style="text-align:center; font-size:20px; visibility: hidden"></div>'
+		textoHTML+='<div style="text-align:right"><button onclick="validaRegistraVariedad()" '
 		textoHTML+='class="btn btn-success" style="width:150px; margin:10px">Registrar</button></div></div>'   
 	    
 	document.getElementById("variedadesContent").innerHTML=textoHTML;
 	
-	
 }
 
+//Funcion que valida los datos del formulario de registro de variedades.
+function validaRegistraVariedad(){
+	
+	var nombre = $("#nombreVariedad").val();
+	var distancia = $("#distPlantacion").val();
+	
+	if (nombre.length == 0 || /^\s+$/.test(nombre)) {
+		document.getElementById("createMessage").style.visibility="visible";
+		$("#createMessage").text("Nombre de variedad debe ser cumplimentado.");
+		$("#nombreVariedad").focus();
+		$("#nobreVariedad").select();
+		$("#nombreVariedad").focus();
+	}
+	else{
+		if (distancia.length == 0 || /^\s+$/.test(distancia)) {
+			document.getElementById("createMessage").style.visibility="visible";
+			$("#createMessage").text("La distancia de plantacion debe ser cumplimentada.");
+			$("#distPlantacion").focus();
+			$("#distPlantacion").select();
+		}
+		else{
+			
+			procesaRegistraVariedad();
+		}
+	}		
+}
+
+
+function procesaRegistraVariedad(){
+	
+	var formData = new FormData(document.getElementById("formCreateVariedad"));
+
+	$.ajax({
+        url: "registraVariedad",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success:function(data){
+        	
+        	if (data.variedadExist){
+        		document.getElementById("createMessage").style.visibility="hidden"
+        		MessageVariedad(data.message);
+        		listaVariedades();
+        	}
+        	else{
+        		document.getElementById("createMessage").style.visibility="visible";
+        		$("#createMessage").text(data.message);
+        	}
+        }
+    })
+}
+
+	
