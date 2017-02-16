@@ -23,6 +23,11 @@ public class VarietyValidate {
 	 * satisfactoriamente.
 	 */
 	private boolean variedadExist;
+	
+	/**
+	 * Propiedad que encapsula el mensaje de error de conexion a bd.
+	 */
+	private boolean errorConexion;
 
 	/**
 	 * Propiedad que encapsula la lista de variedades registradas.
@@ -63,4 +68,12 @@ public class VarietyValidate {
 		this.listaVariedades = listaVariedades;
 	}
 
+	public boolean isErrorConexion() {
+		return errorConexion;
+	}
+
+	public void setErrorConexion(boolean errorConexion) {
+		this.errorConexion = errorConexion;
+	}
+	
 }

@@ -268,6 +268,7 @@ public class GenerateMembretePdf extends PdfPageEventHelper {
 			tableEmpresa.writeSelectedRows(0, -1, 330f, 750f, writer.getDirectContent());
 			tableNumAlbaran.writeSelectedRows(0, -1, 40f, 640f, writer.getDirectContent());
 			tableCliente.writeSelectedRows(0, -1, 40f, 600f, writer.getDirectContent());
+			logger.info("encabezado generado");
 
 		} catch (DocumentException e) {
 			logger.error(e.getMessage());

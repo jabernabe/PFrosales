@@ -1,5 +1,7 @@
 package es.pdv.daw.proyect.beans;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import es.pdv.daw.proyect.entity.Usuarios;
@@ -27,6 +29,13 @@ public class UserValidate {
 	 * Propiedad que evalua la existencia del usuario en base de datos.
 	 */
 	Boolean userExist;
+	
+	/**
+	 * Propiedad que encapsula en mensaje en caso de error de conexion a base de datos.
+	 */
+	boolean errorConexion;
+	
+	private List<Usuarios> listaUsuarios;
 
 	/**
 	 * Constructor sin parametros.
@@ -60,4 +69,21 @@ public class UserValidate {
 		this.userExist = userExist;
 	}
 
+	public boolean isErrorConexion() {
+		return errorConexion;
+	}
+
+	public void setErrorConexion(boolean errorConexion) {
+		this.errorConexion = errorConexion;
+	}
+
+	public List<Usuarios> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(List<Usuarios> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+	
+	
 }

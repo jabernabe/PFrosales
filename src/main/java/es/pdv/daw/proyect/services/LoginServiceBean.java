@@ -80,16 +80,24 @@ public class LoginServiceBean implements LoginService {
 	 * Metodo que devuelve todos los usuarios registrados.
 	 */
 	@Override
-	public List<Usuarios> findAllUsers() {
-		
-		List<Usuarios> usuarios = null;
-		
+	public UserValidate findAllUsers(UserValidate userValidate) {
+
 		try {
-			usuarios = repository.findAllByOrderBySurnameAsc();
+			List<Usuarios> listaUsuarios = repository.findAllByOrderBySurnameAsc();
+			if (listaUsuarios.size() > 0) {
+
+				userValidate.setUserExist(true);
+				userValidate.setListaUsuarios(listaUsuarios);
+			} else {
+				userValidate.setUserExist(false);
+				userValidate.setMessage("Actualmente no hay usuarios registrados");
+
+			}
 		} catch (Exception e) {
+			userValidate.setErrorConexion(true);
 			logger.error("Error al conectar con base de datos. la aplicación lanzó: " + e.getMessage());
 		}
-		return usuarios;
+		return userValidate;
 	}
 
 	/**

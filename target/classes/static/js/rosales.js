@@ -9,7 +9,7 @@ function listaRosales(){
         url: "dameRosales"
     }).then(function(data) {
     
-    	if (data.length>0){
+    	if (data.existRosal){
 				
     		var textoHTML="";
     		textoHTML += "<div>";
@@ -32,16 +32,16 @@ function listaRosales(){
     		 		
     		textoHTML += "	<tbody>";
     		
-    		for(var elm = 0;elm < data.length;elm++){
+    		for(var elm = 0;elm < data.listaRosales.length;elm++){
     		
     		textoHTML += "		<tr>";
-    		textoHTML += "			<td>"+data[elm].nombreRosal+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].variedad.nombreVariedad+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].color+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].altura+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].perfumada+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].nombreRosal+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].variedad.nombreVariedad+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].color+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].altura+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].perfumada+"<\/td>";
     			
-    			if (data[elm].nombreImagen=="null" || data[elm].nombreImagen=="" || data[elm].nombreImagen==null){
+    			if (data.listaRosales[elm].nombreImagen=="null" || data.listaRosales[elm].nombreImagen=="" || data.listaRosales[elm].nombreImagen==null){
     		
     		textoHTML += "			<td><button type='button' class='btn btn-danger btn-xs' style='width:40px; height:30px' >";		
     		textoHTML += "			<span class='glyphicon glyphicon-remove'></span></button><\/td>"	
@@ -49,18 +49,18 @@ function listaRosales(){
     			else{
     				
     		textoHTML += "			<td><button type='button' class='btn btn-success btn-xs' style='width:40px; height:30px' ";				
-    		textoHTML += "			onclick='muestraImagen(\""+data[elm].nombreImagen+"\")' >"	
+    		textoHTML += "			onclick='muestraImagen(\""+data.listaRosales[elm].nombreImagen+"\")' >"	
     		textoHTML += "			<span class='glyphicon glyphicon-picture'></span></button><\/td>"
     			}
     			
-    		textoHTML += "			<td><button type='button' onclick='eliminaRosal(\""+data[elm].nombreRosal+"\", "+data[elm].idRosal+")' ";
+    		textoHTML += "			<td><button type='button' onclick='eliminaRosal(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
     		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
     			
-    		textoHTML += "			<td><button type='button' onclick='modificaRosal(\""+data[elm].idRosal+"\", "
-    		textoHTML += "          \""+data[elm].nombreRosal+"\", \""+data[elm].variedad.nombreVariedad+"\", "
-    		textoHTML += "			\""+data[elm].color+"\", \""+data[elm].altura+"\", \""+data[elm].perfumada+"\", "
-    		textoHTML += "			\""+data[elm].nombreImagen+"\")' class='btn btn-primary btn-xs' style='width:40px; height:30px' >";
+    		textoHTML += "			<td><button type='button' onclick='modificaRosal(\""+data.listaRosales[elm].idRosal+"\", "
+    		textoHTML += "          \""+data.listaRosales[elm].nombreRosal+"\", \""+data.listaRosales[elm].variedad.nombreVariedad+"\", "
+    		textoHTML += "			\""+data.listaRosales[elm].color+"\", \""+data.listaRosales[elm].altura+"\", \""+data.listaRosales[elm].perfumada+"\", "
+    		textoHTML += "			\""+data.listaRosales[elm].nombreImagen+"\")' class='btn btn-primary btn-xs' style='width:40px; height:30px' >";
     		textoHTML += "			<span class='glyphicon glyphicon-refresh'></span></button><\/td>"
     			
     		textoHTML += "		<\/tr>";
@@ -81,9 +81,45 @@ function listaRosales(){
 		    } );	
 		}
     	else{
-    		alertaConexion()
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			var mensaje = "Actualmente no hay rosales registrados";
+    			listaVacia(mensaje)
+    		}
+    		
     	}
     });		
+}
+
+//Funcion que muestra ventana de error en caso de servidor mysql detenido y usuarios no registrados.
+function listaVacia(mensaje){
+	
+	sinDatos(mensaje);
+	
+	var info="<h2 style='color: #e70c06 ; text-align:center'><p>ERROR</p> </h2>";
+	info+="<p style='color: #e70c06; text-align:center; font-size:20px'>"+mensaje+"</p>"
+	
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content">'
+	textoHTML+='<div class="modal-body">'+info+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");
+		
+}
+
+//funcion que informa de la no existencia de rosales.
+function sinDatos(){
+	
+	var textoHTML="<h1 style='text-align:center'>Actualmente no hay rosales registrados</h1>";
+	
+	document.getElementById("rosalesContent").innerHTML=textoHTML;
+	
 }
 
 //Funcion que muestra ventana de error en caso de servidor mysql detenido y rosales no registrados.
@@ -96,7 +132,7 @@ function alertaConexion(){
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
 	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
-	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='<a href="errorSistema" id="closeModal"  class="btn btn-danger">Salir</a>' 
 	textoHTML+='</div></div></div></div>'    
     
 	document.getElementById("modalDatos").innerHTML=textoHTML;
@@ -327,7 +363,7 @@ function MessageModificaRosal(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Modificacion de Rosales</h2></div><div class="modal-body">'
+		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de Rosales</h2></div><div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -372,7 +408,8 @@ function registraRosal(){
     		muestraRegistraRosal(data);
     	}
     	else{
-    		mensajeErrorModificaRosal();
+    		var mensaje = "Actualmente no hay variedades registradas"
+    		listaVacia(mensaje);
     	}
     });	
 }
@@ -539,7 +576,7 @@ function MessageCreaRosal(message){
 function eliminaRosal(nombreRosal, idRosal){
 	
 	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>AVISO</p> </h2>";
-		mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará los pedidos que incluyan el rosal.</p>"
+		mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará el rosal de todos los pedidos.</p>"
 			
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar rosal</h2></div>'

@@ -9,11 +9,8 @@ function listaVariedades(){
         url: "dameVariedades"
     }).then(function(data) {
     	
-    	if (data.variedadExist==false){
-			alertaConexion()
-    	}
     	
-    	if (data.listaVariedades.length>0){
+    	if (data.variedadExist){
 				
     		var textoHTML="";
     		textoHTML += "<div>";
@@ -64,11 +61,53 @@ function listaVariedades(){
 		        	"url": "bootstrap/js/spanish.json"
 		        	// "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
 		        }
-		    } );	
+		    } );
+			
+				
 		}
+    	else{
+    		if (data.errorConexion){
+    			
+    			alertaConexion()
+    		}
+    		else{
+    			var mensaje = "Actualmente no hay variedades registradas";
+    			listaVacia(mensaje)
+    		}
+    		
+    	}
+    	
     			
     	
     });		
+}
+
+//Funcion que muestra ventana de informatcion de variedades no registradas.
+function listaVacia(mensaje){
+	
+	sinDatos(mensaje);
+	
+	var info="<h2 style='color: #e70c06 ; text-align:center'><p>ERROR</p> </h2>";
+	info+="<p style='color: #e70c06; text-align:center; font-size:20px'>"+mensaje+"</p>"
+	
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content">'
+	textoHTML+='<div class="modal-body">'+info+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");
+		
+}
+
+//funcion que informa de la no existencia de variedades.
+function sinDatos(mensaje){
+	
+	var textoHTML="<h1 style='text-align:center'>"+mensaje+"</h1>";
+	
+	document.getElementById("variedadesContent").innerHTML=textoHTML;
+	
 }
 
 //Funcion que muestra ventana de error en caso de servidor mysql detenido y rosales no registrados.
@@ -225,7 +264,7 @@ $("#closeModal").click();
 function eliminaVariedad(nombreVariedad, idVariedad){
 	
 	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>AVISO</p> </h2>";
-	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará los rosales de esta variedad asi como los pedidos.</p>"
+	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará los rosales de esta variedad.</p>"
 		
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar rosal</h2></div>'

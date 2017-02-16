@@ -1,6 +1,10 @@
 package es.pdv.daw.proyect.beans;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
+
+import es.pdv.daw.proyect.entity.Rosal;
 
 /**
  * Clase de proceso de datos de peticiones ajax del submenu rosales.
@@ -20,6 +24,16 @@ public class RosesValidate {
 	 * Propiedad que encapsula el resultado de la transaccion.
 	 */
 	private boolean existRosal;
+	
+	/**
+	 * Propiedad que encapsula el mensaje de error de conexion.
+	 */
+	private boolean errorConexion;
+	
+	/**
+	 * Propiedad que encapsula la lista de rosales registrados.
+	 */
+	private List<Rosal> listaRosales;
 
 	/**
 	 * Constructor sin parametros.
@@ -46,5 +60,23 @@ public class RosesValidate {
 	public void setExistRosal(boolean existRosal) {
 		this.existRosal = existRosal;
 	}
+
+	public List<Rosal> getListaRosales() {
+		return listaRosales;
+	}
+
+	public void setListaRosales(List<Rosal> listaRosales) {
+		this.listaRosales = listaRosales;
+	}
+
+	public boolean isErrorConexion() {
+		return errorConexion;
+	}
+
+	public void setErrorConexion(boolean errorConexion) {
+		this.errorConexion = errorConexion;
+	}
+	
+	
 
 }

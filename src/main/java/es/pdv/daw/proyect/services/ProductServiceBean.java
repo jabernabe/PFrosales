@@ -88,7 +88,7 @@ public class ProductServiceBean implements ProductService {
 		} catch (Exception e) {
 
 			varietyValidate.setMessage("Error al realizar la transaccion.");
-			varietyValidate.setVariedadExist(false);
+			varietyValidate.setErrorConexion(true);
 			logger.error("Error al obtener lista de variedades. El sistema lanzo: " + e.getMessage());
 		}
 		return varietyValidate;
@@ -504,20 +504,28 @@ public class ProductServiceBean implements ProductService {
 	 * Metodo que devuelve una lista de rosales.
 	 */
 	@Override
-	public List<Rosal> findAllRoses() {
+	public RosesValidate findAllRoses(RosesValidate rosesValidate) {
 
-		List<Rosal> lista = null;
 
 		try {
 
-			lista = rosalRepository.findAllByOrderByNombreRosalAsc();
+			List<Rosal>	lista = rosalRepository.findAllByOrderByNombreRosalAsc();
+			if (lista.size()>0){
+				rosesValidate.setListaRosales(lista);
+				rosesValidate.setExistRosal(true);
+				
+			}
+			else{
+				rosesValidate.setExistRosal(false);
+			}
 
 		} catch (Exception e) {
-
+			
+			rosesValidate.setErrorConexion(true);
 			logger.error("Error al obtener lista de rosales. La aplicación lanzó: " + e.getMessage());
 		}
 
-		return lista;
+		return rosesValidate;
 	}
 
 	/**

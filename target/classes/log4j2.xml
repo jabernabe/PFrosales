@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration monitorInterval="60">
     <Properties>
-        <Property name="path">logs</Property>
+        <Property name="path">/home/mint/logs</Property>
     </Properties>
     <Appenders>
         <Console name="Console-Appender" target="SYSTEM_OUT">
@@ -17,6 +17,9 @@
                     [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
                 </pattern>
             </PatternLayout>
+            <param name="Append" value="false"/>
+     		<param name="MaxFileSize" value="1KB"/>
+     		<param name="MaxBackupIndex" value="3"/>
         </File>
         <File name="SpringBoot-Appender" fileName="${path}/springboot_log.log" >
             <PatternLayout>
@@ -31,7 +34,7 @@
             <AppenderRef ref="SpringBoot-Appender"/>
             <AppenderRef ref="Console-Appender"/>
         </Logger>
-        <Logger name="es.pdv.daw.proyect.services" level="info" additivity="false">
+        <Logger name="es.pdv.daw.proyect" level="info" additivity="false">
             <AppenderRef ref="App-Appender"/>
             <AppenderRef ref="Console-Appender"/>
          </Logger>

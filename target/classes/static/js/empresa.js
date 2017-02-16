@@ -25,7 +25,7 @@ function alertaConexion(){
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
 	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
-	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='<a href="errorSistema" id="closeModal" class="btn btn-danger">Salir</a>' 
 	textoHTML+='</div></div></div></div>'    
     
 	document.getElementById("modalDatos").innerHTML=textoHTML;

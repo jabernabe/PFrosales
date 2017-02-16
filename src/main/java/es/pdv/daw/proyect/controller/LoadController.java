@@ -3,6 +3,7 @@ package es.pdv.daw.proyect.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Clase controlador que procesa la carga de fragmentos del menu principal.
@@ -146,6 +147,22 @@ public class LoadController {
 		model.addAttribute("fragment", "existencias");
 
 		return "home";
+	}
+	
+	
+	/**
+	 * Metodo que carga el fragmento del menu existencias.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "errorSistema",method = RequestMethod.POST)
+	public String errorSistema() {
+
+		System.out.println("metodo error.");
+		
+
+		return "error";
 	}
 
 }

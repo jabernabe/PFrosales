@@ -36,9 +36,9 @@ public class AdminController {
 	 * @return List<Usuarios>
 	 */
 	@RequestMapping(value = "dameUsuarios", method = RequestMethod.GET)
-	public List<Usuarios> dameUsuarios(List<Usuarios> usuarios) {
+	public UserValidate dameUsuarios(UserValidate userValidate) {
 
-		return loginService.findAllUsers();
+		return loginService.findAllUsers(userValidate);
 	}
 
 	/**

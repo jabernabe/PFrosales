@@ -85,7 +85,7 @@ public class PedidosServiceBean implements PedidosService {
 			}
 		} catch (Exception e) {
 
-			clientValidate.setExistClientes(false);
+			clientValidate.setErrorConexion(true);;
 			clientValidate.setMessage("Error al realizar la transaccion.");
 			logger.error("Error al obtener lista de clientes. La aplicación lanzó: " + e.getMessage());
 		}

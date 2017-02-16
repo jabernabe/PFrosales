@@ -24,7 +24,7 @@ public interface ProductService {
 	RosesValidate insertaRosal(Rosal rosal, RosesValidate rosesValidate, MultipartFile partImagen, int idVariedad,
 			Imagen imagen);
 
-	List<Rosal> findAllRoses();
+	RosesValidate findAllRoses(RosesValidate rosesValidate);
 
 	BeanImagen getImagen(String nombreImagen);
 

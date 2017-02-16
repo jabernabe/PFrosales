@@ -88,9 +88,9 @@ public class ProductController {
 	 * @return
 	 */
 	@RequestMapping(value="dameRosales",method = RequestMethod.GET)
-	public List<Rosal> getRosales(){
+	public RosesValidate getRosales(RosesValidate rosesValidate){
 					
-	return productService.findAllRoses();	 
+	return productService.findAllRoses(rosesValidate);	 
 	}
 	
 	

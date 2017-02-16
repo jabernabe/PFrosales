@@ -1869,3 +1869,13 @@
 [INFO ] 2017-02-14 16:17:09.786 [http-nio-8080-exec-2] ProductServiceBean - rosal con nombre Edith Piaf eliminado correctamente.
 [INFO ] 2017-02-14 16:20:59.170 [http-nio-8080-exec-6] ProductServiceBean - rosal con nombre Laetitia Casta eliminado correctamente.
 [INFO ] 2017-02-14 16:33:19.223 [http-nio-8080-exec-4] ProductServiceBean - rosal con nombre Alain Souchon eliminado correctamente.
+[INFO ] 2017-02-15 14:12:25.291 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-16 14:59:06.287 [main] FInalProyectApplication - Starting FInalProyectApplication on mint-K55VM with PID 4205 (started by mint in /home/mint/proyectos sts/proyectoFinal)
+[INFO ] 2017-02-16 14:59:06.295 [main] FInalProyectApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2017-02-16 14:59:11.815 [main] FInalProyectApplication - Started FInalProyectApplication in 5.751 seconds (JVM running for 6.444)
+[INFO ] 2017-02-16 15:00:13.980 [main] FInalProyectApplication - Starting FInalProyectApplication on mint-K55VM with PID 4877 (started by mint in /home/mint/proyectos sts/proyectoFinal)
+[INFO ] 2017-02-16 15:00:13.981 [main] FInalProyectApplication - No active profile set, falling back to default profiles: default
+[INFO ] 2017-02-16 15:00:20.075 [main] FInalProyectApplication - Started FInalProyectApplication in 6.338 seconds (JVM running for 6.898)
+[INFO ] 2017-02-16 15:00:55.585 [http-nio-8080-exec-9] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-16 15:02:48.544 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.
+[INFO ] 2017-02-16 15:19:44.334 [http-nio-8080-exec-1] LoginServiceBean - El usuario bubu ha iniciado sesion.

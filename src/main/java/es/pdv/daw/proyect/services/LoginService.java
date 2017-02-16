@@ -25,10 +25,11 @@ public interface LoginService {
 
 	/**
 	 * Metodo que obtiene los usuarios registrados.
+	 * @param userValidate 
 	 * 
 	 * @return
 	 */
-	List<Usuarios> findAllUsers();
+	UserValidate findAllUsers(UserValidate userValidate);
 
 	/**
 	 * Metodo que devuelve el usuario en el id suministrado.

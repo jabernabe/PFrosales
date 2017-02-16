@@ -10,7 +10,7 @@ function listaUsuarios(){
         url: "dameUsuarios"
     }).then(function(data) {
     
-    	if (data.length>0){
+    	if (data.userExist){
 				
     		var textoHTML="";
     		textoHTML += "<div>";
@@ -30,21 +30,21 @@ function listaUsuarios(){
     		textoHTML += "	<\/thead>";
     		textoHTML += "	<tbody>";
     		
-    		for(var elm = 0;elm < data.length;elm++){
+    		for(var elm = 0;elm < data.listaUsuarios.length;elm++){
     		
     		textoHTML += "		<tr>";
-    		textoHTML += "			<td>"+data[elm].name+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].surname+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].email+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].login+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].password+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].rol.rolName+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].name+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].surname+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].email+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].login+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].password+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].rol.rolName+"<\/td>";
     				
-    		textoHTML += "			<td><button type='button' onclick='eliminaUsuario(\""+data[elm].login+"\", "+data[elm].idUsuario+")' ";
+    		textoHTML += "			<td><button type='button' onclick='eliminaUsuario(\""+data.listaUsuarios[elm].login+"\", "+data.listaUsuarios[elm].idUsuario+")' ";
     		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'><span class='glyphicon glyphicon-trash'></span></button><\/td>"
     		
-    		textoHTML += "			<td><button type='button' onclick='modificaUsuario(\""+data[elm].idUsuario+"\", "
-			textoHTML += "			\""+data[elm].name+"\", \""+data[elm].surname+"\", \""+data[elm].email+"\", \""+data[elm].login+"\", \""+data[elm].password+"\", \""+data[elm].rol.idRol+"\")'"
+    		textoHTML += "			<td><button type='button' onclick='modificaUsuario(\""+data.listaUsuarios[elm].idUsuario+"\", "
+			textoHTML += "			\""+data.listaUsuarios[elm].name+"\", \""+data.listaUsuarios[elm].surname+"\", \""+data.listaUsuarios[elm].email+"\", \""+data.listaUsuarios[elm].login+"\", \""+data.listaUsuarios[elm].password+"\", \""+data.listaUsuarios[elm].rol.idRol+"\")'"
 			textoHTML += "			class='btn btn-primary btn-xs' style='width:40px; height:30px'><span class='glyphicon glyphicon-refresh'></span></button></td>"
     		
     		textoHTML += "		<\/tr>";
@@ -66,10 +66,47 @@ function listaUsuarios(){
 		}
     	else{
     		
-    		alertaConexion();
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			listaVacia();
+    		}
+    		
     	}
     });		
 }
+
+//Funcion que muestra ventana que informa de la falta de Usuarios registrados.
+function listaVacia(){
+	
+	sinDatos()
+	
+	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>ERROR</p> </h2>";
+	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>"
+	mensaje+='Actualmente no hay Usuarios registrados.</p>'	
+	
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content">'
+	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");	
+}
+
+//funcion que informa de la no existencia de usuarios registrados.
+function sinDatos(){
+	
+	var textoHTML="<h1 style='text-align:center'>Actualmente no hay usuarios registrados</h1>";
+	
+	document.getElementById("usuarioContent").innerHTML=textoHTML;
+	
+}
+
 
 //Funcion que muestra ventana de error en caso de servidor mysql detenido y usuarios no registrados.
 function alertaConexion(){
@@ -81,7 +118,7 @@ function alertaConexion(){
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
 	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
-	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='<a href="errorSistema" id="closeModal"  class="btn btn-danger">Salir</a>' 
 	textoHTML+='</div></div></div></div>'    
     
 	document.getElementById("modalDatos").innerHTML=textoHTML;
@@ -522,7 +559,7 @@ function listaNotificaciones(){
         url: "dameUsuarios"
     }).then(function(data) {
     
-    	if (data.length>0){
+    	if (data.userExist){
 				
     		var textoHTML="";
     		textoHTML += "<div>";
@@ -542,17 +579,17 @@ function listaNotificaciones(){
     		 		
     		textoHTML += "	<tbody>";
     		
-    		for(var elm = 0;elm < data.length;elm++){
+    		for(var elm = 0;elm < data.listaUsuarios.length;elm++){
     		
     		textoHTML += "		<tr>";
-    		textoHTML += "			<td>"+data[elm].name+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].surname+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].email+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].login+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].password+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].rol.rolName+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].name+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].surname+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].email+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].login+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].password+"<\/td>";
+    		textoHTML += "			<td>"+data.listaUsuarios[elm].rol.rolName+"<\/td>";
     		
-    		textoHTML+="			<td style='text-align:center'><button type='button' onclick='notificaUsuario(\""+data[elm].email+"\")'"
+    		textoHTML+="			<td style='text-align:center'><button type='button' onclick='notificaUsuario(\""+data.listaUsuarios[elm].email+"\")'"
 			textoHTML+="			class='btn btn-info btn-xs' style='width:50px; height:30px'><span class='glyphicon glyphicon-envelope'></span></button></td>"
     		
     		textoHTML += "		<\/tr>";
@@ -573,7 +610,17 @@ function listaNotificaciones(){
 		    } );	
 		}
     	else{
-    		alertaConexion();
+    		
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			listaVacia();
+    		}
+    		
+    		
     	}
     });		
 }

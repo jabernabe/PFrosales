@@ -22,6 +22,11 @@ public class ClientValidate {
 	 * Propiedad que encapsula el resultado de la transaccion.
 	 */
 	private boolean existClientes;
+	
+	/**
+	 * Propiedad que encapsula el mensaje de error de conexion a bd.
+	 */
+	private boolean errorConexion;
 
 	/**
 	 * Propiedad que encapsula la lista de clientes registrados.
@@ -62,4 +67,13 @@ public class ClientValidate {
 		this.listaClientes = listaClientes;
 	}
 
+	public boolean isErrorConexion() {
+		return errorConexion;
+	}
+
+	public void setErrorConexion(boolean errorConexion) {
+		this.errorConexion = errorConexion;
+	}
+	
+	
 }

@@ -4,8 +4,8 @@ function listaExistencias(){
         url: "dameRosales"
     }).then(function(data) {
     
-    	if (data.length>0){
-				
+    	if (data.existRosal){
+			
     		var textoHTML="";
     		
 
@@ -28,25 +28,25 @@ function listaExistencias(){
     		 		
     		textoHTML += "	<tbody>";
     		
-    		for(var elm = 0;elm < data.length;elm++){
+    		for(var elm = 0;elm < data.listaRosales.length;elm++){
     		
     		textoHTML += "		<tr>";
-    		textoHTML += "			<td>"+data[elm].idRosal+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].nombreRosal+"<\/td>";
-    		textoHTML += "			<td>"+data[elm].variedad.nombreVariedad+"<\/td>";
-    		textoHTML += "			<td style='text-align:right; padding-right:100px'>"+data[elm].cantidad+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].idRosal+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].nombreRosal+"<\/td>";
+    		textoHTML += "			<td>"+data.listaRosales[elm].variedad.nombreVariedad+"<\/td>";
+    		textoHTML += "			<td style='text-align:right; padding-right:100px'>"+data.listaRosales[elm].cantidad+"<\/td>";
     					
     				
     		textoHTML += "			<td><button type='button' class='btn btn-success btn-xs' style='width:40px; height:30px' ";				
-    		textoHTML += "			onclick='incrementaExistencias(\""+data[elm].nombreRosal+"\", "+data[elm].idRosal+")' >"	
+    		textoHTML += "			onclick='incrementaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' >"	
     		textoHTML += "			<span class='glyphicon glyphicon-plus-sign'></span></button><\/td>"
     			
     			
-    		textoHTML += "			<td><button type='button' onclick='decrementaExistencias(\""+data[elm].nombreRosal+"\", "+data[elm].idRosal+")' ";
+    		textoHTML += "			<td><button type='button' onclick='decrementaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
     		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-minus-sign'></span></button><\/td>"
     			
-    		textoHTML += "			<td><button type='button' onclick='actualizaExistencias(\""+data[elm].nombreRosal+"\", "+data[elm].idRosal+")' ";
+    		textoHTML += "			<td><button type='button' onclick='actualizaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
     		textoHTML += "			class='btn btn-primary btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-refresh'></span></button><\/td>"
     			
@@ -70,9 +70,45 @@ function listaExistencias(){
 		    } );	
 		}
     	else{
-    		alertaConexion()
+    		
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			listaVacia();
+    		}	
     	}
     });		
+}
+
+//Funcion que muestra ventana que informa de la falta de rosales registrados.
+function listaVacia(){
+	
+	sinDatos();
+	
+	var mensaje="<h2 style='color: #e70c06 ; text-align:center'><p>ERROR</p> </h2>";
+	mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>"
+	mensaje+='Actualmente no hay rosales registrados.</p>'	
+	
+	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
+	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
+	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='</div></div></div></div>'    
+    
+	document.getElementById("modalDatos").innerHTML=textoHTML;
+	$("#mostrarmodal").modal("show");	
+}
+
+//funcion que informa de la no existencia de rosales.
+function sinDatos(){
+	
+	var textoHTML="<h1 style='text-align:center'>Actualmente no hay rosales registrados</h1>";
+	
+	document.getElementById("existenciasContent").innerHTML=textoHTML;
+	
 }
 
 //Funcion que muestra ventana de error en caso de servidor mysql detenido o no haber rosales registrados.
@@ -85,7 +121,7 @@ function alertaConexion(){
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
 	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
-	textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Salir</a>' 
+	textoHTML+='<a href="errorSistema" id="closeModal" class="btn btn-danger">Salir</a>' 
 	textoHTML+='</div></div></div></div>'    
     
 	document.getElementById("modalDatos").innerHTML=textoHTML;

@@ -59,7 +59,7 @@ public class ClientesServiceBean implements ClientesService {
 
 		} catch (Exception e) {
 
-			clientValidate.setExistClientes(false);
+			clientValidate.setErrorConexion(true);
 			clientValidate.setMessage("Error al realizar la transacción.");
 			logger.error("Error al generar lista de clientes. La aplicación lanzó: " + e.getMessage());
 		}
