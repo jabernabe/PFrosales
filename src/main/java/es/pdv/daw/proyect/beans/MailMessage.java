@@ -40,6 +40,11 @@ public class MailMessage {
 	 * Propiedad que encapsula el mensaje a mostrar tras el envio del email.
 	 */
 	private String message;
+	
+	/**
+	 * Propiedad que encapsula el mensaje de error de conexion.
+	 */
+	private boolean errorConexion;
 
 	/**
 	 * Constructor sin paramentros.
@@ -97,5 +102,15 @@ public class MailMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
+	public boolean isErrorConexion() {
+		return errorConexion;
+	}
+
+	public void setErrorConexion(boolean errorConexion) {
+		this.errorConexion = errorConexion;
+	}
+	
+	
 
 }

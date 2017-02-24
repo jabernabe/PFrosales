@@ -33,8 +33,11 @@ public class UserValidate {
 	/**
 	 * Propiedad que encapsula en mensaje en caso de error de conexion a base de datos.
 	 */
-	boolean errorConexion;
+	Boolean errorConexion;
 	
+	/**
+	 * Propiedad que encapsula la lista de usuarios registrados.
+	 */
 	private List<Usuarios> listaUsuarios;
 
 	/**
@@ -69,14 +72,6 @@ public class UserValidate {
 		this.userExist = userExist;
 	}
 
-	public boolean isErrorConexion() {
-		return errorConexion;
-	}
-
-	public void setErrorConexion(boolean errorConexion) {
-		this.errorConexion = errorConexion;
-	}
-
 	public List<Usuarios> getListaUsuarios() {
 		return listaUsuarios;
 	}
@@ -84,6 +79,15 @@ public class UserValidate {
 	public void setListaUsuarios(List<Usuarios> listaUsuarios) {
 		this.listaUsuarios = listaUsuarios;
 	}
+
+	public Boolean getErrorConexion() {
+		return errorConexion;
+	}
+
+	public void setErrorConexion(Boolean errorConexion) {
+		this.errorConexion = errorConexion;
+	}
+	
 	
 	
 }

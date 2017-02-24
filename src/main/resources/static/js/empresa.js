@@ -141,7 +141,7 @@ function validaDatosEmpresa(){
 					$("#provincia").focus();
 				}
 				else{
-					
+					var expReg = /^\d*$/;
 					if (pais.length == 0 || /^\s+$/.test(pais)) {
 						document.getElementById("createEmpresaMessage").style.visibility="visible";
 						$("#createEmpresaMessage").text("Campo pais debe ser cumplimentado.");
@@ -149,9 +149,9 @@ function validaDatosEmpresa(){
 						$("#pais").focus();
 					}
 					else{
-						if (cp.length == 0 || /^\s+$/.test(cp)) {
+						if (cp.length == 0 || !expReg.test(cp)) {
 							document.getElementById("createEmpresaMessage").style.visibility="visible";
-							$("#createEmpresaMessage").text("Campo codigo postal debe ser cumplimentado.");
+							$("#createEmpresaMessage").text("Campo codigo postal debe ser cumplimentado con valor numerico.");
 							$("#cp").select();
 							$("#cp").focus();
 						}

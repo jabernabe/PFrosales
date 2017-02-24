@@ -119,6 +119,12 @@ public class EmpresaServiceBean implements EmpresaService {
 				empresa.setImagenLogo(imagenBlob);
 				updateOnServer(imagenBlob);
 			}
+			else{
+				//Si no se ha subido foto se mantiene la misma
+				Empresa emp = empresaRepository.findOne(1);	
+				empresa.setImagenLogo(emp.getImagenLogo());
+				
+			}
 
 		} catch (Exception e) {
 

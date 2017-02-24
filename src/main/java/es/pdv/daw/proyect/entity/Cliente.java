@@ -60,7 +60,7 @@ public class Cliente implements Serializable {
 	/**
 	 * Codigo postal del cliente.
 	 */
-	@Column(name = "codigo_postal", length = 5)
+	@Column(name = "codigo_postal")
 	private String cp;
 
 	/**

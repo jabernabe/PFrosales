@@ -116,14 +116,14 @@ function alertaConexion(){
 	mensaje+='Si el error persiste contacte inmediatamente con el administrador.</p>'	
 	
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
+	textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '
+	textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>INFORMACION</h2></div>'
 	textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
 	textoHTML+='<a href="errorSistema" id="closeModal"  class="btn btn-danger">Salir</a>' 
 	textoHTML+='</div></div></div></div>'    
     
 	document.getElementById("modalDatos").innerHTML=textoHTML;
 	$("#mostrarmodal").modal("show");
-	
 	
 }
 
@@ -261,10 +261,18 @@ function procesaModificaUsuario(){
     		processMessage(message);
     	}
     	else{
-    		document.getElementById("updateMessage").style.visibility="visible";
-    		$("#updateMessage").text(data.message);
-    		$("#login").focus();
-    		$("#login").select();
+    		
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			document.getElementById("updateMessage").style.visibility="visible";
+        		$("#updateMessage").text(data.message);
+        		$("#login").focus();
+        		$("#login").select();
+    		}	
     	}
     });		
 }
@@ -277,9 +285,7 @@ function processMessage(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
-			
+		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-body">'	
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
 		textoHTML+='aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">'
@@ -428,10 +434,18 @@ function procesaCreaUsuario(){
     		processMessageCreate(data.message);
     	}
     	else{
-    		document.getElementById("createMessage").style.visibility="visible";
-    		$("#createMessage").text(data.message);
-    		$("#login").focus();
-    		$("#login").select();
+    		
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			document.getElementById("createMessage").style.visibility="visible";
+        		$("#createMessage").text(data.message);
+        		$("#login").focus();
+        		$("#login").select();
+    		}	
     	}	
     });		
 }
@@ -442,8 +456,8 @@ function processMessageCreate(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -482,7 +496,6 @@ function eliminaUsuario(login, id){
 	var mensaje="<h3 style='color: #f60510; text-align:center'>El usuario "+login+" será eliminado.</h3>";
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='<div class="modal-dialog"><div class="modal-content">'
-		textoHTML+='<div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Gestión de usuarios</h2></div>'
 		textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
 		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Cancelar</a>' 
 		textoHTML+=	'<button type="button" onclick="procesaEliminaUsuario(\''+login+'\', '+id+')" class="btn btn-success">Aceptar</button>'
@@ -505,6 +518,15 @@ function procesaEliminaUsuario(login, id){
     		processMessage(data.message);
     	}
     	else{
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			processMessageError(data.message);;
+    		}
+    		
     		
     		processMessageError(data.message);  		
     	}
@@ -517,8 +539,8 @@ function processMessageError(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -716,8 +738,14 @@ function procesaNotificaUsuario(){
     		processMessageNotificacion(data.message)
     	}
     	else{
-    		
-    		processMessageError(data.message);  		
+    		if(data.errorConexion){
+    			
+    			alertaConexion()	
+    		}
+    		else{
+    			
+    			processMessageError(data.message);
+    		}	  		
     	}
     });	
 }
@@ -728,8 +756,8 @@ function processMessageNotificacion(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Notificacion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -767,8 +795,8 @@ function processMessageError(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF""><h2>Notificacion de usuarios</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   

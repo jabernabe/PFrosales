@@ -226,8 +226,8 @@ function MessageVariedad(message){
 $("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de variedades</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -308,8 +308,8 @@ function processMessageError(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar variedad</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"'   
@@ -347,8 +347,8 @@ function processMessage(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar variedad</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   

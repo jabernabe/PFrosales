@@ -61,7 +61,7 @@ public class Empresa {
 	 * Codigo postal de la empresa.
 	 */
 	@Column(name = "codigo_postal", length = 5)
-	private int cp;
+	private String cp;
 
 	/**
 	 * Municipio de la empresa.
@@ -158,13 +158,6 @@ public class Empresa {
 		this.direccion = direccion;
 	}
 
-	public int getCp() {
-		return cp;
-	}
-
-	public void setCp(int cp) {
-		this.cp = cp;
-	}
 
 	public String getMunicipio() {
 		return municipio;
@@ -217,5 +210,15 @@ public class Empresa {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public String getCp() {
+		return cp;
+	}
+
+	public void setCp(String cp) {
+		this.cp = cp;
+	}
+	
+	
 
 }

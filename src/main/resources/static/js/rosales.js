@@ -60,7 +60,7 @@ function listaRosales(){
     		textoHTML += "			<td><button type='button' onclick='modificaRosal(\""+data.listaRosales[elm].idRosal+"\", "
     		textoHTML += "          \""+data.listaRosales[elm].nombreRosal+"\", \""+data.listaRosales[elm].variedad.nombreVariedad+"\", "
     		textoHTML += "			\""+data.listaRosales[elm].color+"\", \""+data.listaRosales[elm].altura+"\", \""+data.listaRosales[elm].perfumada+"\", "
-    		textoHTML += "			\""+data.listaRosales[elm].nombreImagen+"\")' class='btn btn-primary btn-xs' style='width:40px; height:30px' >";
+    		textoHTML += "			\""+data.listaRosales[elm].nombreImagen+"\", \""+data.listaRosales[elm].cantidad+"\")' class='btn btn-primary btn-xs' style='width:40px; height:30px' >";
     		textoHTML += "			<span class='glyphicon glyphicon-refresh'></span></button><\/td>"
     			
     		textoHTML += "		<\/tr>";
@@ -173,7 +173,7 @@ function muestraModalImagen(data){
 
 
 // Funcion que muestra el formulario de modificacion de un rosal.
-function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada, nombreImagen){
+function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada, nombreImagen, cantidad){
 	
 	$.ajax({
         url: "dameVariedades"   
@@ -188,6 +188,8 @@ function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada,
     			textoHTML+='<form id="formUpdateRosal" class="form-horizontal" style="margin:20px" enctype="multipart/form-data">'
     			textoHTML+='<input type="hidden" id="idRosal" name="idRosal" value="'+idRosal+'">'
     			textoHTML+='<input type="hidden" id="nombreImagen" name="nombreImagen" value="'+nombreImagen+'">'
+    			textoHTML+='<input type="hidden" id="cantidad" name="cantidad" value="'+cantidad+'">'
+    			
     			
     			textoHTML+='<div class="form-group"><label for="nombreRosal" class="col-sm-2 control-label">Nombre</label>'
     			textoHTML+='<div class="col-sm-10"><input type="text" class="form-control" id="nombreRosal" name="nombreRosal" value="'+nombreRosal+'" maxlength="40"></div></div>'        
@@ -314,7 +316,6 @@ function mensajeErrorModificaRosal(){
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
 		textoHTML+='	<div class="modal-dialog"> '
 		textoHTML+='		<div class="modal-content">'
-		textoHTML+='			<div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Modificar rosal</h2></div>'
 		textoHTML+='			<div class="modal-body">'	
 		textoHTML+='				<div class="alert alert-danger" role="alert" id="alertMessage" '
 		textoHTML+='				style="text-align:center; font-size:20px">No hay variedades registradas.</div>'
@@ -362,8 +363,8 @@ function MessageModificaRosal(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de Rosales</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -539,8 +540,8 @@ function procesaRegistraRosal(){
 function MessageCreaRosal(message){
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de Rosales</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   
@@ -579,7 +580,7 @@ function eliminaRosal(nombreRosal, idRosal){
 		mensaje+="<p style='color: #e70c06; text-align:center; font-size:20px'>Esta acción eliminará el rosal de todos los pedidos.</p>"
 			
 	var textoHTML = '<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" style="text-align:center; background-color:#222; color:#FFF"><h2>Eliminar rosal</h2></div>'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'
 		
 		textoHTML+='<div class="modal-body">'+mensaje+'</div><div class="modal-footer">'  
 		textoHTML+='<a href="#" id="closeModal" data-dismiss="modal" class="btn btn-danger">Cancelar</a>' 
@@ -617,8 +618,8 @@ function processMessageError(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de rosales</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"'   
@@ -656,8 +657,8 @@ function processMessage(message){
 	$("#closeModal").click();
 	
 	var textoHTML ='<div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">'
-		textoHTML+='<div class="modal-dialog"><div class="modal-content"><div class="modal-header" '	
-		textoHTML+='style="text-align:center; background-color:#222; color:#FFF"><h2>Gestion de rosales</h2></div><div class="modal-body">'
+		textoHTML+='<div class="modal-dialog"><div class="modal-content">'	
+		textoHTML+='<div class="modal-body">'
 			
 		textoHTML+='<div class="progress">'
 		textoHTML+='<div id="bar" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"'   

@@ -41,21 +41,36 @@ public class LoginController extends HttpServlet {
 	public String loginUser(@RequestParam(value = "login") String login,
 			@RequestParam(value = "password") String password, UserValidate userValidate, HttpSession session,
 			Model model) {
-
+		
+		String vista = null;
+		
 		userValidate = loginService.validaUsuario(login, password, userValidate);
 
-		if (userValidate.getUserExist().equals(false)) {
-
-			model.addAttribute("mensaje", userValidate.getMessage());
-			return "inicio";
+		if (userValidate.getErrorConexion()) {
+			
+			vista = "error";
+			
+			
 		} else {
-
-			session.setAttribute("usuario", userValidate.getUsuario().getLogin());
-			session.setAttribute("rol", userValidate.getUsuario().getRol().getIdRol());
-			model.addAttribute("view", "slide");
-			model.addAttribute("fragment", "carousel");
-			return "home";
+			
+			if(userValidate.getUserExist()){
+				
+				session.setAttribute("usuario", userValidate.getUsuario().getLogin());
+				session.setAttribute("rol", userValidate.getUsuario().getRol().getIdRol());
+				model.addAttribute("view", "slide");
+				model.addAttribute("fragment", "carousel");
+				vista = "home";
+				
+			}
+			else{
+				
+				model.addAttribute("mensaje", userValidate.getMessage());
+				vista = "inicio";	
+			}
+			
 		}
+		
+		return vista;
 	}
 
 	/**

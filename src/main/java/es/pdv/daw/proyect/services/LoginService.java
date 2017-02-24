@@ -1,6 +1,6 @@
 package es.pdv.daw.proyect.services;
 
-import java.util.List;
+
 import es.pdv.daw.proyect.beans.MailMessage;
 import es.pdv.daw.proyect.beans.UserValidate;
 import es.pdv.daw.proyect.entity.Usuarios;
