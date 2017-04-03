@@ -18,14 +18,14 @@ function listaUsuarios(){
     		textoHTML += "<table id=\"mitabla\" class=\"table  table-hover table-striped table-condensed table-responsive\" cellspacing=\"0\" width=\"100%\">";
     		textoHTML += "	<thead>";
     		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Apellidos<\/th>";
-    		textoHTML += "			<th>Email<\/th>";
-    		textoHTML += "			<th>Login<\/th>";
-    		textoHTML += "			<th>Clave<\/th>";
-    		textoHTML += "			<th>Rol<\/th>";
-    		textoHTML += "			<th>Eliminar<\/th>";
-    		textoHTML += "			<th>Editar<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>Nombre<\/th>";
+    		textoHTML += "			<th class='col-sm-3'>Apellidos<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>Email<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Login<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Clave<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Rol<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Eliminar<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Editar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
     		textoHTML += "	<tbody>";
@@ -589,13 +589,13 @@ function listaNotificaciones(){
     		textoHTML += "<table id=\"mitabla\" class=\"table  table-hover table-striped table-condensed table-responsive\" cellspacing=\"0\" width=\"100%\">";
     		textoHTML += "	<thead>";
     		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Apellidos<\/th>";
-    		textoHTML += "			<th>Email<\/th>";
-    		textoHTML += "			<th>Login<\/th>";
-    		textoHTML += "			<th>Clave<\/th>";
-    		textoHTML += "			<th>Rol<\/th>";
-    		textoHTML += "			<th>Enviar<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>Nombre<\/th>";
+    		textoHTML += "			<th class='col-sm-3'>Apellidos<\/th>";
+    		textoHTML += "			<th class='col-sm-3'>Email<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Login<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Clave<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Rol<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Enviar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
     		 		
@@ -735,6 +735,7 @@ function procesaNotificaUsuario(){
     }).then(function(data) {
     		
     	if (data.send){ 
+    		$("#closeModal").click();
     		processMessageNotificacion(data.message)
     	}
     	else{
@@ -743,7 +744,7 @@ function procesaNotificaUsuario(){
     			alertaConexion()	
     		}
     		else{
-    			
+    			$("#closeModal").click();
     			processMessageError(data.message);
     		}	  		
     	}

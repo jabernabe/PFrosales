@@ -50,6 +50,12 @@ public class Rosal implements Serializable {
 	 */
 	@Column(name = "perfumada", length = 2, nullable = false)
 	private String perfumada;
+	
+	/**
+	 * Estado de disponibilidad del rosal.
+	 */
+	@Column(name = "estado", nullable = false)
+	private String estado;
 
 	/**
 	 * Propiedad que encapsula la altura del rosal.
@@ -164,5 +170,15 @@ public class Rosal implements Serializable {
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	
 
 }

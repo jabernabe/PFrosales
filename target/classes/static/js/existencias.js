@@ -1,7 +1,7 @@
 
 function listaExistencias(){
 	$.ajax({
-        url: "dameRosales"
+        url: "dameExistencias"
     }).then(function(data) {
     
     	if (data.existRosal){
@@ -16,13 +16,13 @@ function listaExistencias(){
     		
     		textoHTML += "	<thead>";
     		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Codigo<\/th>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Variedad<\/th>";
-    		textoHTML += "			<th>Cantidad<\/th>";
-    		textoHTML += "			<th>Entradas<\/th>";
-    		textoHTML += "			<th>Salidas<\/th>";
-    		textoHTML += "			<th>Actualizar<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Codigo<\/th>";
+    		textoHTML += "			<th class='col-sm-5'>Nombre<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>Variedad<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Cantidad<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Entradas<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Salidas<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Actualizar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
     		 		
@@ -31,22 +31,22 @@ function listaExistencias(){
     		for(var elm = 0;elm < data.listaRosales.length;elm++){
     		
     		textoHTML += "		<tr>";
-    		textoHTML += "			<td>"+data.listaRosales[elm].idRosal+"<\/td>";
+    		textoHTML += "			<td style='text-align:left; padding-left:30px'>"+data.listaRosales[elm].idRosal+"<\/td>";
     		textoHTML += "			<td>"+data.listaRosales[elm].nombreRosal+"<\/td>";
     		textoHTML += "			<td>"+data.listaRosales[elm].variedad.nombreVariedad+"<\/td>";
-    		textoHTML += "			<td style='text-align:right; padding-right:100px'>"+data.listaRosales[elm].cantidad+"<\/td>";
+    		textoHTML += "			<td style='text-align:right; padding-right:40px'>"+data.listaRosales[elm].cantidad+"<\/td>";
     					
     				
-    		textoHTML += "			<td><button type='button' class='btn btn-success btn-xs' style='width:40px; height:30px' ";				
+    		textoHTML += "			<td style='text-align:center'><button type='button' class='btn btn-success btn-xs' style='width:40px; height:30px' ";				
     		textoHTML += "			onclick='incrementaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' >"	
     		textoHTML += "			<span class='glyphicon glyphicon-plus-sign'></span></button><\/td>"
     			
     			
-    		textoHTML += "			<td><button type='button' onclick='decrementaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
+    		textoHTML += "			<td style='text-align:center'><button type='button' onclick='decrementaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
     		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-minus-sign'></span></button><\/td>"
     			
-    		textoHTML += "			<td><button type='button' onclick='actualizaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
+    		textoHTML += "			<td style='text-align:center'><button type='button' onclick='actualizaExistencias(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
     		textoHTML += "			class='btn btn-primary btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-refresh'></span></button><\/td>"
     			

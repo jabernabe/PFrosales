@@ -25,7 +25,7 @@ function listaClientes(){
     		textoHTML += "			<th>C.P<\/th>";
     		textoHTML += "			<th>Tlfno.<\/th>";
     		textoHTML += "			<th>Email<\/th>";
-    		textoHTML += "			<th>Eliminar<\/th>";
+    		//textoHTML += "			<th>Eliminar<\/th>";
     		textoHTML += "			<th>Editar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
@@ -45,9 +45,9 @@ function listaClientes(){
     		textoHTML += "			<td nowrap>"+data.listaClientes[elm].telefonos+"<\/td>";
     		textoHTML += "			<td nowrap>"+data.listaClientes[elm].email+"<\/td>";
     		     			
-    		textoHTML += "			<td><button type='button' onclick='eliminaCliente(\""+data.listaClientes[elm].idCliente+"\")' ";
-    		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
-    		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
+    		//textoHTML += "			<td><button type='button' onclick='eliminaCliente(\""+data.listaClientes[elm].idCliente+"\")' ";
+    		//textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
+    		//textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
     			
     		textoHTML += "			<td><button type='button' onclick='editaCliente(\""+data.listaClientes[elm].idCliente+"\", "
     		textoHTML += "          \""+data.listaClientes[elm].nombreCliente+"\", \""+data.listaClientes[elm].direccion+"\", "
@@ -148,11 +148,11 @@ function editaCliente(idCliente, nombre, direccion, municipio, provincia, pais, 
     	
     	textoHTML+='<div class="form-group"><label for="tipoIden" class="col-sm-2 control-label">Tipo</label>'
         textoHTML+='<div class="col-sm-10"><select class="form-control" id="tipoIden" name="tipoIden">' 		
-        if (tipoIden == "DNI"){
-        	textoHTML+=	'<option value="NIF" selected>DNI</option><option value="NIF">NIF</option>'	
+        if (tipoIden == "NIF"){
+        	textoHTML+=	'<option value="NIF" selected>NIF</option><option value="CIF">CIF</option>'	
         }
         else{
-        	textoHTML+=	'<option value="CIF" selected>CIF</option><option value="CIF">CIF</option>'	
+        	textoHTML+=	'<option value="CIF" selected>CIF</option><option value="NIF">NIF</option>'	
         }
         textoHTML+='</select></div></div>'	
     			

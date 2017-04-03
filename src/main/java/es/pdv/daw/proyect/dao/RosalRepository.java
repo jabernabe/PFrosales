@@ -71,4 +71,6 @@ public interface RosalRepository extends JpaRepository<Rosal, Integer> {
 	 */
 	int countByIdRosal(int idRosal);
 
+	List<Rosal> findByEstadoOrderByNombreRosalAsc(String string);
+
 }

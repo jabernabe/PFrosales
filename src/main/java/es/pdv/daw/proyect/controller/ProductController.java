@@ -93,6 +93,16 @@ public class ProductController {
 	return productService.findAllRoses(rosesValidate);	 
 	}
 	
+	/**
+	 * Metodo que devuelve una lista con todos los rosales activos.
+	 * @return
+	 */
+	@RequestMapping(value="dameExistencias",method = RequestMethod.GET)
+	public RosesValidate getExistencias(RosesValidate rosesValidate){
+					
+	return productService.findActiveRoses(rosesValidate);	 
+	}
+	
 	
 	/**
 	 * Metodo que recupera una imagen de servidor o base de datos.

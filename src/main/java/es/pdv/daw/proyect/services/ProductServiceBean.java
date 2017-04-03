@@ -527,6 +527,35 @@ public class ProductServiceBean implements ProductService {
 
 		return rosesValidate;
 	}
+	
+	
+	/**
+	 * Metodo que devuelve una lista de rosales activos.
+	 */
+	@Override
+	public RosesValidate findActiveRoses(RosesValidate rosesValidate) {
+
+
+		try {
+
+			List<Rosal>	lista = rosalRepository.findByEstadoOrderByNombreRosalAsc("activo");
+			if (lista.size()>0){
+				rosesValidate.setListaRosales(lista);
+				rosesValidate.setExistRosal(true);
+				
+			}
+			else{
+				rosesValidate.setExistRosal(false);
+			}
+
+		} catch (Exception e) {
+			
+			rosesValidate.setErrorConexion(true);
+			logger.error("Error al obtener lista de rosales. La aplicación lanzó: " + e.getMessage());
+		}
+
+		return rosesValidate;
+	}
 
 	/**
 	 * Metodo que devuelve una imagen.

@@ -1,6 +1,6 @@
 package es.pdv.daw.proyect.services;
 
-import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 import es.pdv.daw.proyect.beans.BeanImagen;
 import es.pdv.daw.proyect.beans.RosesValidate;
@@ -44,5 +44,7 @@ public interface ProductService {
 	RosesValidate actualizaExistencia(Rosal rosal, RosesValidate rosesValidate);
 
 	VarietyValidate registraVariedad(Variedad variedad, VarietyValidate varietyValidate);
+
+	RosesValidate findActiveRoses(RosesValidate rosesValidate);
 
 }

@@ -19,14 +19,15 @@ function listaRosales(){
     		
     		textoHTML += "	<thead>";
     		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Variedad<\/th>";
-    		textoHTML += "			<th>color<\/th>";
-    		textoHTML += "			<th>Altura<\/th>";
-    		textoHTML += "			<th>Perfumada<\/th>";
-    		textoHTML += "			<th>Imagen<\/th>";
-    		textoHTML += "			<th>Eliminar<\/th>";
-    		textoHTML += "			<th>Editar<\/th>";
+    		textoHTML += "			<th class='col-sm-3'>Nombre<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>Variedad<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>color<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Altura<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Perfumada<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Estado<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Imagen<\/th>";
+    		//textoHTML += "			<th class='col-sm-1'>Eliminar<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Editar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
     		 		
@@ -39,28 +40,37 @@ function listaRosales(){
     		textoHTML += "			<td>"+data.listaRosales[elm].variedad.nombreVariedad+"<\/td>";
     		textoHTML += "			<td>"+data.listaRosales[elm].color+"<\/td>";
     		textoHTML += "			<td>"+data.listaRosales[elm].altura+"<\/td>";
-    		textoHTML += "			<td>"+data.listaRosales[elm].perfumada+"<\/td>";
+    		textoHTML += "			<td style='text-align:center'>"+data.listaRosales[elm].perfumada+"<\/td>";
+    		
+    		if (data.listaRosales[elm].estado=="activo"){
+    			textoHTML += "		<td style='color:green'>Activo<\/td>";
+    		}
+    		else{
+    			textoHTML += "		<td style='color:red'>Inactivo<\/td>";
+    			
+    		}
+    		
     			
     			if (data.listaRosales[elm].nombreImagen=="null" || data.listaRosales[elm].nombreImagen=="" || data.listaRosales[elm].nombreImagen==null){
     		
-    		textoHTML += "			<td><button type='button' class='btn btn-danger btn-xs' style='width:40px; height:30px' >";		
+    		textoHTML += "			<td style='text-align:center'><button type='button' class='btn btn-danger btn-xs' style='width:40px; height:30px' >";		
     		textoHTML += "			<span class='glyphicon glyphicon-remove'></span></button><\/td>"	
     			}
     			else{
     				
-    		textoHTML += "			<td><button type='button' class='btn btn-success btn-xs' style='width:40px; height:30px' ";				
+    		textoHTML += "			<td style='text-align:center'><button type='button' class='btn btn-success btn-xs' style='width:40px; height:30px' ";				
     		textoHTML += "			onclick='muestraImagen(\""+data.listaRosales[elm].nombreImagen+"\")' >"	
     		textoHTML += "			<span class='glyphicon glyphicon-picture'></span></button><\/td>"
     			}
     			
-    		textoHTML += "			<td><button type='button' onclick='eliminaRosal(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
-    		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
-    		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
+    		//textoHTML += "			<td><button type='button' onclick='eliminaRosal(\""+data.listaRosales[elm].nombreRosal+"\", "+data.listaRosales[elm].idRosal+")' ";
+    		//textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
+    		//textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
     			
-    		textoHTML += "			<td><button type='button' onclick='modificaRosal(\""+data.listaRosales[elm].idRosal+"\", "
+    		textoHTML += "			<td style='text-align:center'><button type='button' onclick='modificaRosal(\""+data.listaRosales[elm].idRosal+"\", "
     		textoHTML += "          \""+data.listaRosales[elm].nombreRosal+"\", \""+data.listaRosales[elm].variedad.nombreVariedad+"\", "
     		textoHTML += "			\""+data.listaRosales[elm].color+"\", \""+data.listaRosales[elm].altura+"\", \""+data.listaRosales[elm].perfumada+"\", "
-    		textoHTML += "			\""+data.listaRosales[elm].nombreImagen+"\", \""+data.listaRosales[elm].cantidad+"\")' class='btn btn-primary btn-xs' style='width:40px; height:30px' >";
+    		textoHTML += "			\""+data.listaRosales[elm].nombreImagen+"\", \""+data.listaRosales[elm].estado+"\", \""+data.listaRosales[elm].cantidad+"\")' class='btn btn-primary btn-xs' style='width:40px; height:30px' >";
     		textoHTML += "			<span class='glyphicon glyphicon-refresh'></span></button><\/td>"
     			
     		textoHTML += "		<\/tr>";
@@ -173,7 +183,7 @@ function muestraModalImagen(data){
 
 
 // Funcion que muestra el formulario de modificacion de un rosal.
-function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada, nombreImagen, cantidad){
+function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada, nombreImagen, estado, cantidad){
 	
 	$.ajax({
         url: "dameVariedades"   
@@ -226,6 +236,17 @@ function modificaRosal(idRosal, nombreRosal, variedad, color, altura, perfumada,
     				textoHTML+=	'<option value="No">No</option><option value="Si">Si</option>' 
     			}
     			textoHTML+=	'</select></div></div>'	
+    				
+    			textoHTML+= '<div class="form-group"><label for="estado" class="col-sm-2 control-label">Estado</label>'
+    	    	textoHTML+=	'<div class="col-sm-10"><select class="form-control" id="estado" name="estado">' 
+    	    				
+    	    	if (estado=="activo"){
+    	    		textoHTML+=	'<option value="activo">Activo</option><option value="inactivo">Inactivo</option>'
+    	    	}
+    	    	else{
+    	    		textoHTML+=	'<option value="inactivo">Inactivo</option><option value="activo">Activo</option>' 
+    	    	}
+    	    	textoHTML+=	'</select></div></div>'
     					
     			textoHTML+=''	
     			textoHTML+= '<div class="form-group"><label for="img" class="col-sm-2 control-label">Imagen</label>'
@@ -442,6 +463,11 @@ function muestraRegistraRosal(data){
 	    textoHTML+= '<div class="form-group"><label for="perfumada" class="col-sm-2 control-label">Perfumada</label>'
 	    textoHTML+=	'<div class="col-sm-10"><select class="form-control" id="perfumada" name="perfumada">'      
 	    textoHTML+=	'<option value="Si">Si</option><option value="No">No</option>'   
+	    textoHTML+=	'</select></div></div>'
+	    	
+	    textoHTML+= '<div class="form-group"><label for="estado" class="col-sm-2 control-label">Estado</label>'
+	    textoHTML+=	'<div class="col-sm-10"><select class="form-control" id="estado" name="estado">'      
+	    textoHTML+=	'<option value="activo">Activo</option><option value="inactivo">Inactivo</option>'   
 	    textoHTML+=	'</select></div></div>'
 	    	
 	    textoHTML+= '<div class="form-group"><label for="ruta" class="col-sm-2 control-label">Imagen</label>'

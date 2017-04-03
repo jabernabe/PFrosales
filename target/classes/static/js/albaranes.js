@@ -146,10 +146,10 @@ function muestraAlbaran(data){
     	textoHTML += ""
     	textoHTML += "	<thead>";
     	textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    	textoHTML += "			<th>Descripcion<\/th>";
-    	textoHTML += "			<th>Variedad<\/th>";
-    	textoHTML += "			<th>Cantidad<\/th>";
-    	textoHTML += "			<th>Eliminar<\/th>";
+    	textoHTML += "			<th class='col-sm-6'>Descripcion<\/th>";
+    	textoHTML += "			<th class='col-sm-4'>Variedad<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Cantidad<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Eliminar<\/th>";
     	textoHTML += "		<\/tr>";
     	textoHTML += "	<\/thead>";
     	textoHTML += "	<tbody>";
@@ -161,9 +161,9 @@ function muestraAlbaran(data){
         		textoHTML += "		<tr>";
         		textoHTML += "			<td>"+data.listaDetalle[elm].rosal.nombreRosal+"<\/td>";
         		textoHTML += "			<td>"+data.listaDetalle[elm].rosal.variedad.nombreVariedad+"<\/td>";
-        		textoHTML += "			<td>"+data.listaDetalle[elm].cantidad+"<\/td>";
+        		textoHTML += "			<td style='text-align:right; padding-right:50px'>"+data.listaDetalle[elm].cantidad+"<\/td>";
         		
-        		textoHTML += "			<td><button type='button' onclick='confirmaEliminaDetalle("
+        		textoHTML += "			<td style='text-align:center'><button type='button' onclick='confirmaEliminaDetalle("
         		textoHTML += 			+data.listaDetalle[elm].rosal.idRosal+", "+data.listaDetalle[elm].cantidad+", "+data.listaDetalle[elm].idDetalleAlbaran+")' "
         		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
         		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"	
@@ -331,10 +331,10 @@ function refrescaAlbaran(data){
 	textoHTML += ""
 	textoHTML += "	<thead>";
 	textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-	textoHTML += "			<th>Descripcion<\/th>";
-	textoHTML += "			<th>Variedad<\/th>";
-	textoHTML += "			<th>Cantidad<\/th>";
-	textoHTML += "			<th>Eliminar<\/th>";
+	textoHTML += "			<th class='col-sm-6'>Descripcion<\/th>";
+	textoHTML += "			<th class='col-sm-4'>Variedad<\/th>";
+	textoHTML += "			<th class='col-sm-1'>Cantidad<\/th>";
+	textoHTML += "			<th class='col-sm-1'>Eliminar<\/th>";
 	textoHTML += "		<\/tr>";
 	textoHTML += "	<\/thead>";
 	textoHTML += "	<tbody>";
@@ -344,9 +344,9 @@ function refrescaAlbaran(data){
 	textoHTML += "		<tr>";
 	textoHTML += "			<td>"+data.listaDetalle[elm].rosal.nombreRosal+"<\/td>";
 	textoHTML += "			<td>"+data.listaDetalle[elm].rosal.variedad.nombreVariedad+"<\/td>";
-	textoHTML += "			<td>"+data.listaDetalle[elm].cantidad+"<\/td>";
+	textoHTML += "			<td style='text-align:right; padding-right:50px'>"+data.listaDetalle[elm].cantidad+"<\/td>";
 	
-	textoHTML += "			<td><button type='button' onclick='confirmaEliminaDetalle("
+	textoHTML += "			<td style='text-align:center'><button type='button' onclick='confirmaEliminaDetalle("
 	textoHTML += 			+data.listaDetalle[elm].rosal.idRosal+", "+data.listaDetalle[elm].cantidad+", "+data.listaDetalle[elm].idDetalleAlbaran+")' "
 	textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
 	textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
@@ -533,12 +533,12 @@ function muestraListaPedidos(data){
     	textoHTML += ""
     	textoHTML += "	<thead>";
     	textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    	textoHTML += "			<th>Numero<\/th>";
-    	textoHTML += "			<th>Fecha<\/th>";
-    	textoHTML += "			<th>Cliente<\/th>";
-    	textoHTML += "			<th>Eliminar<\/th>";
-    	textoHTML += "			<th>Editar<\/th>";
-    	textoHTML += "			<th>Imprimir<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Numero<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Fecha<\/th>";
+    	textoHTML += "			<th class='col-sm-6'>Cliente<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Eliminar<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Editar<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Imprimir<\/th>";
     	textoHTML += "		<\/tr>";
     	textoHTML += "	<\/thead>";
     	textoHTML += "	<tbody>";
@@ -546,22 +546,22 @@ function muestraListaPedidos(data){
    	for(var elm = 0;elm < data.listaAlbaranes.length;elm++){
     		
     		textoHTML += "		<tr>";
-    		textoHTML += "			<td>"+data.listaAlbaranes[elm].idAlbaran+"<\/td>";
+    		textoHTML += "			<td style='text-align:left; padding-left:20px'>"+data.listaAlbaranes[elm].idAlbaran+"<\/td>";
     		
     		textoHTML += "			<td>"+parseaFecha(data.listaAlbaranes[elm].fecha)+"<\/td>";
     		textoHTML += "			<td>"+data.listaAlbaranes[elm].cliente.nombreCliente+"<\/td>";
     		
-    		textoHTML += "			<td><button type='button' onclick='confirmaEliminaPedido("
+    		textoHTML += "			<td style='text-align:center;'><button type='button' onclick='confirmaEliminaPedido("
     		textoHTML += 			+data.listaAlbaranes[elm].idAlbaran+")' "
     		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
     		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
     		
-    		textoHTML += "			<td><button type='button' onclick='editaPedido("
+    		textoHTML += "			<td style='text-align:center;'><button type='button' onclick='editaPedido("
     	    textoHTML += 			+data.listaAlbaranes[elm].idAlbaran+")' "
     	    textoHTML += "			class='btn btn-primary btn-xs' style='width:40px; height:30px'>"
     	    textoHTML += "			<span class='glyphicon glyphicon-refresh'></span></button><\/td>"
     		
-    	    textoHTML += "			<td><button type='button' onclick='imprimePedido("
+    	    textoHTML += "			<td style='text-align:center'><button type='button' onclick='imprimePedido("
     	    textoHTML += 			+data.listaAlbaranes[elm].idAlbaran+")' "
     	    textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px; horizontal-align:middle'>"
     	    textoHTML += '			<span>pdf</span></button><\/td>'
@@ -711,10 +711,10 @@ function editaAlbaran(data){
     	textoHTML += ""
     	textoHTML += "	<thead>";
     	textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    	textoHTML += "			<th>Descripcion<\/th>";
-    	textoHTML += "			<th>Variedad<\/th>";
-    	textoHTML += "			<th>Cantidad<\/th>";
-    	textoHTML += "			<th>Eliminar<\/th>";
+    	textoHTML += "			<th class='col-sm-6'>Descripcion<\/th>";
+    	textoHTML += "			<th class='col-sm-2'>Variedad<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Cantidad<\/th>";
+    	textoHTML += "			<th class='col-sm-1'>Eliminar<\/th>";
     	textoHTML += "		<\/tr>";
     	textoHTML += "	<\/thead>";
     	
@@ -727,9 +727,9 @@ function editaAlbaran(data){
         		textoHTML += "		<tr>";
         		textoHTML += "			<td>"+data.listaDetalle[elm].rosal.nombreRosal+"<\/td>";
         		textoHTML += "			<td>"+data.listaDetalle[elm].rosal.variedad.nombreVariedad+"<\/td>";
-        		textoHTML += "			<td>"+data.listaDetalle[elm].cantidad+"<\/td>";
+        		textoHTML += "			<td style='text-align:right; padding-right:50px'>"+data.listaDetalle[elm].cantidad+"<\/td>";
         		
-        		textoHTML += "			<td><button type='button' onclick='confirmaEliminaDetalle("
+        		textoHTML += "			<td style='text-align:center;'><button type='button' onclick='confirmaEliminaDetalle("
         		textoHTML += 			+data.listaDetalle[elm].rosal.idRosal+", "+data.listaDetalle[elm].cantidad+", "+data.listaDetalle[elm].idDetalleAlbaran+")' "
         		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
         		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"	

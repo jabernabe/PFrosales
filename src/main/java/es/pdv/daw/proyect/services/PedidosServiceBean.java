@@ -113,8 +113,7 @@ public class PedidosServiceBean implements PedidosService {
 			albaranCreado = albaranesRepository.saveAndFlush(albaran);
 
 			// Se obtiene lista de rosales.
-
-			List<Rosal> listaRosales = rosalRepository.findAllByOrderByNombreRosalAsc();
+			List<Rosal> listaRosales = rosalRepository.findByEstadoOrderByNombreRosalAsc("activo");
 
 			// Se registran datos necesarios para el proceso de la peticion.
 			albaranValidate.setMessage("albaran creado correctamente");
@@ -394,7 +393,7 @@ public class PedidosServiceBean implements PedidosService {
 				Albaran nuevoAlbaran = albaranesRepository.findByIdAlbaran(albaran.getIdAlbaran());
 
 				// Se obtiene lista de rosales.
-				List<Rosal> listaRosales = rosalRepository.findAllByOrderByNombreRosalAsc();
+				List<Rosal> listaRosales = rosalRepository.findByEstadoOrderByNombreRosalAsc("activo");
 
 				// Se registran datos necesarios para el proceso de la peticion.
 				albaranValidate.setMessage("albaran creado correctamente");

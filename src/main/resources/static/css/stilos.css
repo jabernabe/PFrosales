@@ -28,6 +28,7 @@
 }
 body{
 background-image:url(../images/fondorosas.jpg);
+background-size: 100%;
 }
 #login{
 	float:right
@@ -83,5 +84,16 @@ background-image:url(../images/fondorosas.jpg);
   background-color:#222; 
   color:#FFF; 
   height:40px;
+}
+.transparente{
+
+opacity: 0.8;
+
+-moz-opacity: 0.8;
+
+filter: alpha(opacity=80);
+
+-khtml-opacity: 0.8;
+
 }
 

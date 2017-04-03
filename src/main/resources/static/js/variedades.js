@@ -20,11 +20,11 @@ function listaVariedades(){
     		
     		textoHTML += "	<thead>";
     		textoHTML += "		<tr style='text-align:center; background-color:#222; color:#FFF;'>";
-    		textoHTML += "			<th>Nombre<\/th>";
-    		textoHTML += "			<th>Plantacion<\/th>";
-    		textoHTML += "			<th>Descripcion<\/th>";
-    		textoHTML += "			<th>Eliminar<\/th>";
-    		textoHTML += "			<th>Editar<\/th>";
+    		textoHTML += "			<th class='col-sm-3'>Nombre<\/th>";
+    		textoHTML += "			<th class='col-sm-2'>Plantacion<\/th>";
+    		textoHTML += "			<th class='col-sm-6'>Descripcion<\/th>";
+    		//textoHTML += "			<th>Eliminar<\/th>";
+    		textoHTML += "			<th class='col-sm-1'>Editar<\/th>";
     		textoHTML += "		<\/tr>";
     		textoHTML += "	<\/thead>";
     		 		
@@ -37,9 +37,9 @@ function listaVariedades(){
     		textoHTML += "			<td>"+data.listaVariedades[elm].distPlantacion+"<\/td>";
     		textoHTML += "			<td>"+data.listaVariedades[elm].descripcion+"<\/td>";
     			
-    		textoHTML += "			<td><button type='button' onclick='eliminaVariedad(\""+data.listaVariedades[elm].nombreVariedad+"\", "+data.listaVariedades[elm].idVariedad+")' ";
-    		textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
-    		textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
+    		//textoHTML += "			<td><button type='button' onclick='eliminaVariedad(\""+data.listaVariedades[elm].nombreVariedad+"\", "+data.listaVariedades[elm].idVariedad+")' ";
+    		//textoHTML += "			class='btn btn-danger btn-xs' style='width:40px; height:30px'>"
+    		//textoHTML += "			<span class='glyphicon glyphicon-trash'></span></button><\/td>"
     			
     		textoHTML += "			<td><button type='button' onclick='modificaVariedad("+data.listaVariedades[elm].idVariedad+", "
         	textoHTML += "			\""+data.listaVariedades[elm].nombreVariedad+"\", \""+data.listaVariedades[elm].distPlantacion+"\",  "
